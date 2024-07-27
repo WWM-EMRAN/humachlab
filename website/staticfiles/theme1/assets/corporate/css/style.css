@@ -3034,6 +3034,7 @@ Styler Panel
 
 .color-mode li.color-blue {
   background: #64aed9;
+  /*background: #004d7b;*/
 }
 .color-mode li.color-red {
   background: #e84d1c;
@@ -3044,11 +3045,41 @@ Styler Panel
 .color-mode li.color-orange {
   background: #e18604;
 }
+.color-mode li.color-gray {
+	background: #798b97;
+}
+.color-mode li.color-turquoise {
+	background: #44b1c1;
+}
+.color-mode li.color-black {
+  background: #0d0d0d;
+}
+.color-mode li.color-white {
+  background: #fafafa;
+}
 .color-gray {
 	background: #798b97;
 }
 .color-turquoise {
 	background: #44b1c1;
+}
+.color-black {
+  background: #0d0d0d;
+}
+.color-white {
+  background: #fafafa;
+  /*background: #ffffff;*/
+  /*background: #f8f8f8;*/
+  /*background: #8f8f8f;*/
+}
+.color-yellow {
+  background: #f7cd46;
+}
+.color-purple {
+  background: #800080;
+}
+.color-cyan {
+  background: #06ff5b;
 }
 .color-mode label {
   color: #cfcfcf;
