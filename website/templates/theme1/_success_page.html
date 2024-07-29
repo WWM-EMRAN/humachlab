@@ -1,0 +1,47 @@
+{# ##### Base: Page Structure ##### #}
+{% extends 'theme1/base.html' %}
+
+
+{# ##### Static Files: Load static files directory/folder: image-jpg|png|ico, css, js ##### #}
+{% load static %}
+
+
+{# ##### Title: Page Title ##### #}
+{% block title %}
+	HumachLab - {{ page_name }}
+{% endblock %}
+
+
+{# ##### Hero: Hero Section of the Main Page ##### #}
+{#{% block hero %}#}
+{#    {% include './_hero.html' %}#}
+{#{% endblock %}#}
+
+
+{# ##### Breadcrumb: Breadcrumb Section of the Main Page showing the path ##### #}
+{% block breadcrumb %}
+    <ul class="breadcrumb">
+        <li><a href="/index">Home</a></li>
+        <li class="active">{{ page_name }}</li>
+    </ul>
+{% endblock %}
+
+
+{# ##### Content: Main Content ##### #}
+{% block content %}
+
+    <!-- BEGIN BLOCKQUOTE BLOCK -->
+{#    <div class="row quote-v1 margin-bottom-30">#}
+    <div class="row quote-v2 margin-bottom-30">
+      <div class="col-md-9">
+        <span>Thank you! {{ message }} </span>
+      </div>
+      <div class="col-md-3 text-right">
+        <a class="btn-transparent" href="/index"><i class="fa fa-rocket margin-right-10"></i>Home</a>
+      </div>
+    </div>
+    <!-- END BLOCKQUOTE BLOCK -->
+
+
+{% endblock %}
+

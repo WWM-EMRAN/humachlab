@@ -38,7 +38,8 @@ a:hover {
   color: #0d0d0d;
 }
 .page-404 .number,
-.page-500 .number {
+.page-500 .number,
+.page-error .number {
   color: #0d0d0d;
 }
 .content-form-page a:hover {

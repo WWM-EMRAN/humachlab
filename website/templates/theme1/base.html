@@ -43,11 +43,17 @@ Purchase Premium Metronic Admin Theme: http://themeforest.net/item/metronic-resp
     {% block hero %} {% endblock %}
 {#    {% include './_hero.html' %}#}
 
-    <!-- content: main content of the page -->
+    <!-- content: main content of the page including breadcrumb path -->
 {#    {% block content %} {% endblock %}#}
     <div class="main">
       <div class="container">
-          {% block content %} {% endblock %}
+
+        <!-- breadcrumb: breadcrumb/path section to show the navigation from a root/sub-root link -->
+        {% block breadcrumb %} {% endblock %}
+
+        <!-- content: main content of the page -->
+        {% block content %} {% endblock %}
+
       </div>
     </div>
 

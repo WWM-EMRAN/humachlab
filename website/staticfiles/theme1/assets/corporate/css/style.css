@@ -1245,6 +1245,34 @@ steps block and steps block elements
 	margin-bottom: 3px;
 }
 
+/* any error code page */
+.corporate .page-error {
+ 	text-align: center;
+ 	padding-top: 60px;
+ 	padding-bottom: 125px;
+}
+.page-error .number {
+	position: relative;
+	top: 35px;
+	display: inline-block;
+	letter-spacing: -10px;
+	margin-top: 0px;
+	margin-bottom: 10px;
+	line-height: 128px;
+	font-size: 128px;
+	font-weight: 300;
+	color: #E02222;
+	text-align: right;
+}
+.page-error .details {
+	margin-left: 40px;
+	display: inline-block;
+	padding-top: 0px;
+	text-align: left;
+	top: 15px;
+	position: relative;
+}
+
 /* 404 page */
 .corporate .page-404 {
  	text-align: center;
@@ -2101,6 +2129,86 @@ Demo Utils
   -webkit-transition: all 0.5s ease;      
 }
 .quote-v1 a.btn-transparent i {
+	margin-right: 10px;
+}
+
+/* Blockquote Box for success message */
+.quote-v2 {
+  background: #56b843;
+  padding: 10px 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+.quote-v2 a {
+  margin: 5px;
+  display: inline-block;
+}
+.quote-v2 span {
+  color: #fff;
+  font-size: 22px;
+  font-weight: 300;
+  margin: 13px 5px 8px;
+  line-height: 26px;
+  display: inline-block;
+}
+.quote-v2 a.btn-transparent {
+  color: #fff;
+  font-size: 16px;
+  padding: 8px 18px;
+  white-space: nowrap;
+  text-decoration: none;
+  border: solid 1px #fff;
+  background: none;
+}
+.quote-v2 a.btn-transparent:hover {
+  background: #7C858E;
+  color: #fff;
+  transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+}
+.quote-v2 a.btn-transparent i {
+	margin-right: 10px;
+}
+
+/* Blockquote Box for unsuccess message */
+.quote-v3 {
+  background: #E02222;
+  padding: 10px 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+.quote-v3 a {
+  margin: 5px;
+  display: inline-block;
+}
+.quote-v3 span {
+  color: #fff;
+  font-size: 22px;
+  font-weight: 300;
+  margin: 13px 5px 8px;
+  line-height: 26px;
+  display: inline-block;
+}
+.quote-v3 a.btn-transparent {
+  color: #fff;
+  font-size: 16px;
+  padding: 8px 18px;
+  white-space: nowrap;
+  text-decoration: none;
+  border: solid 1px #fff;
+  background: none;
+}
+.quote-v3 a.btn-transparent:hover {
+  background: #7C858E;
+  color: #fff;
+  transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+}
+.quote-v3 a.btn-transparent i {
 	margin-right: 10px;
 }
 

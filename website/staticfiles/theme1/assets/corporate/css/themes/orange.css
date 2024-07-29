@@ -38,13 +38,20 @@ a:hover {
   color: #e18604;
 }
 .page-404 .number,
-.page-500 .number {
+.page-500 .number,
+.page-error .number {
   color: #e18604;
 }
 .content-form-page a:hover {
   color: #e18604;
 }
 .quote-v1 a.btn-transparent:hover {
+  background: #e18604;
+}
+.quote-v2 a.btn-transparent:hover {
+  background: #e18604;
+}
+.quote-v3 a.btn-transparent:hover {
   background: #e18604;
 }
 .recent-work h2 a:hover {

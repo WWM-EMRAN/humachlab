@@ -18,10 +18,21 @@
 {#{% endblock %}#}
 
 
+{# ##### Breadcrumb: Breadcrumb Section of the Main Page showing the path ##### #}
+{% block breadcrumb %}
+    <ul class="breadcrumb">
+        <li><a href="/index">Home</a></li>
+{#        <li><a href="javascript:;">Services</a></li>#}
+        <li><a href="/services">Services</a></li>
+        <li class="active">Development</li>
+    </ul>
+{% endblock %}
+
+
 {# ##### Content: Main Content ##### #}
 {% block content %}
 
-    <p>Here we have the service: {{ type }} {{ id }}</p>
+    <p>Here we have the service (dev): {{ type }} {{ id }}</p>
 
     <!-- BEGIN SERVICE BOX -->
     <div class="row service-box margin-bottom-40">
