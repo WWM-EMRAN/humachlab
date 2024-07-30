@@ -1,0 +1,175 @@
+{# ##### Base: Page Structure ##### #}
+{% extends 'theme1/base.html' %}
+
+
+{# ##### Static Files: Load static files directory/folder: image-jpg|png|ico, css, js ##### #}
+{% load static %}
+
+
+{# ##### Title: Page Title ##### #}
+{% block title %}
+	HumachLab - News
+{% endblock %}
+
+
+{# ##### Hero: Hero Section of the Main Page ##### #}
+{#{% block hero %}#}
+{#    {% include './_hero.html' %}#}
+{#{% endblock %}#}
+
+
+ ##### Breadcrumb: Breadcrumb Section of the Main Page showing the path #####
+{% block breadcrumb %}
+    <ul class="breadcrumb">
+        <li><a href="/index">Home</a></li>
+        <li class="active">News</li>
+    </ul>
+{% endblock %}
+
+
+{# ##### Content: Main Content ##### #}
+{% block content %}
+
+    <!-- BEGIN SIDEBAR & CONTENT -->
+    <div class="row margin-bottom-40">
+      <!-- BEGIN CONTENT -->
+      <div class="col-md-12 col-sm-12">
+        <h1>News Articles</h1>
+        <div class="content-page">
+          <div class="row">
+            <!-- BEGIN LEFT SIDEBAR -->
+            <div class="col-md-9 col-sm-9 blog-posts">
+              <div class="row">
+                <div class="col-md-4 col-sm-4">
+                  <!-- BEGIN CAROUSEL -->
+                  <div class="front-carousel">
+                    <div class="carousel slide" id="myCarousel">
+                      <!-- Carousel items -->
+                      <div class="carousel-inner">
+                        <div class="item">
+                          <img alt="" src="{% static 'theme1/assets/pages/img/works/img1.jpg'  %}">
+                        </div>
+                        <div class="item">
+                          <img alt="" src="{% static 'theme1/assets/pages/img/works/img2.jpg'  %}">
+                        </div>
+                        <div class="item active">
+                          <img alt="" src="{% static 'theme1/assets/pages/img/works/img3.jpg'  %}">
+                        </div>
+                      </div>
+                      <!-- Carousel nav -->
+                      <a data-slide="prev" href="#myCarousel" class="carousel-control left">
+                        <i class="fa fa-angle-left"></i>
+                      </a>
+                      <a data-slide="next" href="#myCarousel" class="carousel-control right">
+                        <i class="fa fa-angle-right"></i>
+                      </a>
+                    </div>
+                  </div>
+                  <!-- END CAROUSEL -->
+                </div>
+                <div class="col-md-8 col-sm-8">
+                  <h2><a href="/news_details?news_id=1">Post with photos carousel</a></h2>
+                  <ul class="blog-info">
+                    <li><i class="fa fa-calendar"></i> 27/07/2013</li>
+                    <li><i class="fa fa-comments"></i> 17</li>
+                    <li><i class="fa fa-tags"></i> Design, Development</li>
+                  </ul>
+                  <p>
+                      This contains row of information about data with multiple photos uploaded and now shown as carousel.
+                  </p>
+                  <a href="/news_details?news_id=1" class="more">Read more <i class="icon-angle-right"></i></a>
+                </div>
+              </div>
+              <hr class="blog-post-sep">
+              <div class="row">
+                <div class="col-md-4 col-sm-4">
+                  <img class="img-responsive" alt="" src="{% static 'theme1/assets/pages/img/works/img4.jpg'  %}">
+                </div>
+                <div class="col-md-8 col-sm-8">
+                  <h2><a href="/news_details?news_id=2">Single photo post</a></h2>
+                  <ul class="blog-info">
+                    <li><i class="fa fa-calendar"></i> 24/07/2013</li>
+                    <li><i class="fa fa-comments"></i> 22</li>
+                    <li><i class="fa fa-tags"></i> DL, CNN</li>
+                  </ul>
+                  <p>
+                      This will contain the post with single image and text details.
+                  </p>
+                  <a href="/news_details?news_id=2" class="more">Read more <i class="icon-angle-right"></i></a>
+                </div>
+              </div>
+              <hr class="blog-post-sep">
+              <div class="row">
+                <div class="col-md-4 col-sm-4">
+                  <!-- BEGIN VIDEO -->
+                  <iframe height="205" allowfullscreen="" style="width:100%; border:0" src="http://player.vimeo.com/video/56974716?portrait=0"></iframe>
+                  <!-- END VIDEO -->
+                </div>
+                <div class="col-md-8 col-sm-8">
+                  <h2><a href="/news_details?news_id=3">Post with video</a></h2>
+                  <ul class="blog-info">
+                    <li><i class="fa fa-calendar"></i> 20/07/2013</li>
+                    <li><i class="fa fa-comments"></i> 30</li>
+                    <li><i class="fa fa-tags"></i> Pytorch</li>
+                  </ul>
+                  <p>
+                      This contains the video of information along with the text.
+                  </p>
+                  <a href="/news_details?news_id=3" class="more">Read more <i class="fa fa-angle-right"></i></a>
+                </div>
+              </div>
+
+              <hr class="blog-post-sep">
+              <!-- START PAGINATION -->
+              <ul class="pagination">
+                <li><a href="javascript:;">Prev</a></li>
+                <li class="active"><a href="javascript:;">1</a></li>
+                <li><a href="javascript:;">2</a></li>
+                <li><a href="javascript:;">3</a></li>
+                <li><a href="javascript:;">4</a></li>
+                <li><a href="javascript:;">5</a></li>
+                <li><a href="javascript:;">Next</a></li>
+              </ul>
+            </div>
+            <!-- END PAGINATION -->
+            <!-- END LEFT SIDEBAR -->
+
+            <!-- BEGIN RIGHT SIDEBAR -->
+            <div class="col-md-3 col-sm-3 blog-sidebar">
+              <!-- CATEGORIES START -->
+              <h2 class="no-top-space">Categories</h2>
+              <ul class="nav sidebar-categories margin-bottom-40">
+                <li class="active"><a href="javascript:;">Artificial Intelligence (12)</a></li>
+                <li><a href="javascript:;">Machine Learning (18)</a></li>
+                <li><a href="javascript:;">Deep Learning (5)</a></li>
+                <li><a href="javascript:;">Training (7)</a></li>
+                <li><a href="javascript:;">Software Development (3)</a></li>
+              </ul>
+              <!-- CATEGORIES END -->
+
+              <!-- BEGIN BLOG TAGS -->
+              <div class="blog-tags margin-bottom-20">
+                <h2>Tags</h2>
+                <ul>
+                  <li><a href="javascript:;"><i class="fa fa-tags"></i>OS</a></li>
+                  <li><a href="javascript:;"><i class="fa fa-tags"></i>CNN</a></li>
+                  <li><a href="javascript:;"><i class="fa fa-tags"></i>SDLC</a></li>
+                  <li><a href="javascript:;"><i class="fa fa-tags"></i>DS</a></li>
+                  <li><a href="javascript:;"><i class="fa fa-tags"></i>ML</a></li>
+                  <li><a href="javascript:;"><i class="fa fa-tags"></i>Google</a></li>
+                  <li><a href="javascript:;"><i class="fa fa-tags"></i>Keras</a></li>
+                  <li><a href="javascript:;"><i class="fa fa-tags"></i>Pytorch</a></li>
+                </ul>
+              </div>
+              <!-- END BLOG TAGS -->
+            </div>
+            <!-- END RIGHT SIDEBAR -->
+          </div>
+        </div>
+      </div>
+      <!-- END CONTENT -->
+    </div>
+    <!-- END SIDEBAR & CONTENT -->
+
+{% endblock %}
+

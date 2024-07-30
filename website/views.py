@@ -79,6 +79,17 @@ def service_development(request):
     return page
 
 
+def news(request):
+    # return HttpResponse("This is a response from 'news' page...")
+    return render(request, 'theme1/news.html')
+
+
+def news_details(request):
+    news_id = request.GET['news_id']
+    # return HttpResponse("This is a response from 'news' page...")
+    return render(request, 'theme1/news_details.html', {'news_id': news_id})
+
+
 def contact(request):
     # return HttpResponse("This is a response from 'contact' page...")
     return render(request, 'theme1/contact.html')

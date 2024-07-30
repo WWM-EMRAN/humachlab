@@ -1,0 +1,36 @@
+{# ##### Base: Page Structure ##### #}
+{% extends 'theme1/base.html' %}
+
+
+{# ##### Static Files: Load static files directory/folder: image-jpg|png|ico, css, js ##### #}
+{% load static %}
+
+
+{# ##### Title: Page Title ##### #}
+{% block title %}
+	HumachLab - Home
+{% endblock %}
+
+
+{# ##### Hero: Hero Section of the Main Page ##### #}
+{% block hero %}
+    {% include './_hero.html' %}
+{% endblock %}
+
+
+ ##### Breadcrumb: Breadcrumb Section of the Main Page showing the path #####
+{% block breadcrumb %}
+    <ul class="breadcrumb">
+        <li><a href="/index">Home</a></li>
+        <li class="active">Contact</li>
+    </ul>
+{% endblock %}
+
+
+{# ##### Content: Main Content ##### #}
+{% block content %}
+
+{#    some conents here#}
+
+{% endblock %}
+

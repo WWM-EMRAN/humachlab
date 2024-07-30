@@ -23,23 +23,24 @@
           <div class="col-md-4 col-sm-6 pre-footer-col">
             <h2>Contact Details</h2>
             <address class="margin-bottom-40">
+              <strong>HumachLab</strong><br>
               Address: <br>
               Burwood<br>
               Victoria-3125, Australia<br>
 {#              Phone: +61 480 248 845<br>#}
-              Email: <a href="info@humachlab.com">info@humachlab.com</a><br>
-              Gmail: <a href="humachlab@gmail.com">humachlab@gmail.com</a><br>
+              Email: <a href="mailto:info@humachlab.com">info@humachlab.com</a><br>
+              Gmail: <a href="mailto:humachlab@gmail.com">humachlab@gmail.com</a><br>
               Skype: <a href="skype:humachlab">humachlab</a>
             </address>
           </div>
           <!-- END BOTTOM CONTACTS -->
 
-          <!-- BEGIN TWITTER BLOCK -->
+          <!-- BEGIN SUBSCRIPTION BLOCK -->
           <div class="col-md-4 col-sm-6 pre-footer-col">
 {#            <div class="pre-footer-subscribe-box pre-footer-subscribe-box-vertical">#}
               <h2>Newsletter</h2>
               <p>Subscribe to our newsletter and stay up to date with the latest news!</p>
-              <form action="/newsletter" method="POST">
+              <form action="/newsletter" method="POST" role="form">
                 {% csrf_token %}
                 <div class="input-group">
                   <input type="text" name="newsletter_email" placeholder="youremail@mail.com" class="form-control">
@@ -71,7 +72,7 @@
 {#              </form>#}
 {#            </div>#}
           </div>
-          <!-- END TWITTER BLOCK -->
+          <!-- END SUBSCRIPTION BLOCK -->
         </div>
       </div>
     </div>
