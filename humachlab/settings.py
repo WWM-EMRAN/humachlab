@@ -66,6 +66,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 # 'website.context_processor.theme_processor_login',
                 'website.context_processor.theme_processor_time_minutes',
+                'website.context_processor.theme_processor_random_color',
                 'website.context_processor.copyright_current_year',
             ],
         },

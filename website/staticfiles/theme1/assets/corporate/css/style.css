@@ -443,6 +443,11 @@ body.page-header-fixed {
 }
 /* FIX styles END */
 
+/*.container {*/
+/*  height: 10px; !* Set the height of the menu bar *!*/
+/*  line-height: 10px; !* Center the text vertically *!*/
+/*}*/
+
 .header .container {
   position: relative;
 }
@@ -458,7 +463,15 @@ body.page-header-fixed {
   margin-right: 67px;
   padding-top: 22px;
   padding-bottom: 22px;
+  /*line-height: 0; !* Ensure the image is not affected by line height *!*/
 }
+
+/*.site-logo img {*/
+/*    max-height: 30px; !* Set the max height as per your requirement *!*/
+/*    height: auto; !*auto;*!*/
+/*    width: auto; !* Ensure the aspect ratio is maintained *!*/
+/*    display: block;*/
+/*}*/
 
 .header .mobi-toggler {
   float: right;
@@ -488,6 +501,7 @@ body.page-header-fixed {
 	padding: 0;
 	float: left;
 	text-transform: uppercase;
+	/*line-height: 35px; !* Center the navigation links *!*/
 }
 .header-navigation ul {
 	margin: 0;
