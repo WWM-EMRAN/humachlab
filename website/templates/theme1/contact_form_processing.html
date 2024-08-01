@@ -44,31 +44,31 @@
               </p>
 
               <!-- BEGIN FORM-->
-              <form action="/form_contact" method="POST" role="form">
+              <form action="/" method="POST" role="form">
                 {% csrf_token %}
                 <div class="form-group">
-                  <label for="contacts-name">Name <span class="color-red">*</span></label>
-                  <input type="text" placeholder="You Name" class="form-control" name="contact_name" required>
+                  <label for="contacts-name">Name</label>
+                  <input type="text" placeholder="You Name" class="form-control" name="contacts_name">
                 </div>
                 <div class="form-group">
                   <label for="contacts-email">Email <span class="color-red">*</span></label>
-                  <input type="email" placeholder="youremail@mail.com" class="form-control" name="contact_email" required>
+                  <input type="email" placeholder="youremail@mail.com" class="form-control" name="contacts_email">
                 </div>
                 <div class="form-group">
-                  <label for="contacts-message">Message <span class="color-red">*</span></label>
-                  <textarea class="form-control" placeholder="Your message" rows="5" name="contact_message" required></textarea>
+                  <label for="contacts-message">Message</label>
+                  <textarea class="form-control" placeholder="Your message" rows="5" name="contacts_message"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary"><i class="icon-ok"></i> Send</button>
                 <button type="button" class="btn btn-default">Cancel</button>
               </form>
               <!-- END FORM-->
-
             </div>
 
             <div class="col-md-3 col-sm-3 sidebar2">
               <h2>Our Contacts</h2>
               <address>
                   <strong>HumachLab</strong><br>
+                  Address: <br>
                   Burwood<br>
                   Victoria-3125, Australia<br>
               </address>

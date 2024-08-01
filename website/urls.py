@@ -12,7 +12,10 @@ urlpatterns = [
     path('news', views.news, name='news'),
     path('news_details', views.news_details, name='news_details'),
     path('contact', views.contact, name='contact'),
-    path('newsletter', views.newsletter, name='newsletter'),
+    path('form_contact', views.form_contact, name='form_contact'),
+    path('form_search', views.form_search, name='form_search'),
+    # path('search_result', views.search_result, name='search_result'),
+    path('form_newsletter', views.form_newsletter, name='form_newsletter'),
 ]
 
 

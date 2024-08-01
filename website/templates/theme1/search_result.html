@@ -1,0 +1,91 @@
+{# ##### Base: Page Structure ##### #}
+{% extends 'theme1/base.html' %}
+
+
+{# ##### Static Files: Load static files directory/folder: image-jpg|png|ico, css, js ##### #}
+{% load static %}
+
+
+{# ##### Title: Page Title ##### #}
+{% block title %}
+	HumachLab - Search
+{% endblock %}
+
+
+{# ##### Hero: Hero Section of the Main Page ##### #}
+{#{% block hero %}#}
+{#    {% include './_hero.html' %}#}
+{#{% endblock %}#}
+
+
+{# ##### Breadcrumb: Breadcrumb Section of the Main Page showing the path ##### #}
+{% block breadcrumb %}
+    <ul class="breadcrumb">
+        <li><a href="/index">Home</a></li>
+        <li class="active">Search</li>
+    </ul>
+{% endblock %}
+
+
+{# ##### Content: Main Content ##### #}
+{% block content %}
+
+    <!-- BEGIN SIDEBAR & CONTENT -->
+    <div class="row margin-bottom-40">
+      <!-- BEGIN CONTENT -->
+      <div class="col-md-12">
+        <h1>Search Results</h1>
+        <div class="content-page">
+{#          <form action="#" class="content-search-view2">#}
+          <form action="form_search" method="POST" role="form">
+            {% csrf_token %}
+            <div class="input-group">
+              <input type="text" value="{{ search_query }}" name="search_query" placeholder="Search" class="form-control">
+              <span class="input-group-btn">
+                <button type="submit" class="btn btn-primary">Search</button>
+              </span>
+            </div>
+          </form>
+          <div class="search-result-item">
+            <h4><a href="javascript:;">Search result 1</a></h4>
+            <p>
+                Some detail about search result 1
+            </p>
+            <a class="search-link" href="javascript:;">http://www.humachlab.com</a>
+          </div>
+          <div class="search-result-item">
+            <h4><a href="javascript:;">Search result 2</a></h4>
+            <p>
+                Some detail about search result 2
+            </p>
+            <a class="search-link" href="javascript:;">http://www.humachlab.com</a>
+          </div>
+          <div class="search-result-item">
+            <h4><a href="javascript:;">Search result 3</a></h4>
+            <p>
+                Some detail about search result 3
+            </p>
+            <a class="search-link" href="javascript:;">http://www.humachlab.com</a>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4 col-sm-4 items-info">Items 1 to 9 of 10 total</div>
+            <div class="col-md-8 col-sm-8">
+              <ul class="pagination pull-right">
+                <li><a href="javascript:;">«</a></li>
+                <li><span>1</span></li>
+                <li><a href="javascript:;">2</a></li>
+                <li><a href="javascript:;">3</a></li>
+                <li><a href="javascript:;">4</a></li>
+                <li><a href="javascript:;">5</a></li>
+                <li><a href="javascript:;">»</a></li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- END CONTENT -->
+
+{% endblock %}
+

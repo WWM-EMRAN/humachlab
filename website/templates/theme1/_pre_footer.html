@@ -24,7 +24,6 @@
             <h2>Contact Details</h2>
             <address class="margin-bottom-40">
               <strong>HumachLab</strong><br>
-              Address: <br>
               Burwood<br>
               Victoria-3125, Australia<br>
 {#              Phone: +61 480 248 845<br>#}
@@ -40,25 +39,26 @@
 {#            <div class="pre-footer-subscribe-box pre-footer-subscribe-box-vertical">#}
               <h2>Newsletter</h2>
               <p>Subscribe to our newsletter and stay up to date with the latest news!</p>
-              <form action="/newsletter" method="POST" role="form">
+              <form action="/form_newsletter" method="POST" role="form">
                 {% csrf_token %}
                 <div class="input-group">
-                  <input type="text" name="newsletter_email" placeholder="youremail@mail.com" class="form-control">
+                  <input type="text" name="newsletter_email" placeholder="youremail@mail.com" class="form-control" required>
                   <span class="input-group-btn">
                     <button class="btn btn-primary" type="submit">Subscribe</button>
                   </span>
                 </div>
               </form>
 
-{#              <form action="" method="GET">#}
+{#              <form action="/form_newsletter" method="POST" role="form">#}
 {#                <div class="input-group">#}
 {#                  {% csrf_token %}#}
+{#                  {{ form_newsletter }}#}
 {#                  {{ form_newsletter.as_p }}#}
 {#                  <span class="input-group-btn">#}
 {#                    <button class="btn btn-primary" type="submit">Subscribe</button>#}
 {#                  </span>#}
 {#                </div>#}
-{#                {% if form.errors %}#}
+{#                  {% if form.errors %}#}
 {#                    <div class="errors">#}
 {#                        <ul>#}
 {#                            {% for field in form_newsletter %}#}
@@ -68,9 +68,10 @@
 {#                            {% endfor %}#}
 {#                        </ul>#}
 {#                    </div>#}
-{#                {% endif %}#}
+{#                  {% endif %}#}
 {#              </form>#}
-{#            </div>#}
+
+            </div>
           </div>
           <!-- END SUBSCRIPTION BLOCK -->
         </div>

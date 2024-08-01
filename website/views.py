@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, HttpResponse, HttpResponseRedirect
-from .forms import NewsletterForm
+from .forms import NewsletterForm, ContactForm
 
 # Create your views here.
 def index(request):
@@ -95,7 +95,73 @@ def contact(request):
     return render(request, 'theme1/contact.html')
 
 
-def newsletter(request):
+def form_contact(request):
+    # return HttpResponse("This is a response from 'contact_form_processing' page...")
+    # return render(request, 'theme1/contact_form_processing.html')
+    if request.POST:
+        contact_name = request.POST['contact_name']
+        contact_email = request.POST['contact_email']
+        contact_message = request.POST['contact_message']
+
+        page_name = "Contact"
+        if contact_email:
+            message = f"Your ({contact_name}-{contact_email}) message is successfully sent."
+            return render(request, 'theme1/_success_page.html', {'page_name': page_name, 'message': message})
+        else:
+            message = f"Invalid email adress ({contact_name}-{contact_email}) entered for the contact message."
+            return render(request, 'theme1/_unsuccess_page.html', {'page_name': page_name, 'message': message})
+    else:
+        page_name = "Contact"
+        error_tag = 404 #"Error"
+        message = f"Invalid method for email adress submission for the contact message."
+        return render(request, 'theme1/_unsuccess_page.html', {'page_name': page_name, 'error_tag': error_tag, 'message': message})
+
+    # if request.method == 'POST':
+    #     form = ContactForm(request.POST)
+    #     if form.is_valid():
+    #         # Process the data in form.cleaned_data
+    #         contact_name = request.POST['contact_name']
+    #         contact_email = request.POST['contact_email']
+    #         contact_message = request.POST['contact_message']
+    #         return render(request, 'theme1/_success_page.html', {'contact_name': contact_name, 'contact_email': contact_email, 'contact_message': contact_message})
+
+    return redirect('/index')
+    # return HttpResponseRedirect(request, 'theme1/index.html')
+    # return render(request, 'theme1/index.html')
+
+
+def form_search(request):
+    # return HttpResponse("This is a response from 'newsletter' page...")
+    # return render(request, 'theme1/_success_page.html')
+    if request.POST:
+        search_query = request.POST['search_query']
+
+        page_name = "Search"
+        if search_query:
+            return render(request, 'theme1/search_result.html', {'page_name': page_name, 'search_query': search_query})
+            # return render(request, 'theme1/_success_page.html', {'page_name': page_name, 'search_query': search_query})
+        else:
+            message = f"No result found for '{search_query}'"
+            return render(request, 'theme1/_unsuccess_page.html', {'page_name': page_name, 'message': message})
+    else:
+        page_name = "Search"
+        error_tag = 404 #"Error"
+        message = f"Invalid method for email adress submission for the newsletter."
+        return render(request, 'theme1/_unsuccess_page.html', {'page_name': page_name, 'error_tag': error_tag, 'message': message})
+
+    # if request.method == 'POST':
+    #     form = NewsletterForm(request.POST)
+    #     if form.is_valid():
+    #         # Process the data in form.cleaned_data
+    #         newsletter_email = form.cleaned_data['newsletter_email']
+    #         return render(request, 'theme1/_success_page.html', {'newsletter_email': newsletter_email})
+
+    return redirect('/index')
+    # return HttpResponseRedirect(request, 'theme1/index.html')
+    # return render(request, 'theme1/index.html')
+
+
+def form_newsletter(request):
     # return HttpResponse("This is a response from 'newsletter' page...")
     # return render(request, 'theme1/_success_page.html')
     if request.POST:
@@ -113,7 +179,6 @@ def newsletter(request):
         error_tag = 404 #"Error"
         message = f"Invalid method for email adress submission for the newsletter."
         return render(request, 'theme1/_unsuccess_page.html', {'page_name': page_name, 'error_tag': error_tag, 'message': message})
-
 
     # if request.method == 'POST':
     #     form = NewsletterForm(request.POST)
