@@ -114,15 +114,13 @@
     background-position: center center;
 }
 
-/*.carousel-slider .carousel-item-four {*/
-/*    background: url(../../siteimages/banners/banner_4.jpg);*/
-/*    background-size: cover;*/
-/*    background-position: center center;*/
-/*}*/
+.carousel-slider .carousel-item-four {
+    background: url(../../siteimages/banners/banner_4.jpg);
+    background-size: cover;
+    background-position: center center;
+}
 
 .carousel-slider .carousel-item-eight {
-    /*background: url(../img/frontend-slider/bg9.jpg);*/
-    /*background: url(../../siteimages/banners/bg9.jpg);*/
     background: url("../../siteimages/banners/bg9.jpg");
     background-size: cover;
     background-position: center center;
