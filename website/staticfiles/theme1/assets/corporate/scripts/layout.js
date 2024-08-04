@@ -275,8 +275,10 @@ var Layout = function () {
             $('#style-color').attr("href", "/staticfiles/theme1/assets/corporate/css/themes/" + color + ".css");
             // $('.corporate .site-logo img').attr("src", "/staticfiles/theme1/assets/corporate/img/logos/logo-corp-" + color + ".png");
             // $('.ecommerce .site-logo img').attr("src", "/staticfiles/theme1/assets/corporate/img/logos/logo-shop-" + color + ".png");
-            $('.corporate .site-logo img').attr("src", "/staticfiles/theme1/assets/siteimages/logos/logo-corp-" + color + ".png");
-            $('.ecommerce .site-logo img').attr("src", "/staticfiles/theme1/assets/siteimages/logos/logo-shop-" + color + ".png");
+            // $('.corporate .site-logo img').attr("src", "/staticfiles/theme1/assets/siteimages/logos/logo-corp-" + color + ".png");
+            // $('.ecommerce .site-logo img').attr("src", "/staticfiles/theme1/assets/siteimages/logos/logo-shop-" + color + ".png");
+            $('.corporate .site-logo img').attr("src", "/staticfiles/theme1/assets/siteimages/logos/HML-Logo-" + color + ".png");
+            $('.ecommerce .site-logo img').attr("src", "/staticfiles/theme1/assets/siteimages/logos/HML-shop-" + color + ".png");
         }
 
         $('.icon-color', panel).click(function () {

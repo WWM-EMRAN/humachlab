@@ -19,7 +19,8 @@ def theme_processor_time_minutes(request):
 
 def theme_processor_random_color(request):
     color_list = ["red", "green", "black", "white", "blue", "gray", "orange", "turquoise", "yellow", "purple", "cyan"]
-    color_list = ["red", "green", "black", "blue", "gray", "orange", "turquoise", "purple"]
+    color_list = ["red", "green", "black", "blue", "gray", "orange", "turquoise", "yellow", "purple", "cyan"]
+    # color_list = ["red", "green", "black", "blue", "gray", "orange", "turquoise", "purple"]
     selected_color_indx = random.randint(0, len(color_list)-1)
     theme_color = color_list[selected_color_indx]
     return {'theme_color': theme_color}
