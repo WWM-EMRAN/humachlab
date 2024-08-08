@@ -16,6 +16,7 @@ urlpatterns = [
     path('form_search', views.form_search, name='form_search'),
     # path('search_result', views.search_result, name='search_result'),
     path('form_newsletter', views.form_newsletter, name='form_newsletter'),
+    path('under_construction', views.under_construction, name='under_construction'),
 ]
 
 

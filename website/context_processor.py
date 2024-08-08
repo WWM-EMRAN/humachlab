@@ -13,9 +13,17 @@ def theme_processor_login(request):
     return {'theme': theme}
 
 def theme_processor_time_minutes(request):
-    current_minute = datetime.datetime.now().minute
-    theme = 'theme1' if current_minute % 2 == 1 else 'theme2'
-    return {'theme': theme}
+    # current_minute = datetime.datetime.now().minute
+    # theme = 'theme1' if current_minute % 2 == 1 else 'theme2'
+
+    theme_list = ['theme1', 'theme2', 'theme3', 'theme4', 'theme5']
+    # theme_list = ['theme1', 'theme2']
+    selected_theme_indx = random.randint(0, len(theme_list)-1)
+    selected_theme_indx = 0
+    theme = theme_list[selected_theme_indx]
+    return {
+        'theme': theme
+    }
 
 def theme_processor_random_color(request):
     color_list = ["red", "green", "black", "white", "blue", "gray", "orange", "turquoise", "yellow", "purple", "cyan"]

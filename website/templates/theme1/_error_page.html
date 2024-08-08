@@ -1,0 +1,65 @@
+{# ##### Base: Page Structure ##### #}
+{% extends 'theme1/base.html' %}
+
+
+{# ##### Static Files: Load static files directory/folder: image-jpg|png|ico, css, js ##### #}
+{% load static %}
+
+
+{# ##### Title: Page Title ##### #}
+{% block title %}
+	HumachLab - {{ page_name }}
+{% endblock %}
+
+
+{# ##### Hero: Hero Section of the Main Page ##### #}
+{#{% block hero %}#}
+{#    {% include './_hero.html' %}#}
+{#{% endblock %}#}
+
+
+{# ##### Breadcrumb: Breadcrumb Section of the Main Page showing the path ##### #}
+{% block breadcrumb %}
+    <ul class="breadcrumb">
+        <li><a href="/index">Home</a></li>
+        <li class="active">{{ page_name }}</li>
+    </ul>
+{% endblock %}
+
+
+{# ##### Content: Main Content ##### #}
+{% block content %}
+
+    <!-- BEGIN SIDEBAR & CONTENT -->
+    <div class="row margin-bottom-40">
+      <!-- BEGIN CONTENT -->
+      <div class="col-md-12 col-sm-12">
+        <div class="content-page page-error">
+          <div>
+              {% if error_tag==404 %}
+                  <img src="../../staticfiles/theme1/assets/pages/img/page-404-image.png">
+              {% elif error_tag==500 %}
+                  <img src="../../staticfiles/theme1/assets/pages/img/under-construction.png">
+              {% else %}
+                  <img src="../../staticfiles/theme1/assets/pages/img/under-construction.png">
+              {% endif %}
+          </div>
+           <div class="number">
+               {{ error_code }}
+           </div>
+           <div class="details">
+              <h3>{{ error_tag }} <br>Oops! Something went wrong.</h3>
+              <p>
+                  {{ message }}<br>
+                 <a href="/index" class="link">Return home</a> and try again.
+              </p>
+           </div>
+        </div>
+      </div>
+      <!-- END CONTENT -->
+    </div>
+    <!-- END SIDEBAR & CONTENT -->
+
+
+{% endblock %}
+

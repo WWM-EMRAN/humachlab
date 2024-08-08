@@ -192,5 +192,12 @@ def form_newsletter(request):
     # return render(request, 'theme1/index.html')
 
 
+def under_construction(request):
+    page_name = "Under Construction"
+    error_tag = "Under Construction!"
+    message = f"The website is coming soon!"
+    return render(request, 'theme1/under_construction.html', {'page_name': page_name, 'error_tag': error_tag, 'message': message})
+
+
 
 

@@ -1,0 +1,55 @@
+{# ##### Base: Page Structure ##### #}
+{% extends 'theme1/base.html' %}
+
+
+{# ##### Static Files: Load static files directory/folder: image-jpg|png|ico, css, js ##### #}
+{% load static %}
+
+
+{# ##### Title: Page Title ##### #}
+{% block title %}
+	HumachLab - {{ page_name}}
+{% endblock %}
+
+
+{# ##### Hero: Hero Section of the Main Page ##### #}
+{% block hero %}
+    {% include './_hero.html' %}
+{% endblock %}
+
+
+{# ##### Breadcrumb: Breadcrumb Section of the Main Page showing the path ##### #}
+{#{% block breadcrumb %}#}
+{#    {% None %}#}
+{#{% endblock %}#}
+
+
+{# ##### Content: Main Content ##### #}
+{% block content %}
+
+    <!-- BEGIN SIDEBAR & CONTENT -->
+    <div class="row margin-bottom-40">
+      <!-- BEGIN CONTENT -->
+      <div class="col-md-12 col-sm-12">
+        <div class="content-page page-error">
+          <div>
+              <img src="../../staticfiles/theme1/assets/pages/img/under-construction.png">
+          </div>
+           <div class="number">
+               {{ error_tag }}
+           </div>
+           <div class="details">
+              <h3>{{ message }}</h3>
+              <p>
+                  This website is under construction and will get back to you as soon as possible. <br>
+                  Thank you for being patient...
+              </p>
+           </div>
+        </div>
+      </div>
+      <!-- END CONTENT -->
+    </div>
+    <!-- END SIDEBAR & CONTENT -->
+
+{% endblock %}
+
