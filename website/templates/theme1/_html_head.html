@@ -4,8 +4,10 @@
     {% load static %}
 
     <meta charset="utf-8">
+{#    <title>{% block title %}{% endblock %}</title>#}
     <title>
-      {% block title %} HumachLab: Home {% endblock %}
+      {% block title %} HumachLab - Home {% endblock %}
+{#      {% block title %}  {% endblock %}#}
     </title>
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -27,7 +29,10 @@
     <!-- Fonts END -->
 
     <!-- favicon START -->
-    <link rel="shortcut icon" href="{% static 'theme1/assets/siteimages/icons/HML-FavIcon-' %}{{theme_color}}.png">
+    <link rel="icon" type="image/png" href="{% static 'theme1/assets/siteimages/icons/HML-FavIcon.png' %}" id="fav-icon">
+    <link rel="icon" type="image/png" href="{% static 'theme1/assets/siteimages/icons/HML-FavIcon-' %}{{theme_color}}.png" id="fav-icon">
+{#    <link rel="icon" href="{% static 'theme1/assets/siteimages/icons/HML-FavIcon-' %}{{theme_color}}.png" id="fav-icon">#}
+{#    <link rel="shortcut icon" href="{% static 'theme1/assets/siteimages/icons/HML-FavIcon-' %}{{theme_color}}.png" id="fav-icon">#}
 {#"{% static 'theme1/assets/corporate/css/themes/'  %}{{theme_color}}.css"#}
 {#    <link rel="shortcut icon" href="{% static 'theme1/assets/siteimages/icons/hml_favicon.png' %}">#}
 {#    <link rel="shortcut icon" href="{% static 'theme1/assets/siteimages/icons/favicon.ico' %}">#}

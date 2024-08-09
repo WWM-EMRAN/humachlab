@@ -199,5 +199,10 @@ def under_construction(request):
     return render(request, 'theme1/under_construction.html', {'page_name': page_name, 'error_tag': error_tag, 'message': message})
 
 
+def set_custom_color(request):
+    return render(request, 'theme1/index.html')
+
+
+
 
 

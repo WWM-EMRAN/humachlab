@@ -272,6 +272,21 @@ var Layout = function () {
     
         // handle theme colors
         var setColor = function (color) {
+            // app-1
+            // $('#fav-icon').attr("href", "/staticfiles/theme1/assets/siteimages/icons/HML-FavIcon-" + color + ".png?v=" + new Date().getTime());
+            // app-2
+            // $('#fav-icon').attr("rel", "icon");
+            // $('#fav-icon').attr("href", "/staticfiles/theme1/assets/siteimages/icons/HML-FavIcon-" + color + ".png?v=" + new Date().getTime());
+            // app-3
+            // var favicon = $('#fav-icon');
+            // favicon.remove();
+            // $('<link id="fav-icon" rel="icon" type="image/png" href="/staticfiles/theme1/assets/siteimages/icons/HML-FavIcon-' + color + '.png?v=' + new Date().getTime() + '">').appendTo('head');
+            // app-4
+            // $('#fav-icon').remove();
+            // $('head').append('<link id="fav-icon" rel="icon" type="image/png" href="/staticfiles/theme1/assets/siteimages/icons/HML-FavIcon-' + color + '.png?v=' + new Date().getTime() + '">');
+
+
+            $('#fav-icon').attr("href", "/staticfiles/theme1/assets/siteimages/icons/HML-FavIcon-" + color + ".png");
             $('#style-color').attr("href", "/staticfiles/theme1/assets/corporate/css/themes/" + color + ".css");
             // $('.corporate .site-logo img').attr("src", "/staticfiles/theme1/assets/corporate/img/logos/logo-corp-" + color + ".png");
             // $('.ecommerce .site-logo img').attr("src", "/staticfiles/theme1/assets/corporate/img/logos/logo-shop-" + color + ".png");
@@ -279,6 +294,7 @@ var Layout = function () {
             // $('.ecommerce .site-logo img').attr("src", "/staticfiles/theme1/assets/siteimages/logos/logo-shop-" + color + ".png");
             $('.corporate .site-logo img').attr("src", "/staticfiles/theme1/assets/siteimages/logos/HML-Logo-" + color + ".png");
             $('.ecommerce .site-logo img').attr("src", "/staticfiles/theme1/assets/siteimages/logos/HML-shop-" + color + ".png");
+            // window.location.reload(true);
         }
 
         $('.icon-color', panel).click(function () {

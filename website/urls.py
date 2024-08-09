@@ -17,6 +17,7 @@ urlpatterns = [
     # path('search_result', views.search_result, name='search_result'),
     path('form_newsletter', views.form_newsletter, name='form_newsletter'),
     path('under_construction', views.under_construction, name='under_construction'),
+    path('set_custom_color', views.set_custom_color, name='set_custom_color'),
 ]
 
 

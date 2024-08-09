@@ -25,12 +25,20 @@ def theme_processor_time_minutes(request):
         'theme': theme
     }
 
-def theme_processor_random_color(request):
+def theme_processor_random_color(request, custom_color=None):
+    current_color = request.session.get('theme_color')
+    print('======>>> current_color', current_color)
     color_list = ["red", "green", "black", "white", "blue", "gray", "orange", "turquoise", "yellow", "purple", "cyan"]
     color_list = ["red", "green", "black", "blue", "gray", "orange", "turquoise", "yellow", "purple", "cyan"]
     # color_list = ["red", "green", "black", "blue", "gray", "orange", "turquoise", "purple"]
     selected_color_indx = random.randint(0, len(color_list)-1)
     theme_color = color_list[selected_color_indx]
+    ### set previous color if you want to keep the same color for a session (no change for refresh)
+    # if current_color != None:
+    #     theme_color = current_color
+    # if custom_color != None:
+    #     theme_color = custom_color
+    request.session['theme_color'] = theme_color
     return {'theme_color': theme_color}
 
 
