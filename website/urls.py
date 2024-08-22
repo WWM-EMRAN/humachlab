@@ -1,4 +1,6 @@
 from django.urls import path
+
+import emran.views
 from . import views
 
 
@@ -7,6 +9,8 @@ urlpatterns = [
     path('index', views.index, name='index'),
     path('home', views.index, name='index'),
     # path('', views.home, name='home'),
+    # path('emran', emran.views.index, name='index'),
+    # path('emran/', emran.views.index, name='index'),
     path('services', views.services, name='services'),
     path('aboutus', views.index, name='aboutus'),
     path('news', views.news, name='news'),

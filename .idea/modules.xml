@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/humachlab_general.iml" filepath="$PROJECT_DIR$/.idea/humachlab_general.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/humachlab.iml" filepath="$PROJECT_DIR$/.idea/humachlab.iml" />
     </modules>
   </component>
 </project>

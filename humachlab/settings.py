@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'website',
+    'emran',
 ]
 
 MIDDLEWARE = [
@@ -129,6 +130,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'collected_staticfiles')
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'website/staticfiles'),
+    os.path.join(BASE_DIR, 'emran/staticfiles'),
 ]
 
 # Default primary key field type

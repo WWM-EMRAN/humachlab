@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="humachlab" type="Python.DjangoServer" factoryName="Django server">
-    <module name="humachlab_general" />
+    <module name="humachlab" />
     <option name="ENV_FILES" value="" />
     <option name="INTERPRETER_OPTIONS" value="" />
     <option name="PARENT_ENVS" value="true" />
