@@ -29,6 +29,10 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+website_main = 'website'
+website_emran = 'emran'
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -38,8 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'website',
-    'emran',
+    website_main,
+    website_emran,
 ]
 
 MIDDLEWARE = [
@@ -80,12 +84,37 @@ WSGI_APPLICATION = 'humachlab.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     },
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    },
+    'admin': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    },
+    # 'default': {
+    # },
+    'website_db': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, website_main, 'staticfiles/database/website.sqlite3'),
+    },
+    'emran_db': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, website_emran, 'staticfiles/database/emran.sqlite3'),
     }
 }
+
+# Defile database routers
+DATABASE_ROUTERS = ['humachlab.routers.AllDBRouters']
+
 
 
 # Password validation
@@ -125,8 +154,9 @@ USE_TZ = True
 STATIC_URL = '/staticfiles/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'collected_staticfiles')
 
-# MEDIA_URL = 'assets'
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'staticfiles/theme2/assets')
+
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(MEDIA_URL, 'myresources')
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'website/staticfiles'),
