@@ -9,6 +9,24 @@ from django.core.exceptions import ValidationError
 # Create your models here.
 
 
+## SkillsAndTools model
+class SkillsAndTools(models.Model):
+    sat_title = models.CharField(max_length=300)
+    sat_short_description = models.CharField(max_length=600)
+    sat_description = models.TextField(null=True, blank=True)
+    sat_skill_level = models.IntegerField()
+
+
+## HonorsAndAwards model
+class HonorsAndAwards(models.Model):
+    haw_title = models.CharField(max_length=300)
+    haw_issuer_organisation = models.CharField(max_length=300)
+    haw_associated_organisation = models.CharField(max_length=300, null=True, blank=True)
+    haw_start_date = models.DateField(auto_now=False, auto_now_add=False)
+    haw_short_description = models.CharField(max_length=300)
+    haw_description = models.TextField(null=True, blank=True)
+
+
 ## CertificatesCoursesTrainings model
 def get_CertificationsCoursesTrainings_upload_path(instance, filename):
     """Generate a dynamic path for storing images."""
