@@ -10,7 +10,6 @@
 --------------------------------------------------------------*/
 body {
   font-family: "Open Sans", sans-serif;
-  /*font-family: 'Cambria', 'Georgia', 'Times New Roman', serif; !*EA-added*!*/
   color: #272829;
 }
 
@@ -31,15 +30,6 @@ h4,
 h5,
 h6 {
   font-family: "Raleway", sans-serif;
-  /*font-family: 'Cambria', 'Georgia', 'Times New Roman', serif; !*EA-added*!*/
-}
-
-h4 {
-  font-size: 18px;
-}
-
-p{
-  font-size: 14px;
 }
 
 /*Custom Transparent Button*/
@@ -110,14 +100,13 @@ transparent_button {
 }
 
 #header .profile h1 {
-  font-size: 18px; /*24*/
+  font-size: 24px;
   margin: 0;
   padding: 0;
   font-weight: 600;
   -moz-text-align-last: center;
   text-align-last: center;
   font-family: "Poppins", sans-serif;
-  /*font-family: 'Cambria', 'Georgia', 'Times New Roman', serif; !*EA-added*!*/
 }
 
 #header .profile h1 a,
@@ -127,7 +116,7 @@ transparent_button {
 }
 
 #header .profile .social-links a {
-  font-size: 18px; /*18*/
+  font-size: 18px;
   display: inline-block;
   background: #212431;
   color: #fff;
@@ -189,13 +178,13 @@ transparent_button {
   padding: 12px 15px;
   margin-bottom: 8px;
   transition: 0.3s;
-  font-size: 14px; /*15*/
+  font-size: 15px;
 }
 
 .nav-menu>ul>li a i,
 .nav-menu>ul>li a:focus i {
   position: relative;
-  font-size: 24px; /*24*/
+  font-size: 24px;
   padding-right: 8px;
   color: #6f7180;
 }
@@ -256,7 +245,7 @@ transparent_button {
   top: 15px;
   z-index: 9998;
   border: 0;
-  font-size: 24px; /*24*/
+  font-size: 24px;
   transition: all 0.4s;
   outline: none !important;
   background-color: #149ddd;
@@ -310,7 +299,7 @@ transparent_button {
 
 #hero h1 {
   margin: 0 0 10px 0;
-  font-size: 48px; /*64*/
+  font-size: 64px;
   font-weight: 700;
   line-height: 56px;
   color: #fff;
@@ -319,9 +308,8 @@ transparent_button {
 #hero p {
   color: #fff;
   margin-bottom: 50px;
-  font-size: 20px; /*26*/
+  font-size: 26px;
   font-family: "Poppins", sans-serif;
-  /*font-family: 'Cambria', 'Georgia', 'Times New Roman', serif; !*EA-added*!*/
 }
 
 #hero p span {
@@ -339,12 +327,12 @@ transparent_button {
 
 @media (max-width: 768px) {
   #hero h1 {
-    font-size: 22px; /*28*/
+    font-size: 28px;
     line-height: 36px;
   }
 
   #hero h2 {
-    font-size: 14px; /*18*/
+    font-size: 18px;
     line-height: 24px;
     margin-bottom: 30px;
   }
@@ -374,7 +362,7 @@ section {
 }
 
 .section-title h2 {
-  font-size: 26px; /*32*/
+  font-size: 32px;
   font-weight: bold;
   margin-bottom: 20px;
   padding-bottom: 20px;
@@ -402,7 +390,7 @@ section {
 --------------------------------------------------------------*/
 .about .content h3 {
   font-weight: 700;
-  font-size: 26px; /*26*/
+  font-size: 26px;
   color: #173b6c;
 }
 
@@ -422,16 +410,10 @@ section {
 }
 
 .about .content ul i {
-  font-size: 16px; /*16*/
+  font-size: 16px;
   margin-right: 5px;
   color: #149ddd;
   line-height: 0;
-}
-
-
-/*EA-added*/
-.about .content ul li {
-  font-size: 13px;
 }
 
 .about .content p:last-child {
@@ -452,14 +434,14 @@ section {
 
 .facts .count-box i {
   display: block;
-  font-size: 32px; /*44*/
+  font-size: 44px;
   color: #149ddd;
   float: left;
   line-height: 0;
 }
 
 .facts .count-box span {
-  font-size: 28px; /*48*/
+  font-size: 48px;
   line-height: 40px;
   display: block;
   font-weight: 700;
@@ -471,8 +453,7 @@ section {
   padding: 15px 0 0 0;
   margin: 0 0 0 60px;
   font-family: "Raleway", sans-serif;
-  /*font-family: 'Cambria', 'Georgia', 'Times New Roman', serif; !*EA-added*!*/
-  font-size: 14px; /*14*/
+  font-size: 14px;
   color: #122f57;
 }
 
@@ -481,9 +462,8 @@ section {
   display: block;
   margin-top: 20px;
   color: #122f57;
-  font-size: 15px; /*15*/
+  font-size: 15px;
   font-family: "Poppins", sans-serif;
-  /*font-family: 'Cambria', 'Georgia', 'Times New Roman', serif; !*EA-added*!*/
   transition: ease-in-out 0.3s;
 }
 
@@ -508,7 +488,6 @@ section {
   display: block;
   font-weight: 600;
   font-family: "Poppins", sans-serif;
-  /*font-family: 'Cambria', 'Georgia', 'Times New Roman', serif; !*EA-added*!*/
   color: #050d18;
 }
 
@@ -533,7 +512,7 @@ section {
 # Resume
 --------------------------------------------------------------*/
 .resume .resume-title {
-  font-size: 20px; /*26*/
+  font-size: 26px;
   font-weight: 700;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -549,17 +528,16 @@ section {
 
 .resume .resume-item h4 {
   line-height: 18px;
-  font-size: 14px; /*18*/
+  font-size: 18px;
   font-weight: 600;
   text-transform: uppercase;
   font-family: "Poppins", sans-serif;
-  /*font-family: 'Cambria', 'Georgia', 'Times New Roman', serif; !*EA-added*!*/
   color: #050d18;
   margin-bottom: 10px;
 }
 
 .resume .resume-item h5 {
-  font-size: 14px; /*16*/
+  font-size: 16px;
   background: #e4edf9;
   padding: 5px 15px;
   display: inline-block;
@@ -572,46 +550,8 @@ section {
 }
 
 .resume .resume-item ul li {
-  padding-bottom: 14px;
-  font-size: 14px;  /*EA-added*/
-}
-
-/*EA-added*/
-.resume .resume-item ol li {
   padding-bottom: 10px;
-  font-size: 14px;
 }
-
-/*EA-added*/
-.resume .resume-item div {
-  font-size: 14px;
-}
-
-/*EA-added*/
-.resume .resume-item div p {
-  font-size: 14px;
-}
-
-/*EA-added*/
-.resume .resume-item div div p {
-  font-size: 14px;
-}
-
-/*EA-added*/
-.resume .resume-item p {
-  font-size: 14px;
-}
-
-/*EA-added*/
-.resume p {
-  font-size: 14px;
-}
-
-/*EA-added*/
-.resume .resume-item p {
-  font-size: 14px;
-}
-
 
 .resume .resume-item:last-child {
   padding-bottom: 0;
@@ -650,7 +590,7 @@ section {
   cursor: pointer;
   display: inline-block;
   padding: 10px 15px 8px 15px;
-  font-size: 14px; /*14*/
+  font-size: 14px;
   font-weight: 600;
   line-height: 1;
   text-transform: uppercase;
@@ -702,7 +642,7 @@ section {
 
 .portfolio .portfolio-wrap .portfolio-links a {
   color: #fff;
-  font-size: 20px; /*28*/
+  font-size: 28px;
   text-align: center;
   background: rgba(20, 157, 221, 0.75);
   transition: 0.3s;
@@ -735,7 +675,6 @@ section {
 --------------------------------------------------------------*/
 .portfolio-details {
   padding-top: 40px;
-  font-size: 14px; /*EA-added*/
 }
 
 .portfolio-details .portfolio-details-slider img {
@@ -765,7 +704,7 @@ section {
 }
 
 .portfolio-details .portfolio-info h3 {
-  font-size: 20px; /*22*/
+  font-size: 22px;
   font-weight: 700;
   margin-bottom: 20px;
   padding-bottom: 20px;
@@ -775,7 +714,7 @@ section {
 .portfolio-details .portfolio-info ul {
   list-style: none;
   padding: 0;
-  font-size: 14px; /*15*/
+  font-size: 15px;
 }
 
 .portfolio-details .portfolio-info ul li+li {
@@ -787,7 +726,7 @@ section {
 }
 
 .portfolio-details .portfolio-description h2 {
-  font-size: 20px; /*26*/
+  font-size: 26px;
   font-weight: 700;
   margin-bottom: 20px;
 }
@@ -818,7 +757,7 @@ section {
 
 .services .icon i {
   color: #fff;
-  font-size: 20px; /*24*/
+  font-size: 24px;
   line-height: 0;
 }
 
@@ -834,7 +773,7 @@ section {
   margin-left: 80px;
   font-weight: 700;
   margin-bottom: 15px;
-  font-size: 15px; /*18*/
+  font-size: 18px;
 }
 
 .services .title a {
@@ -848,7 +787,7 @@ section {
 .services .description {
   margin-left: 80px;
   line-height: 24px;
-  font-size: 14px; /*14*/
+  font-size: 14px;
 }
 
 /*--------------------------------------------------------------
@@ -872,14 +811,14 @@ section {
 }
 
 .testimonials .testimonial-item h3 {
-  font-size: 15px; /*18*/
+  font-size: 18px;
   font-weight: bold;
   margin: 10px 0 5px 0;
   color: #111;
 }
 
 .testimonials .testimonial-item h4 {
-  font-size: 14px; /*14*/
+  font-size: 14px;
   color: #999;
   margin: 0;
 }
@@ -887,7 +826,7 @@ section {
 .testimonials .testimonial-item .quote-icon-left,
 .testimonials .testimonial-item .quote-icon-right {
   color: #c3e8fa;
-  font-size: 20px; /*26*/
+  font-size: 26px;
 }
 
 .testimonials .testimonial-item .quote-icon-left {
@@ -957,14 +896,8 @@ section {
   box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.12);
 }
 
-/*!*EA-added*!*/
-/*.contact .info div {*/
-/*  font-size: 14px; !*14*!*/
-/*  vertical-align: center;*/
-/*}*/
-
 .contact .info i {
-  font-size: 18px; /*20*/
+  font-size: 20px;
   color: #149ddd;
   float: left;
   width: 44px;
@@ -979,7 +912,7 @@ section {
 
 .contact .info h4 {
   padding: 0 0 0 60px;
-  font-size: 16px; /*22*/
+  font-size: 22px;
   font-weight: 600;
   margin-bottom: 5px;
   color: #050d18;
@@ -988,7 +921,7 @@ section {
 .contact .info p {
   padding: 0 0 10px 60px;
   margin-bottom: 20px;
-  font-size: 14px; /*14*/
+  font-size: 14px;
   color: #173b6c;
 }
 
@@ -996,13 +929,12 @@ section {
   padding-top: 5px;
 }
 
-
 .contact .info .social-links {
   padding-left: 60px;
 }
 
 .contact .info .social-links a {
-  font-size: 14px; /*18*/
+  font-size: 18px;
   display: inline-block;
   background: #333;
   color: #fff;
@@ -1044,7 +976,7 @@ section {
   color: red;
   margin: 0 0 15px 0;
   font-weight: 400;
-  font-size: 10px; /*13*/
+  font-size: 13px;
 }
 
 .contact .php-email-form .error-message {
@@ -1095,18 +1027,17 @@ section {
 
 .contact .php-email-form label {
   padding-bottom: 8px;
-  font-size: 14px; /*EA-added*/
 }
 
 .contact .php-email-form input,
 .contact .php-email-form textarea {
   border-radius: 0;
   box-shadow: none;
-  font-size: 14px; /*14*/
+  font-size: 14px;
 }
 
 .contact .php-email-form input {
-  height: 36px; /*44*/
+  height: 44px;
 }
 
 .contact .php-email-form textarea {
@@ -1164,7 +1095,7 @@ fieldset {
 }
 
 .breadcrumbs h2 {
-  font-size: 20px; /*26*/
+  font-size: 26px;
   font-weight: 300;
 }
 
@@ -1174,7 +1105,7 @@ fieldset {
   list-style: none;
   padding: 0;
   margin: 0;
-  font-size: 14px; /*15*/
+  font-size: 15px;
 }
 
 .breadcrumbs ol li+li {
@@ -1208,7 +1139,7 @@ fieldset {
 #footer {
   padding: 15px;
   color: #f4f6fd;
-  font-size: 14px; /*14*/
+  font-size: 14px;
   position: fixed;
   left: 0;
   bottom: 0;
@@ -1224,7 +1155,7 @@ fieldset {
 #footer .credits {
   padding-top: 5px;
   text-align: center;
-  font-size: 10px; /*13*/
+  font-size: 13px;
   color: #eaebf0;
 }
 
