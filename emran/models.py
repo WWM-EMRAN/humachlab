@@ -3,6 +3,7 @@ from pathlib import Path
 import json
 from django.db import models
 from django.core.exceptions import ValidationError
+from multiselectfield import MultiSelectField
 
 
 
@@ -37,8 +38,15 @@ def get_CertificationsCoursesTrainings_upload_path(instance, filename):
     return os.path.join(app_directory, 'staticfiles', 'myresources', 'courseandcertificate', original_filename)
 
 class CertificationsCoursesTrainings(models.Model):
+    CERTIFICATION_TYPE_CHOICES = [
+        ('all', 'All'),
+        ('certificate', 'Certificate'),
+        ('training', 'Training'),
+        ('course', 'Course'),
+    ]
     cct_name = models.CharField(max_length=300)
     cct_description = models.TextField(null=True, blank=True)
+    cct_type = MultiSelectField(choices=CERTIFICATION_TYPE_CHOICES, default='all')
     cct_offering_organisation = models.CharField(max_length=300)
     cct_funding_organisation = models.CharField(max_length=300, null=True, blank=True)
     cct_key_information = models.TextField(null=True, blank=True)
