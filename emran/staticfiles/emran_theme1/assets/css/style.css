@@ -99,7 +99,14 @@ transparent_button {
   transition: all 0.5s;
   padding: 0 15px;
   background: #040b14;
-  overflow-y: auto;
+  /*overflow-y: auto;*/
+  overflow-y: scroll; /* Allows vertical scrolling */
+  scrollbar-width: none;  /* Firefox: Hide scrollbar */
+  -ms-overflow-style: none;  /* IE and Edge: Hide scrollbar */
+}
+
+#header::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari, and Opera: Hide scrollbar */
 }
 
 #header .profile img {
