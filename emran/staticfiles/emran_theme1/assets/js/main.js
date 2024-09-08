@@ -105,37 +105,73 @@ on('click', '.more-button', function(){
     $('.more-options').toggleClass("show")
 })
 
-// $('.more-button').click(
-//     function(){
-//         $('navbar ul .more-options').toggleClass("show");
-//         alert("This is an alert...");
-//     }
-// )
 
- // on('click', '.more-button', function(e) {
- //    alert('This is an alert. More button is clicked...')
- //    // select('body').classList.toggle('.navbar>ul>li>ul .more-options')
- //    select('body').classList.toggle('.navbar>ul .more-options')
- //    // select('.nav-menu>ul .more-options').classList.toggle('show')
- //    // this.classList.toggle('nav-menu ul .more-options.show')
- //    this.classList.toggle('show')
- //    // this.classList.toggle('bi-x')
- //
- //    // console.log('Here comes to .more-button')
- //    // let body = select('body')
- //    // alert(body.classList)
- //    // // if (body.classList.contains('.navbar>ul .more-options'))
- //    // if (body.classList.contains('more-options'))
- //    // {
- //    //   alert('This is an alert. its inside...')
- //    //   console.log('Here comes to .more-options.....')
- //    //   // select('.nav-menu>ul .more-options').classList.toggle('show')
- //    //   let navbarToggle = select('.more-options')
- //    //   navbarToggle.classList.toggle('show')
- //    //   // navbarToggle.classList.toggle('bi-list')
- //    //   // navbarToggle.classList.toggle('bi-x')
- //    // }
- //  })
+// EA-added
+// document.addEventListener("DOMContentLoaded", function() {
+//   document.body.addEventListener("click", function(event) {
+//     // Ensure that the click happened on the .more-button element
+//     const button = event.target.closest(".more-button");
+//     // alert("More button clicked");
+//
+//     if (button) {
+//       event.preventDefault();  // Prevent default link behavior
+//
+//       // Get the submenu (the <ul> next to the clicked button)
+//       const submenu = button.nextElementSibling;
+//
+//       if (submenu && submenu.classList.contains("sub-menu")) {
+//         submenu.classList.toggle("show");  // Toggle 'show' class
+//       }
+//
+//       // Toggle the rotation of the arrow icon
+//       const arrow = button.querySelector(".arrow-icon");
+//       if (arrow) {
+//         arrow.classList.toggle("rotate");
+//       }
+//     }
+//   });
+// });
+
+document.addEventListener("DOMContentLoaded", function() {
+  document.body.addEventListener("click", function(event) {
+    let button = event.target.closest(".more-button");
+
+    // Fallback for older browsers if closest() is not supported
+    if (!button && event.target.classList.contains('more-button')) {
+      button = event.target;
+    }
+
+    if (button) {
+      event.preventDefault();
+      console.log("More button clicked");
+
+      const submenu = button.nextElementSibling;
+      if (submenu && submenu.classList.contains("sub-menu")) {
+        submenu.classList.toggle("show");
+        console.log("Submenu toggled");
+      }
+
+      const arrow = button.querySelector(".arrow-icon");
+      if (arrow) {
+        arrow.classList.toggle("rotate");
+        console.log("Arrow rotated");
+      }
+    }
+  });
+});
+
+
+
+
+
+  /**
+   * Mobile sub menu expand/collaps
+   */
+  on('click', '.mobile-nav-toggle', function(e) {
+    select('body').classList.toggle('mobile-nav-active')
+    this.classList.toggle('bi-list')
+    this.classList.toggle('bi-x')
+  })
 
 
   /**

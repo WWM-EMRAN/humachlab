@@ -279,6 +279,88 @@ transparent_button {
   left: 0;
 }
 
+
+
+
+/*.nav-link {*/
+/*  position: relative;*/
+/*  z-index: 1;  !* Ensure the nav link is above other content *!*/
+/*}*/
+
+/*.more-button, .sub-menu {*/
+/*  outline: 2px solid red;  !* Highlight these elements *!*/
+/*  pointer-events: auto;    !* Ensure these elements are capturing pointer events *!*/
+/*}*/
+
+
+/*EA-added*/
+/*!* Submenu initially hidden *!*/
+/*.sub-menu {*/
+/*  display: none;*/
+/*  !*margin-left: 12px;  !* Optional: indent the submenu *!*!*/
+
+/*  !*position: relative;*!*/
+/*  !*z-index: 0;  !* Ensure it's below the nav link when not open *!*!*/
+/*}*/
+
+/*!*EA-added*!*/
+/*!* Submenu visible when .show class is added *!*/
+/*.sub-menu.show {*/
+/*  display: block;*/
+
+/*  !*z-index: 2;  !* Bring it forward when open *!*!*/
+/*}*/
+
+/*!*EA-added*!*/
+/*!* Rotate the arrow icon when submenu is expanded *!*/
+/*.arrow-icon {*/
+/*  transition: transform 0.3s ease;*/
+/*}*/
+
+/*!*EA-added*!*/
+/*.arrow-icon.rotate {*/
+/*  transform: rotate(180deg);*/
+/*}*/
+
+
+.sub-menu {
+  display: none;  /* Hidden by default */
+  position: relative;  /* Ensure it's positioned relative to its container */
+  z-index: 0;  /* Make sure it doesn't interfere with other elements */
+  overflow: hidden;  /* Ensure any extra content doesn't overflow */
+}
+
+.sub-menu.show {
+  display: block;  /* Shown when 'show' class is added */
+}
+
+/*.arrow-icon {*/
+/*  transition: transform 0.3s ease;*/
+/*}*/
+
+/*.arrow-icon.rotate {*/
+/*  transform: rotate(180deg);  !* Rotate the arrow when expanded *!*/
+/*}*/
+
+.arrow-icon {
+  -webkit-transition: transform 0.3s ease;
+  -moz-transition: transform 0.3s ease;
+  -ms-transition: transform 0.3s ease;
+  -o-transition: transform 0.3s ease;
+  transition: transform 0.3s ease;
+}
+
+.arrow-icon.rotate {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+
+
+
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
