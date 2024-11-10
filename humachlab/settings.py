@@ -99,16 +99,28 @@ DATABASES = {
     'admin': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        # 'USER': 'your_user',
+        # 'PASSWORD': 'your_password',
+        # 'HOST': 'localhost',
+        # 'PORT': '5432',
     },
     # 'default': {
     # },
     'website_db': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, website_main, 'staticfiles/database/website.sqlite3'),
+        # 'USER': 'your_user',
+        # 'PASSWORD': 'your_password',
+        # 'HOST': 'localhost',
+        # 'PORT': '5432',
     },
     'emran_db': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, website_emran, 'staticfiles/database/emran.sqlite3'),
+        # 'USER': 'your_user',
+        # 'PASSWORD': 'your_password',
+        # 'HOST': 'localhost',
+        # 'PORT': '5432',
     }
 }
 

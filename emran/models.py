@@ -28,6 +28,33 @@ class HonorsAndAwards(models.Model):
     haw_description = models.TextField(null=True, blank=True)
 
 
+# Volunteering model
+def get_CertificationsCoursesTrainings_upload_path(instance, filename):
+    """Generate a dynamic path for storing images."""
+    app_directory = os.path.dirname(os.path.abspath(__file__))
+    original_filename = os.path.basename(filename)
+    print(app_directory, filename, original_filename)
+    # return os.path.join(app_directory, 'staticfiles', 'myresources', f'project_{instance.pk}', filename)
+    return os.path.join(app_directory, 'staticfiles', 'myresources', 'courseandcertificate', original_filename)
+
+## Volunteering model
+class Volunteering(models.Model):
+    # membership_id = models.AutoField(primary_key=True)
+    volunteering_name = models.CharField(max_length=150)
+    volunteering_involvement = models.CharField(max_length=150)
+    volunteering_cause = models.CharField(max_length=150)
+    volunteering_organisation = models.CharField(max_length=500)
+    volunteering_start_date = models.DateField(auto_now=False, auto_now_add=False)
+    volunteering_end_date = models.DateField(auto_now=False, auto_now_add=False, null=True, blank=True)
+    volunteering_detail = models.TextField(null=True, blank=True)
+    volunteering_image = models.ImageField(upload_to=get_CertificationsCoursesTrainings_upload_path, max_length=500, blank=True,
+                                  null=True)
+    volunteering_link = models.CharField(max_length=500)
+    def __str__(self):
+        return f"{self.volunteering_name}, {self.volunteering_cause}, {self.volunteering_organisation}"
+
+
+
 ## CertificatesCoursesTrainings model
 def get_CertificationsCoursesTrainings_upload_path(instance, filename):
     """Generate a dynamic path for storing images."""
@@ -43,6 +70,8 @@ class CertificationsCoursesTrainings(models.Model):
         ('certificate', 'Certificate'),
         ('training', 'Training'),
         ('course', 'Course'),
+        ('conference', 'Conference'),
+        ('bootcamp', 'Bootcamp'),
     ]
     cct_name = models.CharField(max_length=300)
     cct_description = models.TextField(null=True, blank=True)
@@ -51,6 +80,7 @@ class CertificationsCoursesTrainings(models.Model):
     cct_funding_organisation = models.CharField(max_length=300, null=True, blank=True)
     cct_key_information = models.TextField(null=True, blank=True)
     cct_hasexpire = models.BooleanField()
+    cct_serial_no = models.CharField(max_length=10, null=True, blank=True)
     cct_start_date = models.DateField(auto_now=False, auto_now_add=False)
     cct_end_date = models.DateField(auto_now=False, auto_now_add=False, null=True, blank=True)
     cct_image = models.ImageField(upload_to=get_CertificationsCoursesTrainings_upload_path, max_length=500, blank=True, null=True)

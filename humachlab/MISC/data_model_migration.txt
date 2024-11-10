@@ -1,0 +1,11 @@
+
+
+
+
+
+python manage.py makemigrations emran
+python manage.py migrate emran --database=emran_db
+
+
+
+

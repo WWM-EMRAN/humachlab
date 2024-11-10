@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib import admin
-from .models import SkillsAndTools, HonorsAndAwards, CertificationsCoursesTrainings, Projects, Memberships, SessionsOrEvents, Languages, Portfolios
+from .models import SkillsAndTools, HonorsAndAwards, CertificationsCoursesTrainings, Projects, Memberships, SessionsOrEvents, Languages, Portfolios, Volunteering
 from .widgets import MultipleFileInput  # Import the custom widget
 
 
@@ -13,6 +13,8 @@ admin.site.register(Memberships)
 admin.site.register(SessionsOrEvents)
 admin.site.register(Languages)
 admin.site.register(Portfolios)
+admin.site.register(Volunteering)
+
 
 
 

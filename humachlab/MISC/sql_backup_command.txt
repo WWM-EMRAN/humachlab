@@ -1,0 +1,15 @@
+
+
+
+sqlite3 .\emran\staticfiles\database\emran2.sqlite3
+SQLite version 3.45.3 2024-04-15 13:34:05 (UTF-16 console I/O)
+Enter ".help" for usage hints.
+sqlite> .output .\emran\staticfiles\database\db_emran_backup_101124.sql
+sqlite> .dump
+sqlite> .exit
+
+
+
+
+
+
