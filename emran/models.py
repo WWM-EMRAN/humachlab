@@ -29,13 +29,13 @@ class HonorsAndAwards(models.Model):
 
 
 # Volunteering model
-def get_CertificationsCoursesTrainings_upload_path(instance, filename):
+def get_Volunteering_upload_path(instance, filename):
     """Generate a dynamic path for storing images."""
     app_directory = os.path.dirname(os.path.abspath(__file__))
     original_filename = os.path.basename(filename)
     print(app_directory, filename, original_filename)
     # return os.path.join(app_directory, 'staticfiles', 'myresources', f'project_{instance.pk}', filename)
-    return os.path.join(app_directory, 'staticfiles', 'myresources', 'courseandcertificate', original_filename)
+    return os.path.join(app_directory, 'staticfiles', 'myresources', 'volunteering', original_filename)
 
 ## Volunteering model
 class Volunteering(models.Model):
@@ -47,7 +47,7 @@ class Volunteering(models.Model):
     volunteering_start_date = models.DateField(auto_now=False, auto_now_add=False)
     volunteering_end_date = models.DateField(auto_now=False, auto_now_add=False, null=True, blank=True)
     volunteering_detail = models.TextField(null=True, blank=True)
-    volunteering_image = models.ImageField(upload_to=get_CertificationsCoursesTrainings_upload_path, max_length=500, blank=True,
+    volunteering_image = models.ImageField(upload_to=get_Volunteering_upload_path, max_length=500, blank=True,
                                   null=True)
     volunteering_link = models.CharField(max_length=500)
     def __str__(self):
