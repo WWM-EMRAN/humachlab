@@ -1099,21 +1099,24 @@
 			<section id="sessionlead" class="about subsection-bg-blue">
 				<div class="container">
 					<div class="section-title">
-						<h2><i class="bx bx-chair"></i> Session and Event Lead</h2>
+						<h2><i class="bx bx-chair"></i> Session Lead</h2>
 						<p> Experience as a session chair or keynote speaker. </p>
 					</div>
 
-                    <div class="row">
-                    {% for sess_evnt in sessions_or_events.all  %}
+					<div class="row">
 						<div class="col-lg-6" data-aos="fade-up">
-							<h4 class="title"><a href="#sessionlead"><i class="bx bx-microphone"></i> {{ sess_evnt.session_lead_name}} </a></h4>
+							<h4 class="title"><a href="#chairandspeaker"><i class="bx bx-microphone"></i> Keynote Speaker</a></h4>
 							<p class="description">
-                                {{ sess_evnt.session_lead_type}}, {{ sess_evnt.session_title}}, Organized by {{ sess_evnt.session_organisation}}, {{ sess_evnt.session_institution}}, {{ sess_evnt.session_address}} on {{ sess_evnt.session_start_date}}
+								Keynote Speaker, A seminar on career development and future of Mobile Application Development in Bangladesh, Organized by AFCSE, HSTU on Apr. 2015
 							</p>
 						</div>
-                    {% endfor %}
-                    </div>
-
+						<div class="col-lg-6" data-aos="fade-up">
+							<h4 class="title"><a href="#chairandspeaker"><i class="bx bx-microphone"></i> Speaker</a></h4>
+							<p class="description">
+								Speaker, A seminar on Higher Studies in Abroad - Journey to Australia and Research Experiences, Organized by CSE Club, HSTU on September. 2022
+							</p>
+						</div>
+					</div>
 				</div>
 			</section>
 			<!-- End Chair and Speaker Section -->
@@ -1127,43 +1130,66 @@
 						<p> Language proficiency in Listening(L), Reading(R), Writing(W) and Speaking(S). </p>
 					</div>
 
-                    <div class="row">
-                    {% for lang in languages.all  %}
+					<div class="row">
 						<div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
 							<div class="icon"><i class="bx bx-conversation"></i></div>
-							<h4 class="title"><a href="#language">{{ lang.language_name }}</a></h4>
+							<h4 class="title"><a href="#language">Bengali</a></h4>
 							<p class="description">
-                                {{ lang.language_description }} · {{ lang.language_test_details }}.
+								Mother tongue · Excellent LRWS skills.
 							</p>
 						</div>
-                    {% endfor %}
-                    </div>
-
+						<div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
+							<div class="icon"><i class="bx bx-conversation"></i></div>
+							<h4 class="title"><a href="#language">English</a></h4>
+							<p class="description">
+		<!--						Medium of instruction at HSTU and Deakin University · Competent RWLS skill · IELTS (6.5) - RWLS (6.0,6.5,6.5,7.0).-->
+								Medium of instruction at HSTU and Deakin University · IELTS (6.5) - LRWS (6.0,6.5,6.5,7.0) - 2019.
+							</p>
+						</div>
+						<div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
+							<div class="icon"><i class="bx bx-conversation"></i></div>
+							<h4 class="title"><a href="#language">Spanish</a></h4>
+							<p class="description">
+								Beginner level self learner.
+							</p>
+						</div>
+					</div>
 				</div>
 			</section>
 			<!-- End Language Section -->
 
 			<!-- ======= Github Repositories Section ======= -->
-			<section id="portfolio" class="services subsection-bg-blue">
+			<section id="githubrepo" class="services subsection-bg-blue">
 				<div class="container">
 
 					<div class="section-title">
-						<h2><i class="bx bxl-github"></i> Portfolios</h2>
-						<p> Portfolio Github repositories that are publicly available only with my significant contribution. </p>
+						<h2><i class="bx bxl-github"></i> Github Repositories</h2>
+						<p> Github repositories that are publicly available only with my significant contribution. </p>
 					</div>
 
-                    <div class="row">
-                    {% for portf in portfolios.all  %}
+					<div class="row">
 						<div class="col-lg-6" data-aos="fade-up">
 							<div class="icon"><i class="bx bxl-github"></i></div>
-							<h4 class="title"><a target="_blank" href="{{ portf.portflio_link }}"> {{ portf.portflio_title }} <i class="bx bx-link-external"></i></a></h4>
+							<h4 class="title"><a target="_blank" href="https://github.com/WWM-EMRAN/DIHC_Downloader">DIHC_Downloader <i class="bx bx-link-external"></i></a></h4>
 							<p class="description">
-								{{ portf.portflio_description }}
+								A fully python based library to download the contents from a web directory including subdirectories and files.
 							</p>
 						</div>
-                    {% endfor %}
-                    </div>
-
+						<div class="col-lg-6" data-aos="fade-up">
+							<div class="icon"><i class="bx bxl-github"></i></div>
+							<h4 class="title"><a target="_blank" href="https://github.com/WWM-EMRAN/DIHC_FeatureManager">DIHC_FeatureManager <i class="bx bx-link-external"></i></a></h4>
+							<p class="description">
+								A python and Matlab based library to do feature extraction and feature engineering related task for Machine Learning.
+							</p>
+						</div>
+						<div class="col-lg-6" data-aos="fade-up">
+							<div class="icon"><i class="bx bxl-github"></i></div>
+							<h4 class="title"><a target="_blank" href="https://github.com/WWM-EMRAN/AWS_Udacity_AIML_Scholarship_Program">AWS_Udacity_AIML_Scholarship_Program <i class="bx bx-link-external"></i></a></h4>
+							<p class="description">
+								A python Machine Learning and Deep Learning repository containing all the projects completed in AWS AI/ML Scholarship (Phase 1 and 2) programs. It contains total 6 projects from 2 Udacity nanodegree.
+							</p>
+						</div>
+					</div>
 				</div>
 			</section>
 			<!-- End Github Repositories Section -->
@@ -1178,20 +1204,25 @@
 					</div>
 
 					<div class="row">
-                    {% for vol in volunteering.all %}
 						<div class="col-lg-6" data-aos="fade-up">
-							<h4 class="title"><a href="volunteering-details.html#{{ vol.id }}"><i class="bx bxs-hand"></i>
-                                {{ vol.volunteering_name }} </a></h4>
+							<h4 class="title"><a href="volunteering-details.html#vol_slcip"><i class="bx bxs-hand"></i> Section Leader - Code in Place (CIP) </a></h4>
 							<p class="description">
-								<strong>Involvement:</strong> {{ vol.volunteering_involvement }} <br>
-								<strong>Organisation:</strong> {{ vol.volunteering_organisation }} <br>
-								<strong>Cause:</strong> {{ vol.volunteering_cause }} <br>
-								<strong>Period:</strong> {{ vol.volunteering_start_date|date:"F Y" }} - {% if vol.volunteering_end_date %}{{ vol.volunteering_end_date|date:"F Y" }}{% else %}Present{% endif %}
+								<strong>Involvement:</strong> Teaching and training the students Python programming<br>
+								<strong>Organisation:</strong> Stanford Online<br>
+								<strong>Cause:</strong> Social work and education<br>
+								<strong>Period:</strong> Apr 2023 - Apr 2024
 							</p>
 						</div>
-                    {% endfor %}
-                    </div>
-
+						<div class="col-lg-6" data-aos="fade-up">
+							<h4 class="title"><a href="volunteering-details.html#vol_sjreambes"><i class="bx bxs-hand"></i> Scientific Journal Reviewer </a></h4>
+							<p class="description">
+								<strong>Involvement:</strong> Scientific journal articles review<br>
+								<strong>Organisation:</strong> European Alliance of Medical and Biological Engineering and Science (EAMBES)<br>
+								<strong>Cause:</strong> Education<br>
+								<strong>Period:</strong> Aug 2023 - Present
+							</p>
+						</div>
+					</div>
 				</div>
 			</section>
 			<!-- End Volumteering Section -->
