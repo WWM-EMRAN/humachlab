@@ -1,13 +1,13 @@
-
 from .models import SkillsAndTools, HonorsAndAwards, CertificationsCoursesTrainings, Projects, Memberships, SessionsOrEvents, Languages, Portfolios, Volunteering
+
 
 def get_all_data_models():
     skills_and_tools = SkillsAndTools.objects
-    honors_and_awards = HonorsAndAwards.objects
+    honors_and_awards = HonorsAndAwards.objects.order_by('id').reverse()
     certifications_courses_trainings = CertificationsCoursesTrainings.objects
-    projects = Projects.objects
-    memberships = Memberships.objects
-    sessions_or_events = SessionsOrEvents.objects
+    projects = Projects.objects.order_by('id').reverse()
+    memberships = Memberships.objects.order_by('id').reverse()
+    sessions_or_events = SessionsOrEvents.objects.order_by('id').reverse()
     languages = Languages.objects
     portfolios = Portfolios.objects
     volunteering = Volunteering.objects

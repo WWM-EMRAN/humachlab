@@ -697,86 +697,39 @@
 					<div class="section-title">
 <!--						<h2><i class="bx bx-package"></i>  Skills</h2>-->
 						<h2><i class="bx bxs-wrench"></i>  Skills and Tools <a href="skill-details.html"><i class="bx bx-link-external"></i></a></h2>
-						<p> From the personal assessment of learning, I am well equipped with the latest data analytics and signal processing technologies. </p>
+						<p> From the personal assessment of learning, I am well-equipped with the latest data analytics, machine learning technologies and soft skills. </p>
 					</div>
 
-					<div class="row skills-content">
+                    <div class="row skills-content">
+                        {% load template_data_manager %}
+{#                        {% get_skills_and_tools_rows_counter skills_and_tools.count as row_count %}#}
+{#                        {{ row_count }}#}
+                        {% get_skills_and_tools_query_subset skills_and_tools as skltl_queries %}
+
 						<div class="col-lg-6" data-aos="fade-up">
+                        {% for skltl in skltl_queries.skltl1 %}
 							<div class="progress">
-								<span class="skill">Programming: Python, Java, C, C++, SQL, R, Swift, Objective-C, PHP <i class="val">100%</i></span>
+								<span class="skill">{{ skltl.sat_title }}: {{ skltl.sat_short_description }}  <i class="val">{{ skltl.sat_skill_level }}%</i></span>
 								<div class="progress-bar-wrap">
-									<div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0"
+									<div class="progress-bar" role="progressbar" aria-valuenow="{{ skltl.sat_skill_level }}" aria-valuemin="0"
 									     aria-valuemax="100"></div>
 								</div>
 							</div>
-							<div class="progress">
-								<span class="skill">Datascience: Data Analytics, Feature Engineering, Numpy, Pandas, Matplotlib <i class="val">90%</i></span>
-								<div class="progress-bar-wrap">
-									<div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0"
-									     aria-valuemax="100"></div>
-								</div>
-							</div>
-							<div class="progress">
-								<span class="skill">Signal Processing: EEG <i class="val">90%</i></span>
-								<div class="progress-bar-wrap">
-									<div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0"
-									     aria-valuemax="100"></div>
-								</div>
-							</div>
-							<div class="progress">
-								<span class="skill">Machine Learning: Scikit-learn, PyCaret, Darts <i class="val">85%</i></span>
-								<div class="progress-bar-wrap">
-									<div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0"
-									     aria-valuemax="100"></div>
-								</div>
-							</div>
-							<div class="progress">
-								<span class="skill">Deep Learning: Pytorch, Tensorflow, Keras <i class="val">85%</i></span>
-								<div class="progress-bar-wrap">
-									<div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0"
-									     aria-valuemax="100"></div>
-								</div>
-							</div>
-						</div>
+                        {% endfor %}
+                        </div>
 
 						<div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                        {% for skltl in skltl_queries.skltl2 %}
 							<div class="progress">
-								<span class="skill">Could Platforms: AWS, AWS Sagemaker, MS Azure, Azure ML Designer <i class="val">85%</i></span>
+								<span class="skill">{{ skltl.sat_title }}: {{ skltl.sat_short_description }}  <i class="val">{{ skltl.sat_skill_level }}%</i></span>
 								<div class="progress-bar-wrap">
-									<div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0"
+									<div class="progress-bar" role="progressbar" aria-valuenow="{{ skltl.sat_skill_level }}" aria-valuemin="0"
 									     aria-valuemax="100"></div>
 								</div>
 							</div>
-							<div class="progress">
-								<span class="skill">Teaching: Demonstration <i class="val">100%</i></span>
-								<div class="progress-bar-wrap">
-									<div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0"
-									     aria-valuemax="100"></div>
-								</div>
-							</div>
-							<div class="progress">
-								<span class="skill">Reporting and Presentation: LaTeX, MS Word, MS Excel, MS Powerpoint, Illustrator <i class="val">100%</i></span>
-								<div class="progress-bar-wrap">
-									<div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0"
-									     aria-valuemax="100"></div>
-								</div>
-							</div>
-							<div class="progress">
-								<span class="skill">Management and Leadership: Project Management, Team Lead, Client Management <i class="val">90%</i></span>
-								<div class="progress-bar-wrap">
-									<div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0"
-									     aria-valuemax="100"></div>
-								</div>
-							</div>
-							<div class="progress">
-								<span class="skill">Soft Skills: Critical Thinking, Problem Solving, Communication, Collaboration <i class="val">90%</i></span>
-								<div class="progress-bar-wrap">
-									<div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0"
-									     aria-valuemax="100"></div>
-								</div>
-							</div>
-						</div>
-					</div>
+                        {% endfor %}
+                        </div>
+                    </div>
 				</div>
 			</section>
 			<!-- End Skills Section -->
@@ -790,76 +743,22 @@
 						<p> Honors and Awards achieved throughout the study and professional career. </p>
 					</div>
 
-					<div class="row">
+                    <div class="row">
+                    {%   for honaw in honors_and_awards.all  %}
 						<div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
 							<div class="icon"><i class="bx bx-medal"></i></div>
-							<h4 class="title"><a href="award-details.html#aw_awsaiml">AWS AI/ML Scholarship </a></h4>
+							<h4 class="title"><a href="award-details.html#{{ honaw.id }}">{{ honaw.haw_title}} </a></h4>
 							<p class="description">
-								AWS AI/ML Scholarships (Phase 1 and 2) for 2 Udacity nanodegrees worth more than $8,000
+                                {{ honaw.haw_short_description}} by {{ honaw.haw_issuer_organisation}} · {{ honaw.haw_start_date|date:"F Y" }}.
 							</p>
 						</div>
-						<div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
-							<div class="icon"><i class="bx bx-medal"></i></div>
-							<h4 class="title"><a href="award-details.html#aw_cotutellest">Cotutelle Studentship </a></h4>
-							<p class="description">
-								Joint Ph.D. Program & Funding (During study period at Coventry University) - CSM, Coventry University · (Ongoing)
-							</p>
-						</div>
-						<div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
-							<div class="icon"><i class="bx bx-medal"></i></div>
-							<h4 class="title"><a href="award-details.html#aw_duprs">DUPR Scholarship </a></h4>
-							<p class="description">
-								Joint Ph.D. Program & Funding (During study period at Deakin University) - DUPR, Deakin University · (Ongoing)
-							</p>
-						</div>
-						<div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
-							<div class="icon"><i class="bx bx-medal"></i></div>
-							<h4 class="title"><a href="award-details.html#aw_dubestpres">Best Presentation Award</a></h4>
-							<p class="description">
-								Annual School Conference - School of IT, Deakin University · Dec 2021
-							</p>
-						</div>
-						<div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
-							<div class="icon"><i class="bx bx-medal"></i></div>
-							<h4 class="title"><a href="award-details.html#aw_bdbstf">BST Fellowship (BSTF)</a></h4>
-							<p class="description">
-								Fully funded fellowship for higher education - BSTF Trust, Ministry of Science and Technology,
-								Bangladesh · Feb 2020
-							</p>
-						</div>
-						<div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
-							<div class="icon"><i class="bx bx-medal"></i></div>
-							<h4 class="title"><a href="award-details.html#aw_aapbdbestemp">Best Employee Award</a></h4>
-							<p class="description">
-								Best employee of year 2014 - Advanced Apps Bangladesh (AAPBD) Ltd., Bangladesh · Jul 2014
-							</p>
-						</div>
-						<div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
-							<div class="icon"><i class="bx bx-medal"></i></div>
-							<h4 class="title"><a href="award-details.html#aw_saucountrytop">Country Topper (Bangladesh)</a></h4>
-							<p class="description">
-								Post-graduation Entrance Exam - South Asian University (SAU), New Dehli, India · Apr 2013
-							</p>
-						</div>
-						<div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
-							<div class="icon"><i class="bx bx-medal"></i></div>
-							<h4 class="title"><a href="award-details.html#aw_hstubsctop">Undergraduate Department Topper</a></h4>
-							<p class="description">
-								First Place from the undergrad batch - HSTU, Bangladesh · Mar 2012
-							</p>
-						</div>
-						<div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="400">
-							<div class="icon"><i class="bx bx-medal"></i></div>
-							<h4 class="title"><a href="award-details.html#aw_hstuiupc2009champ">InUPC Champion</a></h4>
-							<p class="description">
-								Intra-University Programming Contest (InUPC) Champion - HSTU, Bangladesh · Feb 2009
-							</p>
-						</div>
-					</div>
+                    {% endfor %}
+                    </div>
 
 				</div>
 			</section>
 			<!-- End Honors and Awards Section -->
+
 
 			<!-- ======= Course and Certificate Section ======= -->
 			<section id="certificate" class="portfolio subsection-bg-white">
@@ -967,43 +866,19 @@
 						<p> Projects and project involvement as professional person. </p>
 					</div>
 
-					<div class="row">
+                    <div class="row">
+                    {%   for proj in projects.all  %}
 						<div class="col-lg-6" data-aos="fade-up">
-							<h4 class="title"><a href="project-details.html#prj_ducuphdres"><i class="bx bx-bulb"></i> Researcher</a></h4>
+							<h4 class="title"><a href="project-details.html#{{ proj.id }}"><i class="bx bx-bulb"></i>
+                                {{ proj.project_position }}</a></h4>
 							<p class="description">
-								<strong>Project:</strong> A MACHINE LEARNING BASED ANALYSIS OF SLEEP PATTERNS IN AGING USING PHYSIOLOGICAL SIGNALS.<br>
-								<strong>Funding:</strong> Centre for Computational Science and Mathematical Modelling - Modelling (CSM), Coventry University, United Kingdom. (Jan. 2023 - Ongoing).
+								<strong>Project:</strong> {{ proj.project_title }}.<br>
+								<strong>Funding:</strong> {{ proj.project_funding_organisation}}, {{ proj.project_collaboration_organisation}} · {{ proj.project_start_date|date:"F Y" }} - {% if proj.project_end_date %}{{ proj.project_end_date|date:"F Y" }}{% else %}Present{% endif %}.
 							</p>
 						</div>
-						<div class="col-lg-6" data-aos="fade-up">
-							<h4 class="title"><a href="project-details.html#prj_duaqp"><i class="bx bx-bulb"></i> Research Assistant</a></h4>
-							<p class="description">
-								<strong>Project:</strong> Air Quality Prediction (Temperature Prediction) for Indoor Environments in Different Cities of Australia.<br>
-								<strong>Funding:</strong> An MAAP linkage project funded by the Australian Research Council (ARC). (Mar. 2022 - Dec. 2022).
-							</p>
-						</div>
-						<div class="col-lg-6" data-aos="fade-up">
-							<h4 class="title"><a href="project-details.html#prj_duamdszicu"><i class="bx bx-bulb"></i> Research Assistant</a></h4>
-							<p class="description">
-								<strong>Project:</strong> Channel minimisation and epileptic seizure detection using single channels using Deep Learning from continuous iEEG of ICU patients.<br>
-								<strong>Funding:</strong> A voluntary collaboration of Deakin University, Monash University and Alfred Health. (Apr. 2020 - Mar. 2022) - (Paused).
-							</p>
-						</div>
-						<div class="col-lg-6" data-aos="fade-up">
-							<h4 class="title"><a href="project-details.html#prj_irthstu3lnp"><i class="bx bx-bulb"></i> Project Research Associate</a></h4>
-							<p class="description">
-								<strong>Project:</strong> DESIGNING A 3-LAYER NETWORK SECURITY TECHNIQUE IN SERVERS FOR PREVENTION OF DDOS ATTACK.<br>
-								<strong>Funding:</strong> Institute of Research and Technology (IRT), HSTU. (Jul. 2018 - Jun. 2019).
-							</p>
-						</div>
-						<div class="col-lg-6" data-aos="fade-up">
-							<h4 class="title"><a href="project-details.html#prj_irthstubsmnat"><i class="bx bx-bulb"></i> Project Research Associate</a></h4>
-							<p class="description">
-								<strong>Project:</strong> ANALYSIS AND DESIGN OF A NON-INVASIVE WAY OF MEASURING AND MONITORING BLOOD-SODIUM CONCENTRATION LEVEL USING NEAR-INFRARED SPECTROSCOPY.<br>
-								<strong>Funding:</strong> Institute of Research and Technology (IRT), HSTU. (Jul. 2018 - Jun. 2019).
-							</p>
-						</div>
-					</div>
+                    {% endfor %}
+                    </div>
+
 				</div>
 			</section>
 			<!-- End Projects Section -->
@@ -1017,79 +892,18 @@
 						<p> Organisational and voluntary memberships as student and professional. </p>
 					</div>
 
-					<div class="row">
-<!--						<div class="col-lg-6" data-aos="fade-up">-->
+                    <div class="row">
+                    {%   for mem in memberships.all  %}
 						<div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
 <!--							<h4 class="title"><a href="#membership"><i class="bx bx-group"></i> IEEE Student Member</a></h4>-->
 							<div class="icon"><i class="bx bx-group"></i></div>
-							<h4 class="title"><a href="#membership">ACS Associate Member</a></h4>
+							<h4 class="title"><a href="#membership">{{ mem.membership_name}}</a></h4>
 							<p class="description">
-								Associate Member, Australian Computer Society · Aug. 2023 - Present
+                                {{ mem.membership_type}}, {{ mem.membership_organisation}}, {{ mem.membership_institution}}, {{ mem.membership_address}} · {{ mem.membership_start_date|date:"F Y" }} - {% if mem.membership_end_date %}{{ mem.membership_end_date|date:"F Y" }}{% else %}Present{% endif %}
 							</p>
 						</div>
-<!--						<div class="col-lg-6" data-aos="fade-up">-->
-						<div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
-<!--							<h4 class="title"><a href="#membership"><i class="bx bx-group"></i> IEEE Student Member</a></h4>-->
-							<div class="icon"><i class="bx bx-group"></i></div>
-							<h4 class="title"><a href="#membership">DUSA Member</a></h4>
-							<p class="description">
-								Deakin University Student Association Member - Deakin University · Apr. 2020 - Present
-							</p>
-						</div>
-						<div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
-<!--							<h4 class="title"><a href="#membership"><i class="bx bx-group"></i> IEEE Student Member</a></h4>-->
-							<div class="icon"><i class="bx bx-group"></i></div>
-							<h4 class="title"><a href="#membership">DSEC Member</a></h4>
-							<p class="description">
-								Deakin University Software Engineering Club Member - Deakin University · Jan. 2023 - Present
-							</p>
-						</div>
-						<div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
-<!--							<h4 class="title"><a href="#membership"><i class="bx bx-group"></i> IEEE Student Member</a></h4>-->
-							<div class="icon"><i class="bx bx-group"></i></div>
-							<h4 class="title"><a href="#membership">DAIS Member</a></h4>
-							<p class="description">
-								Deakin AI Society Member - Deakin University · Jan. 2023 - Present
-							</p>
-						</div>
-						<div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
-<!--							<h4 class="title"><a href="#membership"><i class="bx bx-group"></i> IEEE Student Member</a></h4>-->
-							<div class="icon"><i class="bx bx-group"></i></div>
-							<h4 class="title"><a href="#membership">IEEE Student Member</a></h4>
-							<p class="description">
-								IEEE Student Member - IEEE · Jan. 2022 - Present
-							</p>
-						</div>
-						<div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
-							<div class="icon"><i class="bx bx-group"></i></div>
-							<h4 class="title"><a href="#membership">EMBS Student Member</a></h4>
-							<p class="description">
-								IEEE Engineering in Medicine and Biology Society (EMBS) Student Member - IEEE · Jan. 2022 -
-								Present
-							</p>
-						</div>
-						<div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
-							<div class="icon"><i class="bx bx-group"></i></div>
-							<h4 class="title"><a href="#membership">IEEE Young Professionals</a></h4>
-							<p class="description">
-								IEEE Young Professionals - IEEE · Jan. 2022 - Present
-							</p>
-						</div>
-						<div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
-							<div class="icon"><i class="bx bx-group"></i></div>
-							<h4 class="title"><a href="#membership">Advisor and Founding Member</a></h4>
-							<p class="description">
-								Programmers Arena - HSTU · Sept. 2014 - Present
-							</p>
-						</div>
-						<div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
-							<div class="icon"><i class="bx bx-group"></i></div>
-							<h4 class="title"><a href="#membership">Advisor</a></h4>
-							<p class="description">
-								CSE Club - HSTU · Sept. 2014 - Present
-							</p>
-						</div>
-					</div>
+                    {% endfor %}
+                    </div>
 
 				</div>
 			</section>
@@ -1099,7 +913,7 @@
 			<section id="sessionlead" class="about subsection-bg-blue">
 				<div class="container">
 					<div class="section-title">
-						<h2><i class="bx bx-chair"></i> Session and Event Lead</h2>
+						<h2><i class="bx bx-chair"></i> Sessions and Events </h2>
 						<p> Experience as a session chair or keynote speaker. </p>
 					</div>
 
