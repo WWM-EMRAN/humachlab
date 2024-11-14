@@ -768,91 +768,44 @@
 						<p> All the completed courses, trainings and achieved certificates. </p>
 					</div>
 
+
+                    {% load template_data_manager %}
+{#                        {% get_skills_and_tools_rows_counter skills_and_tools.count as row_count %}#}
+{#                        {{ row_count }}#}
+                    {% get_certifications_courses_trainings_all_cert_type certifications_courses_trainings as home_page_certs %}
 					<div class="row" data-aos="fade-up">
 						<div class="col-lg-12 d-flex justify-content-center">
 							<ul id="portfolio-flters">
-								<li data-filter="*" class="filter-active">All</li>
-								<li data-filter=".filter-cert">Certificate</li>
-								<li data-filter=".filter-train">Training</li>
-								<li data-filter=".filter-cour">Course</li>
+                                {% for crt_type in home_page_certs.cert_type %}
+                                    {% if crt_type.0 == 'all' %}
+                                        <li data-filter=".filter-{{ crt_type.0 }}" class="filter-active">{{ crt_type.1 }}</li>
+                                    {% else %}
+{#                                        ".filter-{{ crt_type.0 }}"#}
+                                        <li data-filter=".filter-{{ crt_type.0 }}">{{ crt_type.1 }}</li>
+                                    {% endif %}
+                                {% endfor %}
+
 							</ul>
 						</div>
 					</div>
-<!--					<div class="row portfolio-container" data-aos="fade-up" >-->
 					<div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
-<!--						<div class="col-lg-4 col-md-6 portfolio-item filter-cert filter-cour" data-aos="fade-up" data-aos-delay="100">-->
-						<div class="col-lg-4 col-md-6 portfolio-item filter-cert filter-cour" >
-<!--						<div class="col-lg-3 col-md-6 portfolio-item filter-cert filter-cour" >-->
-							<div class="portfolio-wrap">
-								<img src="{% static 'emran_theme1/assets/../../staticfiles/myresources/courseandcertificate/aws-uda-nd089-aiProPy.jpg' %}" class="img-fluid" alt="Emran Ali - Personal Website | Certificates">
-								<div class="portfolio-links">
-									<a href="{% static 'emran_theme1/assets/../../staticfiles/myresources/courseandcertificate/aws-uda-nd089-aiProPy.jpg' %}" data-gallery="portfolioGallery"
-                                       class="portfolio-lightbox" title="AWS Udacity - AI Programming with Python (Nanodegree)"><i class="bx bx-plus"></i></a>
-									<a href="certificate-details.html#cert_aws-uda-nd089-aiProPy" title="More Details"><i class="bx bx-link"></i></a>
-								</div>
-							</div>
-						</div>
-<!--						<div class="col-lg-4 col-md-6 portfolio-item filter-cert filter-cour" data-aos="fade-up" data-aos-delay="100">-->
-						<div class="col-lg-4 col-md-6 portfolio-item filter-cert filter-cour" >
-<!--						<div class="col-lg-3 col-md-6 portfolio-item filter-cert filter-cour" >-->
-							<div class="portfolio-wrap">
-								<img src="{% static 'emran_theme1/assets/../../staticfiles/myresources/courseandcertificate/aws-uda-nd189-mlFun.jpg' %}" class="img-fluid" alt="Emran Ali - Personal Website | Certificates">
-								<div class="portfolio-links">
-									<a href="{% static 'emran_theme1/assets/../../staticfiles/myresources/courseandcertificate/aws-uda-nd189-mlFun.jpg' %}" data-gallery="portfolioGallery"
-                                       class="portfolio-lightbox" title="AWS Udacity - AWS Machine Learning Fundamentals (Nanodegree)"><i class="bx bx-plus"></i></a>
-									<a href="certificate-details.html#cert_aws-uda-nd189-mlFun" title="More Details"><i class="bx bx-link"></i></a>
-								</div>
-							</div>
-						</div>
-<!--						<div class="col-lg-4 col-md-6 portfolio-item filter-cert filter-train" data-aos="fade-up" data-aos-delay="100">-->
-						<div class="col-lg-4 col-md-6 portfolio-item filter-cert filter-cour" >
-<!--						<div class="col-lg-3 col-md-6 portfolio-item filter-cert filter-train" >-->
-							<div class="portfolio-wrap">
-								<img src="{% static 'emran_theme1/assets/../../staticfiles/myresources/courseandcertificate/ms-cert-fund-ai900.jpg' %}" class="img-fluid" alt="Emran Ali - Personal Website | Certificates">
-								<div class="portfolio-links">
-									<a href="{% static 'emran_theme1/assets/../../staticfiles/myresources/courseandcertificate/ms-cert-fund-ai900.jpg' %}" data-gallery="portfolioGallery"
-                                       class="portfolio-lightbox" title="Microsoft - Microsoft Certified: Azure AI Fundamental (AI900)"><i class="bx bx-plus"></i></a>
-									<a href="certificate-details.html#cert_ms-cert-fund-ai900" title="More Details"><i class="bx bx-link"></i></a>
-								</div>
-							</div>
-						</div>
-<!--						<div class="col-lg-4 col-md-6 portfolio-item filter-cour" data-aos="fade-up" data-aos-delay="100">-->
-						<div class="col-lg-4 col-md-6 portfolio-item filter-cert filter-cour" >
-<!--						<div class="col-lg-3 col-md-6 portfolio-item filter-cour" >-->
-							<div class="portfolio-wrap">
-								<img src="{% static 'emran_theme1/assets/../../staticfiles/myresources/courseandcertificate/ms-cert-fund-dp900.jpg' %}" class="img-fluid" alt="Emran Ali - Personal Website | Certificates">
-								<div class="portfolio-links">
-									<a href="{% static 'emran_theme1/assets/../../staticfiles/myresources/courseandcertificate/ms-cert-fund-dp900.jpg' %}" data-gallery="portfolioGallery"
-                                       class="portfolio-lightbox" title="Microsoft - Microsoft Certified: Azure Data Fundamental (DP900)"><i class="bx bx-plus"></i></a>
-									<a href="certificate-details.html#cert_ms-cert-fund-dp900" title="More Details"><i class="bx bx-link"></i></a>
-								</div>
-							</div>
-						</div>
-<!--						<div class="col-lg-4 col-md-6 portfolio-item filter-cert filter-train" data-aos="fade-up" data-aos-delay="100">-->
-						<div class="col-lg-4 col-md-6 portfolio-item filter-cert filter-train" >
-<!--						<div class="col-lg-3 col-md-6 portfolio-item filter-cert filter-train" >-->
-							<div class="portfolio-wrap">
-								<img src="{% static 'emran_theme1/assets/../../staticfiles/myresources/courseandcertificate/gtec-neurotechSprSchool2022.jpg' %}" class="img-fluid" alt="Emran Ali - Personal Website | Certificates">
-								<div class="portfolio-links">
-									<a href="{% static 'emran_theme1/assets/../../staticfiles/myresources/courseandcertificate/gtec-neurotechSprSchool2022.jpg' %}" data-gallery="portfolioGallery"
-                                       class="portfolio-lightbox" title="g·tec - BCI & Neurotechnology Spring School 2022"><i class="bx bx-plus"></i></a>
-									<a href="certificate-details.html#cert_gtec-neurotechSprSchool2022" title="More Details"><i class="bx bx-link"></i></a>
-								</div>
-							</div>
-						</div>
-<!--						<div class="col-lg-4 col-md-6 portfolio-item filter-cert filter-train" data-aos="fade-up" data-aos-delay="100">-->
-						<div class="col-lg-4 col-md-6 portfolio-item filter-cert filter-train" >
-<!--						<div class="col-lg-3 col-md-6 portfolio-item filter-cert filter-train" >-->
-							<div class="portfolio-wrap">
-								<img src="{% static 'emran_theme1/assets/../../staticfiles/myresources/courseandcertificate/ieeeembs-summschl2022.jpg' %}" class="img-fluid" alt="Emran Ali - Personal Website | Certificates">
-								<div class="portfolio-links">
-									<a href="{% static 'emran_theme1/assets/../../staticfiles/myresources/courseandcertificate/ieeeembs-summschl2022.jpg' %}" data-gallery="portfolioGallery"
-                                       class="portfolio-lightbox" title="IEEE EMBS - Summer Camp 2022"><i class="bx bx-plus"></i></a>
-									<a href="certificate-details.html#cert_ieeeembs-summschl2022" title="More Details"><i class="bx bx-link"></i></a>
-								</div>
-							</div>
-						</div>
-					</div>
+                        {% for crt in home_page_certs.selected_cert %}
+                            {% get_certifications_courses_trainings_one_cert_types_and_corrected_image_url crt as cert_types_and_image_url %}
+{#                            "{% for type in cert_types_and_image_url.cert_types %}filter-{{ type.0 }} {% endfor %}"#}
+{#    <!--						<div class="col-lg-4 col-md-6 portfolio-item filter-cert filter-cour" data-aos="fade-up" data-aos-delay="100">-->#}
+                            <div class="col-lg-4 col-md-6 portfolio-item {% for type in cert_types_and_image_url.cert_types %}filter-{{ type }} {% endfor %}" >
+{#    <!--						<div class="col-lg-3 col-md-6 portfolio-item filter-cert filter-cour" >-->#}
+                                <div class="portfolio-wrap">
+                                    <img src="{% static cert_types_and_image_url.image_url %}" class="img-fluid" alt="Emran Ali - Personal Website | Certificates">
+                                    <div class="portfolio-links">
+                                        <a href="{% static cert_types_and_image_url.image_url %}" data-gallery="portfolioGallery"
+                                           class="portfolio-lightbox" title="{{ crt.cct_name }}"><i class="bx bx-plus"></i></a>
+                                        <a href="certificate-details.html#{{ crt.id }}" title="More Details"><i class="bx bx-link"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
 				</div>
 			</section>
 			<!-- End Course and Certificate Section -->
