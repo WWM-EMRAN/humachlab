@@ -1,7 +1,8 @@
-from .models import SkillsAndTools, HonorsAndAwards, CertificationsCoursesTrainings, Projects, Memberships, SessionsOrEvents, Languages, Portfolios, Volunteering
+from .models import KeyInformation, SkillsAndTools, HonorsAndAwards, CertificationsCoursesTrainings, Projects, Memberships, SessionsOrEvents, Languages, Portfolios, Volunteering, Publications, Contacts
 
 
 def get_all_data_models():
+    key_information = KeyInformation.objects
     skills_and_tools = SkillsAndTools.objects
     honors_and_awards = HonorsAndAwards.objects.order_by('id').reverse()
     certifications_courses_trainings = CertificationsCoursesTrainings.objects#.order_by('id').reverse()
@@ -11,7 +12,11 @@ def get_all_data_models():
     languages = Languages.objects
     portfolios = Portfolios.objects
     volunteering = Volunteering.objects
+    publications = Publications.objects.order_by('id').reverse()
+    contacts = Contacts.objects
+
     all_data_models = {
+        'key_information': key_information,
         'skills_and_tools': skills_and_tools,
         'honors_and_awards': honors_and_awards,
         'certifications_courses_trainings': certifications_courses_trainings,
@@ -21,6 +26,8 @@ def get_all_data_models():
         'languages': languages,
         'portfolios': portfolios,
         'volunteering': volunteering,
+        'publications': publications,
+        'contacts': contacts,
     }
     return all_data_models
 

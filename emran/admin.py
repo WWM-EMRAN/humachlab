@@ -1,10 +1,11 @@
 from django import forms
 from django.contrib import admin
-from .models import SkillsAndTools, HonorsAndAwards, CertificationsCoursesTrainings, Projects, Memberships, SessionsOrEvents, Languages, Portfolios, Volunteering
+from .models import KeyInformation, SkillsAndTools, HonorsAndAwards, CertificationsCoursesTrainings, Projects, Memberships, SessionsOrEvents, Languages, Portfolios, Volunteering, Publications, Contacts
 from .widgets import MultipleFileInput  # Import the custom widget
 
 
 # Register your models here.
+admin.site.register(KeyInformation)
 admin.site.register(SkillsAndTools)
 admin.site.register(HonorsAndAwards)
 admin.site.register(CertificationsCoursesTrainings)
@@ -14,6 +15,8 @@ admin.site.register(SessionsOrEvents)
 admin.site.register(Languages)
 admin.site.register(Portfolios)
 admin.site.register(Volunteering)
+admin.site.register(Publications)
+admin.site.register(Contacts)
 
 
 

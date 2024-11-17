@@ -10,6 +10,14 @@ from multiselectfield import MultiSelectField
 # Create your models here.
 
 
+## KeyInformation model
+class KeyInformation(models.Model):
+    ki_type = models.CharField(max_length=300)
+    ki_amount = models.IntegerField()
+    ki_names = models.CharField(max_length=500)
+    ki_sort_description = models.TextField(null=True, blank=True)
+
+
 ## SkillsAndTools model
 class SkillsAndTools(models.Model):
     sat_title = models.CharField(max_length=300)
@@ -80,7 +88,7 @@ class CertificationsCoursesTrainings(models.Model):
     cct_funding_organisation = models.CharField(max_length=300, null=True, blank=True)
     cct_key_information = models.TextField(null=True, blank=True)
     cct_hasexpire = models.BooleanField()
-    cct_serial_no = models.CharField(max_length=10, null=True, blank=True)
+    cct_serial_no = models.IntegerField()
     cct_start_date = models.DateField(auto_now=False, auto_now_add=False)
     cct_end_date = models.DateField(auto_now=False, auto_now_add=False, null=True, blank=True)
     cct_image = models.ImageField(upload_to=get_CertificationsCoursesTrainings_upload_path, max_length=500, blank=True, null=True)
@@ -179,6 +187,28 @@ class Portfolios(models.Model):
     portflio_link = models.CharField(max_length=500)
     def __str__(self):
         return f"{self.portflio_platform_name}, {self.portflio_title}, {self.portflio_description}, {self.portflio_link}"
+
+
+## Publications model
+class Publications(models.Model):
+    pub_type = models.CharField(max_length=300)
+    pub_subtype = models.CharField(max_length=300, null=True, blank=True)
+    pub_title = models.CharField(max_length=500)
+    pub_citation = models.CharField(max_length=1000)
+    pub_doi_or_link = models.CharField(max_length=500)
+    pub_serial_no = models.IntegerField()
+    pub_abstract = models.TextField(null=True, blank=True)
+
+
+## Publications model
+class Contacts(models.Model):
+    con_loc = models.CharField(max_length=300)
+    con_email = models.CharField(max_length=300, null=True, blank=True)
+    con_skype = models.CharField(max_length=500, null=True, blank=True)
+    con_phone = models.CharField(max_length=100, null=True, blank=True)
+    con_map_link = models.CharField(max_length=500)
+
+
 
 
 

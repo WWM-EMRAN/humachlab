@@ -162,78 +162,22 @@
 			</div>
 
 			<div class="row no-gutters">
-				<div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="200">
-					<div class="count-box">
-<!--						<i class="bx bi-archive"></i>-->
-						<i class="bx bi-puzzle"></i>
-						<span data-purecounter-start="0" data-purecounter-end="12" data-purecounter-duration="0.75"
-						      class="purecounter"></span>
-						<p><strong>Years</strong> of teaching and research experience</p>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="200">
-					<div class="count-box">
-<!--						<i class="bx bi-gear"></i>-->
-<!--						<i class="bx bi-bar-chart-line"></i>-->
-<!--						<i class="bx bi-boxes"></i>-->
-						<i class="bx bi-file-earmark-code"></i>
-						<span data-purecounter-start="0" data-purecounter-end="3" data-purecounter-duration="0.75"
-						      class="purecounter"></span>
-						<p><strong>Years</strong> of software development experience</p>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up">
-					<div class="count-box">
-						<i class="bx bi-lightbulb"></i>
-						<span data-purecounter-start="0" data-purecounter-end="5" data-purecounter-duration="0.75"
-						      class="purecounter"></span>
-						<p><strong>Projects</strong> with research contribution</p>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="100">
-					<div class="count-box">
-						<i class="bx bi-journal-richtext"></i>
-						<span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="0.75"
-						      class="purecounter"></span>
-						<p><strong>Publications</strong> related to research</p>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="200">
-					<div class="count-box">
-						<i class="bx bi-building"></i>
-						<span data-purecounter-start="0" data-purecounter-end="5" data-purecounter-duration="0.75"
-						      class="purecounter"></span>
-						<p><strong>Institutional</strong> involvement in academic and research</p>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="300">
-					<div class="count-box">
-<!--						<i class="bx bi-wrench"></i>-->
-<!--						<i class="bx bi-hammer"></i>-->
-						<i class="bx bi-tools"></i>
-						<span data-purecounter-start="0" data-purecounter-end="5" data-purecounter-duration="0.75"
-						      class="purecounter"></span>
-						<p><strong>Industrial</strong> involvement in research and software development</p>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="200">
-					<div class="count-box">
-<!--						<i class="bx bi-shuffle"></i>-->
-						<i class="bx bi-snow3"></i>
-						<span data-purecounter-start="0" data-purecounter-end="4" data-purecounter-duration="0.75"
-						      class="purecounter"></span>
-						<p><strong>Research collaboration</strong> with institutes and industries</p>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="200">
-					<div class="count-box">
-						<i class="bx bi-journal-bookmark-fill"></i>
-						<span data-purecounter-start="0" data-purecounter-end="20" data-purecounter-duration="0.75"
-						      class="purecounter"></span>
-						<p><strong>Specialisation Certificates</strong> for courses and training</p>
-					</div>
-				</div>
-			</div>
+                {% load template_data_manager %}
+                {% for kinf in key_information.all %}
+                    {% get_key_info_icon kinf.ki_names as icon_name %}
+                    {% get_key_info_formated_description kinf.ki_sort_description as ki_short_desc %}
+{#                    {% get_skills_and_tools_query_subset skills_and_tools as skltl_queries %}#}
+                    <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="200">
+                        <div class="count-box">
+                             <i class="{{ icon_name }}"></i>
+                            <span data-purecounter-start="0" data-purecounter-end="{{ kinf.ki_amount }}" data-purecounter-duration="0.75"
+                                  class="purecounter"></span>
+                            <p>{{ ki_short_desc|safe }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
 		</div>
 	</section>
 	<!-- End Key Info Section -->
@@ -702,8 +646,6 @@
 
                     <div class="row skills-content">
                         {% load template_data_manager %}
-{#                        {% get_skills_and_tools_rows_counter skills_and_tools.count as row_count %}#}
-{#                        {{ row_count }}#}
                         {% get_skills_and_tools_query_subset skills_and_tools as skltl_queries %}
 
 						<div class="col-lg-6" data-aos="fade-up">
@@ -768,10 +710,7 @@
 						<p> All the completed courses, trainings and achieved certificates. </p>
 					</div>
 
-
                     {% load template_data_manager %}
-{#                        {% get_skills_and_tools_rows_counter skills_and_tools.count as row_count %}#}
-{#                        {{ row_count }}#}
                     {% get_certifications_courses_trainings_all_cert_type certifications_courses_trainings as home_page_certs %}
 					<div class="row" data-aos="fade-up">
 						<div class="col-lg-12 d-flex justify-content-center">
@@ -976,129 +915,46 @@
 				<p> All the publications (reports and articles) in journal, conference, poster, symposium, blog, etc. </p>
 			</div>
 
+            {% load template_data_manager %}
+            {% get_category_wise_publications publications as cat_wise_pub %}
+
 			<div class="row">
 				<div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-					<h3 class="resume-title"><a href="publication-details.html#pub_jour">Journals</a></h3>
-
+                {% for cat, items in cat_wise_pub.group1.items %}
+					<h3 class="resume-title"><a href="publication-details.html#{{ cat }}">{{ cat }}(s)</a></h3>
+                    {% for pub in items %}
 					<div class="resume-item">
-						<h4>Epileptic seizure detection using CHB-MIT dataset: The overlooked perspectives </h4>
-						<div id="jour_epszdetovrpers">
-							<strong>Emran Ali</strong>, Maia Angelova, Chandan Karmakar, <em>"Epileptic seizure detection using CHB-MIT dataset: The overlooked perspectives,"</em> in Journal of The Royal Society Open Science (RSOS), vol. 11, no. 6, pp. 230601, May 2024.
-							<transparent_button onclick="CopyToClipboard('jour_epszdetovrpers')"> <i class="bx bx-copy"></i> </transparent_button>
+						<h4> {{ pub.pub_title }} </h4>
+						<div id="{{ pub.id }}">
+                            {% get_formatted_citation pub.pub_citation as citation %}
+                            {{ citation|safe }}
+{#							<strong>Emran Ali</strong>, Maia Angelova, Chandan Karmakar, <em>"Epileptic seizure detection using CHB-MIT dataset: The overlooked perspectives,"</em> in Journal of The Royal Society Open Science (RSOS), vol. 11, no. 6, pp. 230601, May 2024.#}
+							<transparent_button onclick="CopyToClipboard('{{ pub.id }}')"> <i class="bx bx-copy"></i> </transparent_button>
 						</div>
-						<p><strong>DOI/Link:</strong> <a target="_blank" href="https://doi.org/10.1098/rsos.230601">10.1098/rsos.230601 <i class="bx bx-link-external"></i> </a> </p>
+						<p><strong>DOI/Link:</strong> <a target="_blank" href="{{ pub.pub_doi_or_link }}">{{ pub.pub_doi_or_link }} <i class="bx bx-link-external"></i> </a> </p>
 					</div>
-					<div class="resume-item">
-						<h4>Sensor-based indoor air temperature prediction using deep ensemble machine learning: An Australian urban environment case study </h4>
-						<div id="jour_senindtemppredau">
-							Wenhua Yu, Bahareh Nakisa, <strong>Emran Ali</strong>, Seng W Loke, Svetlana Stevanovic, Yuming Guo, <em>"Sensor-based indoor air temperature prediction using deep ensemble machine learning: An Australian urban environment case study,"</em> in International Journal of Urban Climate (UClim), vol. 51, no. -, pp. 101599, 1 September 2023.
-							<transparent_button onclick="CopyToClipboard('jour_senindtemppredau')"> <i class="bx bx-copy"></i> </transparent_button>
-						</div>
-						<p><strong>DOI/Link:</strong> <a target="_blank" href="https://doi.org/10.1016/j.uclim.2023.101599">10.1016/j.uclim.2023.101599 <i class="bx bx-link-external"></i> </a> </p>
-					</div>
-					<div class="resume-item">
-						<h4>A LSB Based Image Steganography Using Random Pixel and Bit Selection for High Payload </h4>
-						<div id="jour_lsbsteghighpay">
-							U. A. Md. Ehsan Ali, <strong>Emran Ali</strong>, Md. Sohrawordi and Md. Nahid Sultan, <em>"A LSB Based Image Steganography Using Random Pixel and Bit Selection for High Payload,"</em> in International Journal of Mathematical Sciences and Computing (IJMSC), vol. 7, no. 3, pp. 24-31, 8 August 2021.
-							<transparent_button onclick="CopyToClipboard('jour_lsbsteghighpay')"> <i class="bx bx-copy"></i> </transparent_button>
-						</div>
-						<p><strong>DOI/Link:</strong> <a target="_blank" href="https://doi.org/10.5815/ijmsc.2021.03.03">10.5815/ijmsc.2021.03.03 <i class="bx bx-link-external"></i> </a> </p>
-					</div>
-					<div class="resume-item">
-						<h4>Enhancement of single-handed Bengali sign language recognition based on HOG features </h4>
-						<div id="jour_hogenh">
-							Tasnim Tabassum, Iqbal Mahmud, Md Palash Uddin, <strong>Ali Emran</strong>, Masud IBN Afjal and Adiba Mahjabin Nitu, <em>"Enhancement of single-handed Bengali sign language recognition based on HOG features,"</em> in Journal of Theoretical and Applied Information Technology (JTAIT), vol. 98, no. 5, pp. 743-756, 15 March 2020.
-							<transparent_button onclick="CopyToClipboard('jour_hogenh')"> <i class="bx bx-copy"></i> </transparent_button>
-						</div>
-						<p><strong>DOI/Link:</strong> <a target="_blank" href="http://www.jatit.org/volumes/Vol98No5/2Vol98No5.pdf">http://www.jatit.org/ <i class="bx bx-link-external"></i> </a> </p>
-					</div>
-					<div class="resume-item">
-						<h4>Mapping Character Position Based Cryptographic algorithm with Numerical Conversions </h4>
-						<div id="jour_mapcharposcryp">
-							MahmudulHasan Moon, A K M Tanzimul Islam Tanim, Md. Zillani Shoykot, Md. Nahid Sultan, U.A. Md. Ehsan Ali and <strong>Emran Ali</strong>, <em>"Mapping Character Position Based Cryptographic algorithm with Numerical Conversions,"</em> in International Journal of Computer Science and Software Engineering (IJCSSE), vol. 9, no. 3, pp. 12-15, March 2020.
-							<transparent_button onclick="CopyToClipboard('jour_mapcharposcryp')"> <i class="bx bx-copy"></i> </transparent_button>
-						</div>
-						<p><strong>DOI/Link:</strong> <a target="_blank" href="https://ijcsse.org/published/volume9/issue3/p1-V9I3.pdf">https://ijcsse.org/ <i class="bx bx-link-external"></i> </a> </p>
-					</div>
-					<div class="resume-item">
-						<h4>Pseudo random ternary sequence and its autocorrelation property over finite field </h4>
-						<div id="jour_pseudrndgen">
-							Md Arshad Ali, <strong>Ali Emran</strong>, Md Ahsan Habib, Md Nadim, Takuya Kusaka and Yasuyuki Nogami, <em>"Pseudo random ternary sequence and its autocorrelation property over finite field,"</em> in International Journal of Computer Network and Information Security (IJCNIS), vol. 9, no. 7, pp. 54-63, 1 September 2017.
-							<transparent_button onclick="CopyToClipboard('jour_pseudrndgen')"> <i class="bx bx-copy"></i> </transparent_button>
-						</div>
-						<p><strong>DOI/Link:</strong> <a target="_blank" href="https://doi.org/10.5815/ijcnis.2017.09.07">10.5815/ijcnis.2017.09.07 <i class="bx bx-link-external"></i> </a> </p>
-					</div>
-					<div class="resume-item">
-						<h4>Smart Campus Using IoT with Bangladesh Perspective: A Possibility and Limitation </h4>
-						<div id="jour_smrtcampbd">
-							Md Nahid Sultan, <strong>Emran Ali</strong>, Md Arshad Ali, Md Nadim and Md Ahsan Habib, <em>"Smart Campus Using IoT with Bangladesh Perspective: A Possibility and Limitation,"</em> in International Journal for Research in Applied Science & Engineering (IJRASE), vol. 5, no. 8, pp. 1681-1690, 30 August 2017.
-							<transparent_button onclick="CopyToClipboard('jour_smrtcampbd')"> <i class="bx bx-copy"></i> </transparent_button>
-						</div>
-						<p><strong>DOI/Link:</strong> <a target="_blank" href="https://doi.org/10.22214/IJRASET.2017.8239">10.22214/IJRASET.2017.8239 <i class="bx bx-link-external"></i> </a> </p>
-					</div>
-					<div class="resume-item">
-						<h4>Study of Abstractive Text Summarization Techniques </h4>
-						<div id="jour_abstxtsumm">
-							S. Yeasmin, P.B. Tumpa, A.M. Nitu, M.P. Uddin, <strong>E. Ali</strong></strong> and M.I. Afjal, <em>"Study of Abstractive Text Summarization Techniques,"</em> in American Journal of Engineering Research (AJER), vol. 6, no. 8, pp. 253-260, 24 August 2017.
-<!--								Sabina Yeasmin, Priyanka Basak Tumpa, Adiba Mahjabin Nitu, Md. Palash Uddin, <strong>Emran Ali</strong> and Masud Ibn Afjal, <em>"Study of Abstractive Text Summarization Techniques,"</em> in American Journal of Engineering Research, vol. 6, no. 8, pp. 253-260, 24 August 2017.-->
-							<transparent_button onclick="CopyToClipboard('jour_abstxtsumm')"> <i class="bx bx-copy"></i> </transparent_button>
-						</div>
-						<p><strong>DOI/Link:</strong> <a target="_blank" href="https://www.ajer.org/papers/v6(08)/ZE0608253260.pdf">https://www.ajer.org/ <i class="bx bx-link-external"></i> </a> </p>
-					</div>
-					<div class="resume-item">
-						<h4>Performance Analysis of Energy Detection Based Spectrum Sensing Over Wireless Non-Fading AWGN Channels in Cognitive Radio Network </h4>
-						<div id="jour_perfanaawgn">
-							Nahid Sultan, <strong>Emran Ali</strong>, Md. Ahsan Habib and Md. Ibrahim Abdullah, <em>"Performance Analysis of Energy Detection Based Spectrum Sensing Over Wireless Non-Fading AWGN Channels in Cognitive Radio Network,"</em> in International Journal of Scientific & Engineering Research (IJSER), vol. 8, no. 1, pp. 1082-1085, January 2017.
-							<transparent_button onclick="CopyToClipboard('jour_perfanaawgn')"> <i class="bx bx-copy"></i> </transparent_button>
-						</div>
-						<p><strong>DOI/Link:</strong> <a target="_blank" href="https://www.ijser.org/researchpaper/Performance-Analysis-of-Energy-Detection-Based-Spectrum-Sensing-Over-Wireless-Non-Fading-AWGN-Channels-in-Cognitive-Radio-Network.pdf">https://www.ijser.org/ <i class="bx bx-link-external"></i> </a> </p>
-					</div>
-				</div>
+                    {% endfor %}
+                {% endfor %}
+                </div>
 
 				<div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-					<h3 class="resume-title"><a href="publication-details.html#pub_post">Posters</a></h3>
-
+                {% for cat, items in cat_wise_pub.group2.items %}
+					<h3 class="resume-title"><a href="publication-details.html#{{ cat }}">{{ cat }}(s)</a></h3>
+                    {% for pub in items %}
 					<div class="resume-item">
-						<h4>Deep Learning Model for Detection of Electrographic Seizures from continuous EEG in ICU patients </h4>
-						<div id="post_eegepiicu">
-							Ahsan Habib, Xiuxian Pham, Radhagayathri Udhayakumar, <strong>Emran Ali</strong>, Daniel Thom, Joshua Laing, Chandan Karmakar, Patrick Kwan, Terence O'Brien, <em>"Deep Learning Model for Detection of Electrographic Seizures from continuous EEG in ICU patients,"</em> American Epilepsy Society (AES) Annual Conference 2021, Categories : Neurophysiology, Submission Category: 3. Neurophysiology / 3G. Computational Analysis & Modeling of EEG, Submission ID: 1886502, 22 November 2021.
-							<transparent_button onclick="CopyToClipboard('post_eegepiicu')"> <i class="bx bx-copy"></i> </transparent_button>
+						<h4> {{ pub.pub_title }} </h4>
+						<div id="{{ pub.id }}">
+                            {% get_formatted_citation pub.pub_citation as citation %}
+                            {{ citation|safe }}
+{#							<strong>Emran Ali</strong>, Maia Angelova, Chandan Karmakar, <em>"Epileptic seizure detection using CHB-MIT dataset: The overlooked perspectives,"</em> in Journal of The Royal Society Open Science (RSOS), vol. 11, no. 6, pp. 230601, May 2024.#}
+							<transparent_button onclick="CopyToClipboard('{{ pub.id }}')"> <i class="bx bx-copy"></i> </transparent_button>
 						</div>
-						<p><strong>DOI/Link:</strong> <a target="_blank" href="https://cms.aesnet.org/abstractslisting/deep-learning-model-for-detection-of-electrographic-seizures-from-continuous-eeg-in-icu-patients">https://www.aesnet.org/ (https://cms.aesnet.org/) <i class="bx bx-link-external"></i> </a> </p>
+						<p><strong>DOI/Link:</strong> <a target="_blank" href="{{ pub.pub_doi_or_link }}">{{ pub.pub_doi_or_link }} <i class="bx bx-link-external"></i> </a> </p>
 					</div>
-<!--				</div>-->
-
-<!--				<div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">-->
-					<h3 class="resume-title"><a href="publication-details.html#pub_conf">Conferences</a></h3>
-
-					<div class="resume-item">
-						<h4>Performance Analysis of Entropy Methods in Detecting Epileptic Seizure from Surface Electroencephalograms </h4>
-						<div id="conf_eegepient">
-							<strong>E. Ali</strong>, R. K. Udhayakumar, M. Angelova and C. Karmakar, <em>"Performance Analysis of Entropy Methods in Detecting Epileptic Seizure from Surface Electroencephalograms,"</em> 2021 43rd Annual International Conference of the IEEE Engineering in Medicine & Biology Society (EMBC), 2021, pp. 1082-1085, doi: 10.1109/EMBC46164.2021.9629538.
-							<transparent_button onclick="CopyToClipboard('conf_eegepient')"> <i class="bx bx-copy"></i> </transparent_button>
-						</div>
-						<p><strong>DOI/Link:</strong> <a target="_blank" href="https://doi.org/10.1109/EMBC46164.2021.9629538">10.1109/EMBC46164.2021.9629538 <i class="bx bx-link-external"></i> </a> </p>
-					</div>
-					<div class="resume-item">
-						<h4>Efficient Noise Reduction and HOG Feature Extraction for Sign Language Recognition </h4>
-						<div id="conf_hognoise">
-							I. Mahmud, T. Tabassum, M. P. Uddin, <strong>E. Ali</strong>, A. M. Nitu and M. I. Afjal, <em>"Efficient Noise Reduction and HOG Feature Extraction for Sign Language Recognition,"</em> 2018 International Conference on Advancement in Electrical and Electronic Engineering (ICAEEE), 2018, pp. 1-4, doi: 10.1109/ICAEEE.2018.8642983.
-							<transparent_button onclick="CopyToClipboard('conf_hognoise')"> <i class="bx bx-copy"></i> </transparent_button>
-						</div>
-						<p><strong>DOI/Link:</strong> <a target="_blank" href="https://doi.org/10.1109/ICAEEE.2018.8642983">10.1109/ICAEEE.2018.8642983 <i class="bx bx-link-external"></i> </a> </p>
-					</div>
-					<div class="resume-item">
-						<h4>Indexed Binary Search based efficient search generator for J2ME English to English dictionary </h4>
-						<div id="conf_indxbinsrch">
-							Md. Palash Uddin, <strong>E. Ali</strong>, Md. Abu Marjan and M. A. A. Mamun, <em>"Indexed Binary Search based efficient search generator for J2ME English to English dictionary,"</em> 2014 International Conference on Informatics, Electronics & Vision (ICIEV), 2014, pp. 1-6, doi: 10.1109/ICIEV.2014.6850692.
-							<transparent_button onclick="CopyToClipboard('conf_indxbinsrch')"> <i class="bx bx-copy"></i> </transparent_button>
-						</div>
-						<p><strong>DOI/Link:</strong> <a target="_blank" href="https://doi.org/10.1109/ICIEV.2014.6850692">10.1109/ICIEV.2014.6850692 <i class="bx bx-link-external"></i> </a> </p>
-					</div>
-				</div>
-
-			</div>
-
+                    {% endfor %}
+                {% endfor %}
+                </div>
+            </div>
 		</div>
 	</section>
 	<!-- End Publications Section -->
@@ -1115,38 +971,40 @@
 			</div>
 
 			<div class="row" data-aos="fade-in">
+                {% with contacts.all|first_item as con %}
+{#                    {{ con }}#}
 				<div class="col-lg-5 d-flex align-items-stretch">
 					<fieldset>
 					<div class="info">
 						<div class="address">
 							<i class="bi bi-geo-alt"></i>
-							<strong>Location:</strong> Melbourne, Australia
+							<strong>Location:</strong> {{ con.con_loc }}
 						</div>
 						<br/>
 						<div class="email">
 							<i class="bi bi-envelope"></i>
-							<strong>Email:</strong> <a href="mailto:emran.ali@research.deakin.edu.au">emran.ali@research.deakin.edu.au</a>
+							<strong>Email:</strong> <a href="mailto:{{ con.con_email }}">{{ con.con_email }}</a>
 						</div>
 						<br/>
 						<div class="email">
 							<i class="bi bi-skype"></i>
-							<strong>Skype:</strong> <a href="skype:wwm.emran?chat">wwm.emran</a>
+							<strong>Skype:</strong> <a href="skype:{{ con.con_skype }}?chat">{{ con.con_skype }}</a>
 						</div>
 						<br/>
+{#						<div class="phone">#}
+{#						  <i class="bi bi-phone"></i>#}
+{#						  <strong>Call:</strong> <a href="call:{{ con.con_phone }}">{{ con.con_phone }}</a>#}
+{#						</div>#}
+{#						<br/>#}
 
-						<!--
-						<div class="phone">
-						  <i class="bi bi-phone"></i>
-						  <h4>Call:</h4>
-						  <p>+1 5589 55488 55s</p>
-						</div>
-						<br/>
-						-->
 
 						<div class="address">
-							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12602.012715173229!2d145.10485949475074!3d-37.84851528214272!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad6405e68fe18f5%3A0x5045675218cda10!2sBurwood%20VIC%203125!5e0!3m2!1sen!2sau!4v1661434978451!5m2!1sen!2sau"
+							<iframe src="{{ con.con_map_link }}"
 							        width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"
 							        referrerpolicy="no-referrer-when-downgrade"></iframe>
+{#							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12602.012715173229!2d145.10485949475074!3d-37.84851528214272!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad6405e68fe18f5%3A0x5045675218cda10!2sBurwood%20VIC%203125!5e0!3m2!1sen!2sau!4v1661434978451!5m2!1sen!2sau"#}
+{#							        width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"#}
+{#							        referrerpolicy="no-referrer-when-downgrade"></iframe>#}
 <!--							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12602.012715173229!2d145.10485949475074!3d-37.84851528214272!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad6405e68fe18f5%3A0x5045675218cda10!2sBurwood%20VIC%203125!5e0!3m2!1sen!2sau!4v1661434978451!5m2!1sen!2sau"-->
 <!--							        style="border:0;" allowfullscreen="" loading="lazy"-->
 <!--							        referrerpolicy="no-referrer-when-downgrade"></iframe>-->
@@ -1154,12 +1012,14 @@
 					</div>
 					</fieldset>
 				</div>
+                {% endwith %}
 
 				<div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
 					<fieldset>
-<!--						<form action="forms/contact.php" method="post" role="form" class="php-email-form">-->
-						<form action="" onsubmit="SendEmail()" name="contact-form" class="php-email-form">
-							<p>This will open you default email client to check and send the email finally.</p>
+						<form action="/emran/contact" method="post" role="form" class="php-email-form">
+{#						<form action="" onsubmit="SendEmail()" name="contact-form" class="php-email-form">#}
+                            {% csrf_token %}
+							<p>Send me a message.</p>
 <!--							This will open you default email client to check and send the email finally. -->
 							<div class="row">
 								<div class="form-group col-md-6">
