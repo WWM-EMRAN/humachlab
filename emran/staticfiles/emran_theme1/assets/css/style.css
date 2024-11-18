@@ -24,6 +24,43 @@ a:hover {
   text-decoration: none;
 }
 
+/* Apply the same styles to button */
+button {
+  background: none;
+  color: #149ddd; /*inherit; #149ddd;*/
+  /*color: #37b3ed; */
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  padding: 0;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+button:hover {
+  color: #37b3ed;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+button.link-style {
+  background: none;
+  color: #149ddd; /*inherit; #149ddd;*/
+  /*color: #37b3ed; */
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  padding: 0;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+button.link-style:hover {
+  color: #37b3ed;
+  text-decoration: underline;
+}
+
+
 h1,
 h2,
 h3,
@@ -50,6 +87,14 @@ transparent_button {
   cursor:pointer;
   overflow: hidden;
   outline:none;
+}
+
+/*Custom Transparent Button*/
+link_button {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
 }
 
 /*--------------------------------------------------------------
@@ -886,6 +931,200 @@ section {
 }
 
 /*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+.general .general-item {
+  margin-bottom: 30px;
+}
+
+.general #general-flters {
+  padding: 0;
+  margin: 0 auto 35px auto;
+  list-style: none;
+  text-align: center;
+  background: #fff;
+  border-radius: 50px;
+  padding: 2px 15px;
+}
+
+.general #general-flters li {
+  cursor: pointer;
+  display: inline-block;
+  padding: 10px 15px 8px 15px;
+  font-size: 14px; /*14*/
+  font-weight: 600;
+  line-height: 1;
+  text-transform: uppercase;
+  color: #272829;
+  margin-bottom: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+.general #general-flters li:hover,
+.general #general-flters li.filter-active {
+  color: #149ddd;
+}
+
+.general #general-flters li:last-child {
+  margin-right: 0;
+}
+
+.general .general-wrap {
+  transition: 0.3s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.general .general-wrap::before {
+  content: "";
+  background: rgba(255, 255, 255, 0.5);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  transition: all ease-in-out 0.3s;
+  z-index: 2;
+  opacity: 0;
+}
+
+.general .general-wrap .general-links {
+  opacity: 1;
+  left: 0;
+  right: 0;
+  bottom: -60px;
+  z-index: 3;
+  position: absolute;
+  transition: all ease-in-out 0.3s;
+  display: flex;
+  justify-content: center;
+}
+
+.general .general-wrap .general-links a {
+  color: #fff;
+  font-size: 20px; /*28*/
+  text-align: center;
+  background: rgba(20, 157, 221, 0.75);
+  transition: 0.3s;
+  width: 50%;
+}
+
+.general .general-wrap .general-links a:hover {
+  background: rgba(20, 157, 221, 0.95);
+}
+
+.general .general-wrap .general-links a+a {
+  border-left: 1px solid #37b3ed;
+}
+
+.general .general-wrap:hover::before {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 1;
+}
+
+.general .general-wrap:hover .general-links {
+  opacity: 1;
+  bottom: 0;
+}
+
+/*--------------------------------------------------------------
+# General Details
+--------------------------------------------------------------*/
+.general-details {
+  padding-top: 40px;
+  font-size: 14px; /*EA-added*/
+}
+
+.general-details .general-details-slider img {
+  width: 100%;
+}
+
+.general-details .general-details-slider .swiper-pagination {
+  margin-top: 20px;
+  position: relative;
+}
+
+.general-details .general-details-slider .swiper-pagination .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background-color: #fff;
+  opacity: 1;
+  border: 1px solid #149ddd;
+}
+
+.general-details .general-details-slider .swiper-pagination .swiper-pagination-bullet-active {
+  background-color: #149ddd;
+}
+
+.general-details .general-info {
+  padding: 30px;
+  box-shadow: 0px 0 30px rgba(5, 13, 24, 0.08);
+}
+
+.general-details .general-info h3 {
+  font-size: 20px; /*22*/
+  font-weight: 700;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.general-details .general-info ul {
+  list-style: none;
+  padding: 0;
+  font-size: 14px; /*15*/
+}
+
+.general-details .general-info ul li+li {
+  margin-top: 10px;
+}
+
+.general-details .general-description {
+  padding-top: 30px;
+}
+
+.general-details .general-description h2 {
+  font-size: 20px; /*26*/
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.general-details .general-description p {
+  padding: 0;
+}
+
+/*!*extra*!*/
+/*.general-details {*/
+/*    padding-top: 40px; !* Align with .general-details *!*/
+/*    font-size: 14px; !* Match the text size *!*/
+/*}*/
+
+/*.general-details .general-info {*/
+/*    padding: 30px; !* Similar to .general-info *!*/
+/*    box-shadow: 0px 0 30px rgba(5, 13, 24, 0.08); !* Add shadow effect *!*/
+/*}*/
+
+/*.general-details .general-info h4 {*/
+/*    font-size: 20px; !* Similar to general titles *!*/
+/*    font-weight: 700;*/
+/*    margin-bottom: 20px;*/
+/*    padding-bottom: 20px;*/
+/*    border-bottom: 1px solid #eee; !* Adds a separator line *!*/
+/*}*/
+
+/*.general-details .general-info p {*/
+/*    padding: 0;*/
+/*    margin: 0;*/
+/*    font-size: 14px; !* Match .general-description *!*/
+/*    color: #272829;*/
+/*}*/
+
+
+/*--------------------------------------------------------------
 # Services
 --------------------------------------------------------------*/
 .services .icon-box {
@@ -1249,12 +1488,13 @@ fieldset {
 --------------------------------------------------------------*/
 .breadcrumbs {
   padding: 20px 0;
-  background: #f9f9f9;
+  /*background: #f9f9f9;*/
+  background: #090909;
 }
 
 .breadcrumbs h2 {
   font-size: 20px; /*26*/
-  font-weight: 300;
+  font-weight: 700; /*300*/
 }
 
 .breadcrumbs ol {
@@ -1264,6 +1504,7 @@ fieldset {
   padding: 0;
   margin: 0;
   font-size: 14px; /*15*/
+  /*font-weight: 700; !*EA added*!*/
 }
 
 .breadcrumbs ol li+li {
@@ -1321,6 +1562,7 @@ fieldset {
   #footer {
     position: static;
     width: auto;
-    padding-right: 20px 15px;
+    /*padding-right: 20px 15px;*/
+    padding-right: 20px;
   }
 }

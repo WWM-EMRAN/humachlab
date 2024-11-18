@@ -1,7 +1,7 @@
 from .models import KeyInformation, SkillsAndTools, HonorsAndAwards, CertificationsCoursesTrainings, Projects, Memberships, SessionsOrEvents, Languages, Portfolios, Volunteering, Publications, Contacts
 
 
-def get_all_data_models():
+def get_all_data_models(page):
     key_information = KeyInformation.objects
     skills_and_tools = SkillsAndTools.objects
     honors_and_awards = HonorsAndAwards.objects.order_by('id').reverse()
@@ -16,6 +16,7 @@ def get_all_data_models():
     contacts = Contacts.objects
 
     all_data_models = {
+        'page': page,
         'key_information': key_information,
         'skills_and_tools': skills_and_tools,
         'honors_and_awards': honors_and_awards,

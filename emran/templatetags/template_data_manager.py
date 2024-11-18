@@ -123,7 +123,7 @@ def get_category_wise_publications(publications, cols=2):
 
     group1, group2 = divide_into_groups(sorted_num_items_per_cat)
     group1, group2 = {cc:vv for cc,vv in sorted_pub.items() if cc in group1.keys()}, {cc:vv for cc,vv in sorted_pub.items() if cc in group2.keys()}
-    print('sorted_cat ----->', sorted_cat, sorted_num_items_per_cat, sorted_pub, group1, group2)
+    # print('sorted_cat ----->', sorted_cat, sorted_num_items_per_cat, sorted_pub, group1, group2)
 
     to_return = {'pub_cats': sorted_cat, 'pub_cats_list': sorted_pub, 'cat_groups': cat_groups, 'group1': group1, 'group2': group2}
     return to_return
@@ -143,7 +143,7 @@ def get_formatted_citation(citation):
     for my_name in my_name_list:
         # print('000', my_name, ' || ', tmp_citation[0], ' || ', tmp_citation[0].title().find(my_name))
         if tmp_citation[0].title().find(my_name) >= 0:
-            print('---', my_name)
+            # print('---', my_name)
             st_indx = tmp_citation[0].title().find(my_name)
             end_indx = st_indx + len(my_name)
             break
@@ -155,13 +155,26 @@ def get_formatted_citation(citation):
         else:
             tmp_citation[i] = c
     formatted_citation = '.'.join(tmp_citation)
-    print('----->', 'citation', citation, formatted_citation)
+    # print('----->', 'citation', citation, formatted_citation)
     return formatted_citation
 
 
 @register.filter
 def first_item(queryset):
     return queryset.first()
+
+@register.simple_tag
+def assign(value):
+    return value
+
+@register.filter(name='in_list')
+def in_list(value, arg):
+    print('XXX--->', value, arg)
+    return value in arg.split(',')
+
+@register.filter(name='concat_to_string')
+def concat_to_string(value, arg):
+    return f"{value}{arg}"
 
 
 

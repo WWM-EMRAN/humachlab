@@ -1,0 +1,80 @@
+{# ##### Base: Page Structure ##### #}
+{% extends 'emran_theme1/base.html' %}
+
+
+{# ##### Static Files: Load static files directory/folder: image-jpg|png|ico, css, js ##### #}
+{% load static %}
+
+
+{# ##### Title: Page Title ##### #}
+{% block title %}
+	Emran Ali - Personal Website | Details
+{% endblock %}
+
+
+{# ##### Hero: Hero Section of the Main Page ######}
+{#{% block hero %}#}
+{#    {% include './_hero.html' %}#}
+{#{% endblock %}#}
+
+
+ ##### Content: Main Content #####
+{% block content %}
+
+    {{ section }} || {{ data }} || {{ selected_data_id }}
+
+    <section id="skill-details2" class="general-details" align="justify">
+		<div class="container">
+
+			<div class="row gy-4">
+				<!-- <div class="col-lg-8"> -->
+				<div class="general-info" data-aos="fade-up" data-aos-delay="100">
+					<h4 class="title"><a href="#"> Computer Programming </a></h4>
+					<div class="col-lg-8 pt-4 pt-lg-0 content" >
+						<p>
+							C, C++, Java, C#, Objective-C, Swift, Python, PHP, R
+						</p>
+					</div>
+				</div>
+				<!-- <div class="col-lg-8"> -->
+				<div class="general-info" data-aos="fade-up" data-aos-delay="100">
+					<h4 class="title"><a href="#"> Computer Programming </a></h4>
+					<div class="col-lg-8 pt-4 pt-lg-0 content" >
+						<p>
+							C, C++, Java, C#, Objective-C, Swift, Python, PHP, R
+						</p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</section><!-- End Portfolio Details Section -->
+
+    <section id="skill-details" class="portfolio-details" align="justify">
+		<div class="container">
+
+			<div class="row gy-4">
+				<!-- <div class="col-lg-8"> -->
+				<div class="portfolio-info" data-aos="fade-up" data-aos-delay="100">
+					<h4 class="title"><a href="#"> Computer Programming </a></h4>
+					<div class="col-lg-8 pt-4 pt-lg-0 content" >
+						<p>
+							C, C++, Java, C#, Objective-C, Swift, Python, PHP, R
+						</p>
+					</div>
+				</div>
+				<!-- <div class="col-lg-8"> -->
+				<div class="portfolio-info" data-aos="fade-up" data-aos-delay="100">
+					<h4 class="title"><a href="#"> Computer Programming </a></h4>
+					<div class="col-lg-8 pt-4 pt-lg-0 content" >
+						<p>
+							C, C++, Java, C#, Objective-C, Swift, Python, PHP, R
+						</p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</section><!-- End Portfolio Details Section -->
+{% endblock %}
+

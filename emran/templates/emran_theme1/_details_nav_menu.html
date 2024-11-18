@@ -25,16 +25,21 @@
 
 		<nav id="navbar" class="nav-menu navbar">
 			<ul>
-                {% if page == 'home' %}
 				<li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a> </li>
 				<li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
 				<li><a href="#education" class="nav-link scrollto"><i class="bx bxs-graduation"></i><span>Education</span></a></li>
 				<li><a href="#profession" class="nav-link scrollto"><i class="bx bx-briefcase"></i> <span>Professional Experiences</span></a> </li>
 				<li>
+{#                  <a href="#expertiseandachievements" class="nav-link scrollto more-button" data-toggle="collapse">#}
 				  <a href="#" class="nav-link scrollto more-button" data-toggle="collapse">
 					<i class="bx bx-trophy"></i> <span>Expertise and Achievements</span>
+{#					&nbsp;&nbsp;<i class="bx bxs-down-arrow arrow-icon"></i>#}
 					&nbsp;&nbsp;<i class="bx bxs-down-arrow-alt arrow-icon"></i>
 				  </a>
+{#                  <a href="javascript:void(0);" class="nav-link scrollto more-button" data-toggle="collapse">#}
+{#					<i class="bx bx-trophy"></i> <span>Expertise and Achievements</span>#}
+{#					&nbsp;&nbsp;<i class="bx bxs-down-arrow arrow-icon"></i>#}
+{#				  </a>#}
 				  <ul class="sub-menu">
 					<li><a href="#skills" class="nav-link scrollto"><i class="bx bxs-wrench"></i> <span>Skills and Tools</span></a></li>
 					<li><a href="#awards" class="nav-link scrollto"><i class="bx bx-medal"></i> <span>Honors and Awards</span></a></li>
@@ -49,15 +54,6 @@
 				</li>
 				<li><a href="#publications" class="nav-link scrollto"><i class="bx bi-journal-richtext"></i> <span>Publications</span></a></li>
 				<li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
-
-                {% elif page == 'details' %}
-				<li><a href="/emran/" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a> </li>
-				<li><a href="javascript:history.back()" class="nav-link scrollto active"><i class="bx bx-share"></i> <span>Back</span></a></li>
-
-                {% else %}
-				<li><a href="" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a> </li>
-
-                {% endif %}
 			</ul>
 			<!-- bxs-badge bx-file-blank bx-home bx-user bx-award bx-book-content bx-server bx-envelope bxs-graduation bxs-user-x bxs-user-pin
 			 bxs-user-detail bxs-user-check bxs-user-badge bxs-user-account -->

@@ -28,11 +28,16 @@
 <!-- hero: hero slider section for the landing (index) page only that contains the main theme and message of the site -->
 {% block hero %} {% endblock %}
 
-<!-- breadcrumb: breadcrumb/path section to show the navigation from a root/sub-root link -->
-{% block breadcrumb %} {% endblock %}
-
 <!-- content: main content of the page -->
-{% block content %} {% endblock %}
+<main id="main">
+<!-- breadcrumb: breadcrumb/path section to show the navigation from a root/sub-root link -->
+{#{% block breadcrumb %} {% endblock %}#}
+{% include './_breadcrumb.html' %}
+
+{% block content %}
+
+{% endblock %}
+</main><!-- End #main -->
 
 
 
