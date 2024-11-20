@@ -7,7 +7,7 @@
 {#    <i class="{{ bc_icon }}"></i> {{ bc_title }}#}
 {#{{ target_url }}#}
 
-    {% if section|in_list:'skills,awards,certificates' %}
+    {% if section|in_list:'skills,awards,certificates,projects,memberships,sessionsevents,languages,portfolios,volunteerings,publications' %}
         <form id="{{ form_id }}" action="{{ target_url }}" method="POST" style="display: inline; color: transparent; background-color: transparent;">
             {% csrf_token %}
             <input type="hidden" name="page" value="{{ page }}">
@@ -15,60 +15,24 @@
             <input type="hidden" name="selected_data_id" value="{{ selected_data_id }}">
             <input type="hidden" name="bc_icon" value="{{ bc_icon }}">
             <input type="hidden" name="bc_title" value="{{ bc_title }}">
-            <input type="hidden" name="data" value="{{ data|safe }}">
+{#            <input type="hidden" name="data" value="{{ data|deserialize_object_data|serialize_object_data:True|safe }}">#}
+            <input type="hidden" name="data" value="{{ data }}">
 
 {#            {% if button_text == None and button_icon == None %}#}
 {#                <button type="submit" style="all:unset; background: none; border: none; cursor: pointer; color: transparent;"></button>#}
-{#            {% elif button_text == None and button_icon != None %}#}
             {% if button_text == None and button_icon != None %}
-{#                <button type="submit" style="background: none; border: none; cursor: pointer; color: #149ddd;"> <i class="{{ button_icon }}"></i></button>#}
-{#                <link_button type="submit" > <i class="{{ button_icon }}"></i> </link_button>#}
                 <button type="submit" style="all: unset; cursor: pointer; color: #149ddd;"> <i class="{{ button_icon }}"></i></button>
             {% elif button_text != None and button_icon == None %}
-{#                <button type="submit"> {{ button_text }} </button>#}
-{#                <button class="link-style"> {{ button_text }} </button>#}
-{#                <button class="transparent_button"> {{ button_text }} </button>#}
-{#                <button type="submit" style="background: none; border: none; color: inherit; cursor: pointer;"> <a href="{{ target_url }}">{{ button_text }}</a> </button>#}
-{#                <button type="submit" style="background: none; border: none; cursor: pointer;"> {{ button_text }} </button>#}
-{#                <button type="submit" style="background: none; border: none; color: #149ddd; font-size: 15px; font-weight: 700; cursor: pointer;"> {{ button_text }} </button>#}
-{#                <button type="submit" style="all: unset; cursor: pointer;"> {{ button_text }} </button>#}
                 <button type="submit" style="all: unset; cursor: pointer;"> </button>
-{#                <button type="submit" style="all: unset; cursor: pointer;">#}
-{#                    <a href="{{ det_url }}" style="cursor: pointer;">#}
-{#                        <i class="bx bx-link"></i> {{ button_text }}#}
-{#                    </a>#}
-{#                </button>#}
+            {% elif button_text != None and button_icon != None %}
+                <button type="submit" style="all: unset; cursor: pointer; color: #0F0F0f;"> <i class="{{ bc_icon }}"></i> {{ button_text }} <i class="{{ button_icon }}"></i> </button>
 {#            {% else %}#}
 {#                <button type="submit" style="background: none; border: none; cursor: pointer; color: transparent;"></button>#}
             {% endif %}
       </form>
-    {% elif section == 'awards' %}
-    	<form action="/emran/details" method="POST" style="display: inline;">
-            {% csrf_token %}
-            <input type="hidden" name="page" value="{{ page }}">
-            <input type="hidden" name="section" value="{{ section }}">
-            <input type="hidden" name="bc_icon" value="{{ bc_icon }}">
-            <input type="hidden" name="bc_title" value="{{ bc_title }}">
-            <input type="hidden" name="data" value="{{ data|safe }}">
-
-            <button type="submit" style="background: none; border: none; color: inherit; cursor: pointer;">
-                <i class="{{ button_icon }}"></i> </button>
-      </form>
     {% else %}
     something to show...
     {% endif %}
-
-
-
-{#	<form action="{{ target_url }}" method="POST" style="display: inline;">#}
-{#        {% csrf_token %}#}
-{#        {% for field_name, field_value in hidden_fields.items %}#}
-{#            <input type="hidden" name="{{ field_name }}" value="{{ field_value }}">#}
-{#        {% endfor %}#}
-{#        <button type="submit" style="background: none; border: none; color: inherit; cursor: pointer;">#}
-{#            <i class="{{ button_icon }}"></i>#}
-{#        </button>#}
-{#    </form>#}
 
 
 

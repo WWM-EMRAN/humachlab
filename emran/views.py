@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, HttpResponse, HttpResponseRedirect
 # from .forms import NewsletterForm, ContactForm
 import pprint
+import json
 from .data_manager import *
 
 # Create your views here.
@@ -19,6 +20,10 @@ def details(request):
     all_data = {k:v for k,v in request.POST.items()}
     for k,v in get_all_data.items():
         all_data[k] = v
+    for k,v in all_data.items():
+        print('SP serialising--->', k, type(v), v)
+        # if k=='data':
+        #     all_data[k] = json.loads(v)
     print(all_data.keys(), all_data.values(), all_data, get_all_data)
     return render(request, 'emran_theme1/details.html', all_data)
 

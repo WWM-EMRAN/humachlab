@@ -21,60 +21,238 @@
  ##### Content: Main Content #####
 {% block content %}
 
-    {{ section }} || {{ data }} || {{ selected_data_id }}
+{#    {{ section }} || {{ data.count }} || {{ data|length }} || {{ data }} || {{ selected_data_id }}#}
 
-    <section id="skill-details2" class="general-details" align="justify">
+    <!-- Start Portfolio Details Section -->
+    <section id="{{ section }}" class="portfolio-details" align="justify">
 		<div class="container">
 
 			<div class="row gy-4">
-				<!-- <div class="col-lg-8"> -->
-				<div class="general-info" data-aos="fade-up" data-aos-delay="100">
-					<h4 class="title"><a href="#"> Computer Programming </a></h4>
-					<div class="col-lg-8 pt-4 pt-lg-0 content" >
-						<p>
-							C, C++, Java, C#, Objective-C, Swift, Python, PHP, R
-						</p>
-					</div>
-				</div>
-				<!-- <div class="col-lg-8"> -->
-				<div class="general-info" data-aos="fade-up" data-aos-delay="100">
-					<h4 class="title"><a href="#"> Computer Programming </a></h4>
-					<div class="col-lg-8 pt-4 pt-lg-0 content" >
-						<p>
-							C, C++, Java, C#, Objective-C, Swift, Python, PHP, R
-						</p>
-					</div>
-				</div>
+            {% load template_data_manager %}
+            {% with data=data|deserialize_object_data %}
+                {% if section|in_list:'skills,awards,projects,memberships,sessionsevents,languages,portfolios,volunteerings' %}
+                    {%  for dat in data  %}
+                        {% if section|in_list:'skills' %}
+                            {% with dat.sat_description|get_arranged_description_for_skillsAndTools as arranged_desc %}
+                            <div id="{{ dat.id }}" class="portfolio-info" data-aos="fade-up" data-aos-delay="100">
+                                <h4 class="title"><a href="#{{ dat.id }}"><i class="{{ bc_icon }}"></i> {{ dat.sat_title }} </a></h4>
+                                <p class="description">
+                                    <strong>Short Description: </strong> {{ dat.sat_short_description|default:"(N/A)"}} <br>
+                                    <strong>Description: </strong> {{ arranged_desc|linebreaksbr|default:"(N/A)" }} <br>
+                                    <strong>Level: </strong> {{ dat.sat_skill_level|default:"(N/A)"}}% <br>
+                                </p>
+                            </div>
+                            {% endwith %}
+                        {% elif section|in_list:'awards' %}
+                            <div id="{{ dat.id }}" class="portfolio-info" data-aos="fade-up" data-aos-delay="100">
+                                <h4 class="title"><a href="#{{ dat.id }}"><i class="{{ bc_icon }}"></i> {{ dat.haw_title }} </a></h4>
+                                <p class="description">
+                                    <strong>Issuer Organisation: </strong> {{ dat.haw_issuer_organisation|default:"(N/A)"}} <br>
+                                    <strong>Associated Organisation: </strong> {{ dat.haw_associated_organisation|default:"(N/A)" }} <br>
+                                    <strong>Date: </strong> {{ dat.haw_start_date|default:"(N/A)"}} <br>
+                                    <strong>Short Description: </strong> {{ dat.haw_short_description|default:"(N/A)" }} <br>
+                                    <strong>Description: </strong> {{ dat.haw_description|default:"(N/A)"}} <br>
+                                </p>
+                            </div>
+                        {% elif section|in_list:'projects' %}
+                            <div id="{{ dat.id }}" class="portfolio-info" data-aos="fade-up" data-aos-delay="100">
+                                <h4 class="title"><a href="#{{ dat.id }}"><i class="{{ bc_icon }}"></i> {{ dat.project_position }} </a></h4>
+                                {% if dat.project_image %}
+                                    {% get_corrected_image_url dat.project_image as image_url %}
+                                    <div class="col-lg-6" >
+                                        <img src="{% static image_url.image_url %}" class="img-fluid" style="height: 120px; max-width: 100%; width: auto;" alt="Emran Ali - Personal Website | Projects Organisation">
+{#                                        <img src="{% static image_url.image_url %}" class="img-fluid" alt="Emran Ali - Personal Website | Projects Organisation">#}
+                                    </div>
+                                {% endif %}
+                                <p class="description">
+                                    <strong>Title: </strong> {{ dat.project_title|default:"(N/A)"}} <br>
+                                    <strong>Description: </strong> {{ dat.project_description|default:"(N/A)" }} <br>
+                                    <strong>Fund: </strong> {{ dat.project_fund|default:"(N/A)"}} <br>
+                                    <strong>Funding Organisation: </strong> {{ dat.project_funding_organisation|default:"(N/A)"}} <br>
+                                    <strong>Collaboration Organisation: </strong> {{ dat.project_collaboration_organisation|default:"(N/A)"}} <br>
+                                    <strong>Period: </strong> {{ dat.project_start_date|default:"Present"}} -  {{ dat.project_end_date|default:"Present"}} <br>
+                                </p>
+                            </div>
+                        {% elif section|in_list:'memberships' %}
+                            <div id="{{ dat.id }}" class="portfolio-info" data-aos="fade-up" data-aos-delay="100">
+                                <h4 class="title"><a href="#{{ dat.id }}"><i class="{{ bc_icon }}"></i> {{ dat.membership_name }} </a></h4>
+                                <p class="description">
+                                    <strong>Role: </strong> {{ dat.membership_type}} <br>
+                                    <strong>Organisation: </strong> {{ dat.membership_organisation|default:"(N/A)"}} <br>
+                                    <strong>Institute: </strong> {{ dat.membership_institution|default:"(N/A)"}} <br>
+                                    <strong>Address: </strong> {{ dat.membership_address|default:"(N/A)"}} <br>
+                                    <strong>Has Expiry: </strong> {{ dat.membership_hasexpire|default:"(N/A)"}} <br>
+                                    <strong>Period: </strong> {{ dat.membership_start_date|default:"Present"}} -  {{ dat.membership_end_date|default:"Present"}} <br>
+                                </p>
+                            </div>
+                        {% elif section|in_list:'sessionsevents' %}
+                            <div id="{{ dat.id }}" class="portfolio-info" data-aos="fade-up" data-aos-delay="100">
+                                <h4 class="title"><a href="#{{ dat.id }}"><i class="{{ bc_icon }}"></i> {{ dat.session_lead_name }} </a></h4>
+                                <p class="description">
+                                    <strong>Role: </strong> {{ dat.session_lead_type}} <br>
+                                    <strong>Title: </strong> {{ dat.session_title }} <br>
+                                    <strong>Description: </strong> {{ dat.session_description }} <br>
+                                    <strong>Organisation: </strong> {{ dat.session_organisation|default:"(N/A)"}} <br>
+                                    <strong>Institute: </strong> {{ dat.session_institution|default:"(N/A)"}} <br>
+                                    <strong>Address: </strong> {{ dat.session_address|default:"(N/A)"}} <br>
+                                    <strong>Date: </strong> {{ dat.session_start_date|default:"(N/A)"}} <br>
+                                </p>
+                            </div>
+                        {% elif section|in_list:'languages' %}
+                            <div id="{{ dat.id }}" class="portfolio-info" data-aos="fade-up" data-aos-delay="100">
+                                <h4 class="title"><a href="#{{ dat.id }}"><i class="{{ bc_icon }}"></i> {{ dat.language_name }} </a></h4>
+                                <p class="description">
+                                    <strong>Description: </strong> {{ dat.language_description }} <br>
+                                    <strong>Language Test Details: </strong>  {{ dat.language_test_details|default:"(N/A)" }} <br>
+                                </p>
+                            </div>
+                        {% elif section|in_list:'portfolios' %}
+                            <div id="{{ dat.id }}" class="portfolio-info" data-aos="fade-up" data-aos-delay="100">
+{#                                <h4 class="title"><a href="javascript:void(0)"> {{ dat.portflio_title }} </a></h4>#}
+                                <h4 class="title"><a href="#{{ dat.id }}"><i class="{{ bc_icon }}"></i> {{ dat.portflio_title }} </a></h4>
+                                <p class="description">
+                                    <strong>Platform: </strong> {{ dat.portflio_platform_name }} <br>
+                                    <strong>Description: </strong> {{ dat.portflio_description }} <br>
+                                    <strong>Link: </strong> <a target="_blank" href="{{ dat.portflio_link|default:"(N/A)" }}">{{ dat.portflio_link|default:"(N/A)" }} <i class="bx bx-link-external"></i></a> <br>
+                                </p>
+                            </div>
+                        {% elif section|in_list:'volunteerings' %}
+                            <div id="{{ dat.id }}" class="portfolio-info" data-aos="fade-up" data-aos-delay="100">
+{#                                <h4 class="title"><a href="javascript:void(0)"> {{ dat.portflio_title }} </a></h4>#}
+                                <h4 class="title"><a href="#{{ dat.id }}"><i class="{{ bc_icon }}"></i> {{ dat.volunteering_name }} </a></h4>
+                                {% if dat.volunteering_image %}
+                                    {% get_corrected_image_url dat.volunteering_image as image_url %}
+                                    <div class="col-lg-6" >
+    {#                                    <img src="{% static image_url.image_url %}" class="img-fluid" style="height: 120px; max-width: 100%; width: auto;" alt="Emran Ali - Personal Website | Volunteering">#}
+                                        <img src="{% static image_url.image_url %}" class="img-fluid" alt="Emran Ali - Personal Website | Volunteering">
+                                    </div>
+                                {% endif %}
+                                <p class="description">
+                                    <strong>Involvement:</strong> {{ dat.volunteering_involvement }} <br>
+                                    <strong>Cause:</strong> {{ dat.volunteering_cause|default:"(N/A)" }} <br>
+                                    <strong>Organisation:</strong> {{ dat.volunteering_organisation|default:"(N/A)" }} <br>
+                                    <strong>Description:</strong> {{ dat.volunteering_detail|default:"(N/A)" }} <br>
+                                    <strong>Link:</strong> <a target="_blank" href="{{ dat.volunteering_link|default:"(N/A)" }}">{{ dat.volunteering_link|default:"(N/A)" }} <i class="bx bx-link-external"></i> </a> <br>
+{#                                    <strong>Image:</strong> {{ dat.volunteering_image|default:"(N/A)" }} <br>#}
+                                    <strong>Period:</strong> {{ dat.volunteering_start_date|date:"F Y"|default:"(N/A)" }} - {{ dat.volunteering_end_date|date:"F Y"|default:"Present" }} <br>
+                                </p>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% elif section|in_list:'certificates,publications' %}
+                    {% if section|in_list:'publications' %}
+                        {% get_category_wise_publications_for_individual_categories data as cat_wise_pub %}
+                        {% assign cat_wise_pub.pub_cats as data %}
+                        {% assign cat_wise_pub.pub_cats_list as pub_data %}
+                        <div class="portfolio-info" data-aos="fade-up" data-aos-delay="100">
+                            <div class="col-lg-4 col-md-6 icon-box aos-init aos-animate" data-aos="fade-up">
+                                <p><i class="bx bxl-google"></i> <a href="https://scholar.google.com.au/citations?hl=en&amp;user=ej8d6LkAAAAJ" target="_blank" class="google">Google Scholar<i class="bx bx-link-external"></i></a> </p>
+                            </div>
+                            <div class="col-lg-4 col-md-6 icon-box aos-init aos-animate" data-aos="fade-up">
+                                <p><i class="bx bi-r-square"></i> <a href="https://www.researchgate.net/profile/Emran-Ali-2" target="_blank" class="google">ResearchGate<i class="bx bx-link-external"></i></a> </p>
+                            </div>
+                        </div>
+                    {% endif %}
+                    {% for dat in data  %}
+                        {% if section|in_list:'certificates' %}
+                            <div id="{{ dat.id }}" class="portfolio-info" data-aos="fade-up" data-aos-delay="100">
+                                <h4 class="title"><a href="#{{ dat.id }}"><i class="{{ bc_icon }}"></i> {{ dat.cct_name }} </a></h4>
+                                {% if dat.cct_image %}
+                                    {% get_corrected_image_url dat.cct_image as image_url %}
+                                    <div class="portfolio-wrap">
+                                        <div class="portfolio-links">
+                                            <a href="{% static image_url.image_url %}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="{{ dat.cct_name }}: {{ dat.cct_key_information|linebreaks|default:"(N/A)"}}">
+                                                <img src="{% static image_url.image_url %}" class="img-fluid" style="height: 500px; max-width: 100%; width: auto;" alt="Emran Ali - Personal Website | Certificates">
+                                            </a>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                <p class="description">
+                                    <br><strong>Type: </strong> {{ dat.cct_type|default:"(N/A)"}}
+                                    <br><strong>Description: </strong> {{ dat.cct_description|default:"(N/A)"}}
+                                    <br><strong>Offering Organisation: </strong> {{ dat.cct_offering_organisation|default:"(N/A)"}}
+                                    <br><strong>Funding Organisation: </strong> {{ dat.cct_funding_organisation|default:"(N/A)"}}
+                                    <br><strong>Key Information: </strong> {{ dat.cct_key_information|linebreaks|default:"(N/A)"}}
+{#                                    <br><strong>Has Expiry: </strong> {{ dat.cct_hasexpire|default:"(N/A)"}}#}
+{#                                    <br><strong>Date: </strong> {{ dat.cct_start_date|default:"Present"}} - {{ dat.cct_end_date|default:"Present"}} #}
+                                    <br><strong>Date: </strong> {{ dat.cct_start_date|default:"Present"}}
+                                    <br><strong>Image: </strong> {{ dat.cct_image|default:"(N/A)"}}
+                                    <br><strong>Link: </strong> <a target="_blank" href="{{ dat.cct_online_credential|default:"(N/A)"}}">{{ dat.cct_online_credential|default:"(N/A)"}} <i class="bx bx-link-external"></i></a>
+                                </p>
+                            </div>
+                        {% elif section|in_list:'publications' %}
+                            <div id="{{ dat }}" class="portfolio-info" data-aos="fade-up" data-aos-delay="100">
+                                <h3 class="title"><a href="#{{ dat }}"> {{ dat }}(s) </a></h3>
+                                {% assign pub_data|get_dict_value:dat as pub_data_for_cat %}
+                                {% for pub in pub_data_for_cat %}
+                                    <div id="{{ pub.id }}" class="portfolio-info" data-aos="fade-up" data-aos-delay="100">
+                                        <h4 class="title"><a href="#{{ pub.id }}"><i class="{{ bc_icon }}"></i> {{ pub.pub_title }} </a></h4>
+                                        <p class="description">
+                                            <br><strong>Type: </strong> {{ pub.pub_type|default:"(N/A)"}}
+                                            <br><strong>Sub-Type: </strong> {{ pub.pub_subtype|default:"(N/A)"}}
+                                            <br><strong>Title: </strong> {{ pub.pub_title|default:"(N/A)"}}
+                                            <br><strong>Citation: </strong>
+                                            {% with cite_id='cite_'|concat_to_string:pub.id %}
+                                            <div id="{{ cite_id }}">
+                                                {% get_formatted_citation pub.pub_citation as citation %}
+                                                {{ citation|safe }}
+                                                <transparent_button onclick="CopyToClipboard('{{ cite_id }}')"> <i class="bx bx-copy"></i> </transparent_button>
+                                            </div>
+                                            {% endwith %}
+                                            <br><strong>Serial No: </strong> {{ pub.pub_serial_no|default:"(N/A)"}}
+                                            <br><strong>Abstract: </strong> {{ pub.pub_abstract|linebreaks|default:"(N/A)"}}
+                                            <br><strong>Link: </strong> <a target="_blank" href="{{ pub.pub_doi_or_link|default:"(N/A)"}}">{{ pub.pub_doi_or_link|default:"(N/A)"}} <i class="bx bx-link-external"></i></a>
+                                        </p>
+                                    </div>
+                                {% endfor %}
+                            </div>
+
+                        {% else %}
+                            Inner else...
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    Outer else...
+                {% endif %}
+            {% endwith %}
 			</div>
 
 		</div>
-	</section><!-- End Portfolio Details Section -->
+	</section>
+    <!-- Start Portfolio Details Section -->
 
-    <section id="skill-details" class="portfolio-details" align="justify">
-		<div class="container">
 
-			<div class="row gy-4">
-				<!-- <div class="col-lg-8"> -->
-				<div class="portfolio-info" data-aos="fade-up" data-aos-delay="100">
-					<h4 class="title"><a href="#"> Computer Programming </a></h4>
-					<div class="col-lg-8 pt-4 pt-lg-0 content" >
-						<p>
-							C, C++, Java, C#, Objective-C, Swift, Python, PHP, R
-						</p>
-					</div>
-				</div>
-				<!-- <div class="col-lg-8"> -->
-				<div class="portfolio-info" data-aos="fade-up" data-aos-delay="100">
-					<h4 class="title"><a href="#"> Computer Programming </a></h4>
-					<div class="col-lg-8 pt-4 pt-lg-0 content" >
-						<p>
-							C, C++, Java, C#, Objective-C, Swift, Python, PHP, R
-						</p>
-					</div>
-				</div>
-			</div>
 
-		</div>
-	</section><!-- End Portfolio Details Section -->
+{#    <!-- Start General Details Section -->#}
+{#    <section id="skill-details2" class="general-details" align="justify">#}
+{#		<div class="container">#}
+{##}
+{#			<div class="row gy-4">#}
+{#				<!-- <div class="col-lg-8"> -->#}
+{#				<div class="general-info" data-aos="fade-up" data-aos-delay="100">#}
+{#					<h4 class="title"><a href="#"> Computer Programming </a></h4>#}
+{#					<div class="col-lg-8 pt-4 pt-lg-0 content" >#}
+{#						<p>#}
+{#							C, C++, Java, C#, Objective-C, Swift, Python, PHP, R#}
+{#						</p>#}
+{#					</div>#}
+{#				</div>#}
+{#				<!-- <div class="col-lg-8"> -->#}
+{#				<div class="general-info" data-aos="fade-up" data-aos-delay="100">#}
+{#					<h4 class="title"><a href="#"> Computer Programming </a></h4>#}
+{#					<div class="col-lg-8 pt-4 pt-lg-0 content" >#}
+{#						<p>#}
+{#							C, C++, Java, C#, Objective-C, Swift, Python, PHP, R#}
+{#						</p>#}
+{#					</div>#}
+{#				</div>#}
+{#			</div>#}
+{##}
+{#		</div>#}
+{#	</section>#}
+{#    <!-- End General Details Section -->#}
+
+
+
 {% endblock %}
 

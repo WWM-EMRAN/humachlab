@@ -630,16 +630,16 @@
         </div>
 <!--		</div>-->
 <!--	</section>-->
-<!--	&lt;!&ndash; End Experties and Achievements Section &ndash;&gt;-->
+<!--	End Experties and Achievements Section &ndash;&gt;-->
 
         <!-- ======= Skills Section ======= -->
-        {% with section='skills' bc_icon='bx bxs-wrench' bc_title='Skills and Tools' data=skills_and_tools|safe %}
+        {% with section='skills' bc_icon='bx bxs-wrench' bc_title='Skills and Tools' data=skills_and_tools|serialize_object_data %}
         <section id="{{ section }}" class="skills subsection-bg-white">
             <div class="container">
                 <div class="section-title">
                     <h2>
                         <i class="{{ bc_icon }}"></i> {{ bc_title }}
-                        {% include './_section_form.html' with target_url='/emran/details' page='details' section=section bc_icon=bc_icon bc_title=bc_title data=data button_icon='bx bx-link-external' %}
+                        {% include './_section_form.html' with target_url='/emran/details' page='details' section=section bc_icon=bc_icon bc_title=bc_title data=data button_icon='bx bx-link' %}
                     </h2>
                     <p> From the personal assessment of learning, I am well-equipped with the latest data analytics, machine learning technologies and soft skills. </p>
                 </div>
@@ -647,28 +647,37 @@
                 <div class="row skills-content">
                     {% load template_data_manager %}
                     {% get_skills_and_tools_query_subset skills_and_tools as skltl_queries %}
-
                     <div class="col-lg-6" data-aos="fade-up">
                     {% for skltl in skltl_queries.skltl1 %}
+                    {%  with det_url='/emran/details'|concat_to_string:'#'|concat_to_string:skltl.id form_id='form-'|concat_to_string:section|concat_to_string:skltl.id%}
                         <div class="progress">
-                            <span class="skill">{{ skltl.sat_title }}: {{ skltl.sat_short_description }}  <i class="val">{{ skltl.sat_skill_level }}%</i></span>
+                            <span class="skill">
+                                <a href="javascript:void(0)" onclick="document.getElementById('{{ form_id }}').submit();"> {{ skltl.sat_title }}: {{ skltl.sat_short_description }} </a> <i class="val">{{ skltl.sat_skill_level }}%</i>
+                                {% include './_section_form.html' with target_url=det_url page='details' section=section bc_icon=bc_icon bc_title=bc_title data=data selected_data_id=skltl.id form_id=form_id%}
+                            </span>
                             <div class="progress-bar-wrap">
                                 <div class="progress-bar" role="progressbar" aria-valuenow="{{ skltl.sat_skill_level }}" aria-valuemin="0"
                                      aria-valuemax="100"></div>
                             </div>
                         </div>
+                    {% endwith %}
                     {% endfor %}
                     </div>
 
                     <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
                     {% for skltl in skltl_queries.skltl2 %}
+                    {%  with det_url='/emran/details'|concat_to_string:'#'|concat_to_string:skltl.id form_id='form-'|concat_to_string:section|concat_to_string:skltl.id %}
                         <div class="progress">
-                            <span class="skill">{{ skltl.sat_title }}: {{ skltl.sat_short_description }}  <i class="val">{{ skltl.sat_skill_level }}%</i></span>
+                            <span class="skill">
+                                <a href="javascript:void(0)" onclick="document.getElementById('{{ form_id }}').submit();"> {{ skltl.sat_title }}: {{ skltl.sat_short_description }} </a> <i class="val">{{ skltl.sat_skill_level }}%</i>
+                                {% include './_section_form.html' with target_url=det_url page='details' section=section bc_icon=bc_icon bc_title=bc_title data=data selected_data_id=skltl.id form_id=form_id%}
+                            </span>
                             <div class="progress-bar-wrap">
                                 <div class="progress-bar" role="progressbar" aria-valuenow="{{ skltl.sat_skill_level }}" aria-valuemin="0"
                                      aria-valuemax="100"></div>
                             </div>
                         </div>
+                    {% endwith %}
                     {% endfor %}
                     </div>
                 </div>
@@ -677,15 +686,16 @@
         {% endwith %}
         <!-- End Skills Section -->
 
+
         <!-- ======= Honors and Awards Section ======= -->
-        {% with section='awards' bc_icon='bx bx-medal' bc_title='Honors and Awards' data=honors_and_awards|safe %}
+        {% with section='awards' bc_icon='bx bx-medal' bc_title='Honors and Awards' data=honors_and_awards|serialize_object_data %}
         <section id="{{ section }}" class="services subsection-bg-blue">
             <div class="container">
 
                 <div class="section-title">
                     <h2>
                         <i class="{{ bc_icon }}"></i> {{ bc_title }}
-                        {% include './_section_form.html' with target_url='/emran/details' page='details' section=section bc_icon=bc_icon bc_title=bc_title data=data button_icon='bx bx-link-external' %}
+                        {% include './_section_form.html' with target_url='/emran/details' page='details' section=section bc_icon=bc_icon bc_title=bc_title data=data button_icon='bx bx-link' %}
                     </h2>
                     <p> Honors and Awards achieved throughout the study and professional career. </p>
                 </div>
@@ -693,21 +703,12 @@
                 <div class="row">
                 {%  for honaw in honors_and_awards.all  %}
                     <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
-                        <div class="icon"><i class="bx bx-medal"></i></div>
-{#                        <h4 class="title"><a href="award-details.html#{{ honaw.id }}">{{ honaw.haw_title}} </a></h4>#}
-{#                        {% with '/emran/details?det_id='|concat_to_string:honaw.id as det_url %}#}
-{#                            <h4 class="title"> {% include './_section_form.html' with target_url=det_url page='details' section=section bc_icon=bc_icon bc_title=bc_title data=data selected_data_id=honaw.id button_icon='bx bx-link-external' button_text=honaw.haw_title %} </h4>#}
-{#                            <p class="description">#}
-{#                                {{ honaw.haw_short_description}} by {{ honaw.haw_issuer_organisation}} · {{ honaw.haw_start_date|date:"F Y" }}.#}
-{#                            </p>#}
-{#                        {% endwith %}#}
-{#                        {% with det_url='/emran/details?det_id='|concat_to_string:honaw.id form_id='form-'|concat_to_string:section|concat_to_string:honaw.id %}#}
-                        {% with det_url='/emran/details' form_id='form-'|concat_to_string:section|concat_to_string:honaw.id %}
-{#                            <a href="">{{ honaw.haw_title }}</a>#}
+                        <div class="icon"><i class="{{ bc_icon }}"></i></div>
+                        {% with det_url='/emran/details'|concat_to_string:'#'|concat_to_string:honaw.id form_id='form-'|concat_to_string:section|concat_to_string:honaw.id %}
                             <h4 class="title"> <a href="javascript:void(0)" onclick="document.getElementById('{{ form_id }}').submit();">{{ honaw.haw_title }}</a> </h4>
-                            {% include './_section_form.html' with target_url=det_url page='details' section=section bc_icon=bc_icon bc_title=bc_title data=data selected_data_id=honaw.id form_id=form_id button_icon='bx bx-link-external' button_text=honaw.haw_title %}
+                            {% include './_section_form.html' with target_url=det_url page='details' section=section bc_icon=bc_icon bc_title=bc_title data=data selected_data_id=honaw.id form_id=form_id%}
                             <p class="description">
-                                {{ honaw.haw_short_description}} by {{ honaw.haw_issuer_organisation}} · {{ honaw.haw_start_date|date:"F Y" }}.
+                                {{ honaw.haw_short_description}} by {{ honaw.haw_issuer_organisation}} · {{ honaw.haw_start_date|date:"F Y"|default:"Present" }}.
                             </p>
                         {% endwith %}
                     </div>
@@ -721,13 +722,13 @@
 
 
         <!-- ======= Course and Certificate Section ======= -->
-        {% with section='certificates' bc_icon='bx bx-book-bookmark' bc_title='Courses, Trainings and Certificates' data=certifications_courses_trainings|safe %}
+        {% with section='certificates' bc_icon='bx bx-book-bookmark' bc_title='Courses, Trainings and Certificates' data=certifications_courses_trainings|serialize_object_data %}
         <section id="{{ section }}" class="portfolio subsection-bg-white">
             <div class="container">
                 <div class="section-title">
                     <h2>
                         <i class="{{ bc_icon }}"></i> {{ bc_title }}
-                        {% include './_section_form.html' with target_url='/emran/details' page='details' section=section bc_icon=bc_icon bc_title=bc_title data=data button_icon='bx bx-link-external' %}
+                        {% include './_section_form.html' with target_url='/emran/details' page='details' section=section bc_icon=bc_icon bc_title=bc_title data=data button_icon='bx bx-link' %}
                     </h2>
                     <p> All the completed courses, trainings and achieved certificates. </p>
                 </div>
@@ -741,7 +742,6 @@
                                 {% if crt_type.0 == 'all' %}
                                     <li data-filter=".filter-{{ crt_type.0 }}" class="filter-active">{{ crt_type.1 }}</li>
                                 {% else %}
-{#                                        ".filter-{{ crt_type.0 }}"#}
                                     <li data-filter=".filter-{{ crt_type.0 }}">{{ crt_type.1 }}</li>
                                 {% endif %}
                             {% endfor %}
@@ -752,21 +752,14 @@
                 <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
                     {% for crt in home_page_certs.selected_cert %}
                         {% get_certifications_courses_trainings_one_cert_types_and_corrected_image_url crt as cert_types_and_image_url %}
-{#                            "{% for type in cert_types_and_image_url.cert_types %}filter-{{ type.0 }} {% endfor %}"#}
-{#    <!--						<div class="col-lg-4 col-md-6 portfolio-item filter-cert filter-cour" data-aos="fade-up" data-aos-delay="100">-->#}
                         <div class="col-lg-4 col-md-6 portfolio-item {% for type in cert_types_and_image_url.cert_types %}filter-{{ type }} {% endfor %}" >
-{#    <!--						<div class="col-lg-3 col-md-6 portfolio-item filter-cert filter-cour" >-->#}
                             <div class="portfolio-wrap">
                                 <img src="{% static cert_types_and_image_url.image_url %}" class="img-fluid" alt="Emran Ali - Personal Website | Certificates">
                                 <div class="portfolio-links">
-                                    {% with det_url='/emran/details' form_id='form-'|concat_to_string:section|concat_to_string:crt.id %}
+                                    {% with det_url='/emran/details'|concat_to_string:'#'|concat_to_string:crt.id form_id='form-'|concat_to_string:section|concat_to_string:crt.id %}
 {#                                    {% with '/emran/details?det_id='|concat_to_string:crt.id as det_url %}#}
                                         <a href="{% static cert_types_and_image_url.image_url %}" data-gallery="portfolioGallery"
-                                           class="portfolio-lightbox" title="{{ crt.cct_name }}"><i class="bx bx-plus"></i></a>
-{#                                        <a href="certificate-details.html#{{ crt.id }}" title="More Details"><i class="bx bx-link"></i></a>#}
-{#                                        {% include './_section_form.html' with target_url=det_url page='details' section=section bc_icon=bc_icon bc_title=bc_title data=data selected_data_id=crt.id button_icon='bx bx-link' %}#}
-{#                                        <a href="certificate-details.html#{{ crt.id }}" title="More Details">{% include './_section_form.html' with target_url=det_url page='details' section=section bc_icon=bc_icon bc_title=bc_title data=data selected_data_id=crt.id button_icon='bx bx-link' %}<i class="bx bx-link"></i></a>#}
-
+                                           class="portfolio-lightbox" title="{{ crt.cct_name }}: {{ crt.cct_key_information|linebreaks|default:"(N/A)"}}"><i class="bx bx-plus"></i></a>
                                         <a href="javascript:void(0)" onclick="document.getElementById('{{ form_id }}').submit();" title="More Details"><i class="bx bx-link"></i></a>
                                         {% include './_section_form.html' with target_url=det_url page='details' section=section bc_icon=bc_icon bc_title=bc_title data=data selected_data_id=crt.id form_id=form_id %}
                                     {% endwith %}
@@ -780,38 +773,69 @@
         {% endwith %}
         <!-- End Course and Certificate Section -->
 
+
         <!-- ======= Projects Section ======= -->
-        <section id="projects" class="about subsection-bg-blue">
+        {% with section='projects' bc_icon='bx bx-bulb' bc_title='Projects' data=projects|serialize_object_data %}
+        <section id="{{ section }}" class="services subsection-bg-blue">
+{#        <section id="{{ section }}" class="about subsection-bg-blue">#}
             <div class="container">
 
                 <div class="section-title">
-                    <h2><i class="bx bx-bulb"></i> Projects <a href="project-details.html"><i class="bx bx-link-external"></i></a></h2>
+                    <h2>
+                        <i class="{{ bc_icon }}"></i> {{ bc_title }}
+                        {% include './_section_form.html' with target_url='/emran/details' page='details' section=section bc_icon=bc_icon bc_title=bc_title data=data button_icon='bx bx-link' %}
+                    </h2>
                     <p> Projects and project involvement as professional person. </p>
                 </div>
 
                 <div class="row">
-                {%   for proj in projects.all  %}
-                    <div class="col-lg-6" data-aos="fade-up">
-                        <h4 class="title"><a href="project-details.html#{{ proj.id }}"><i class="bx bx-bulb"></i>
-                            {{ proj.project_position }}</a></h4>
-                        <p class="description">
-                            <strong>Project:</strong> {{ proj.project_title }}.<br>
-                            <strong>Funding:</strong> {{ proj.project_funding_organisation}}, {{ proj.project_collaboration_organisation}} · {{ proj.project_start_date|date:"F Y" }} - {% if proj.project_end_date %}{{ proj.project_end_date|date:"F Y" }}{% else %}Present{% endif %}.
-                        </p>
+                {%  for proj in projects.all  %}
+                    <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
+                        <div class="icon"><i class="{{ bc_icon }}"></i></div>
+                        {% with det_url='/emran/details'|concat_to_string:'#'|concat_to_string:proj.id form_id='form-'|concat_to_string:section|concat_to_string:proj.id %}
+                            <h4 class="title"> <a href="javascript:void(0)" onclick="document.getElementById('{{ form_id }}').submit();">{{ proj.project_position }}</a> </h4>
+                            {% include './_section_form.html' with target_url=det_url page='details' section=section bc_icon=bc_icon bc_title=bc_title data=data selected_data_id=proj.id form_id=form_id%}
+                            <p class="description">
+                                <strong>Project:</strong> {{ proj.project_title }}.<br>
+                                <strong>Funding:</strong> {{ proj.project_funding_organisation}}, {{ proj.project_collaboration_organisation}} · {{ proj.project_start_date|date:"F Y"|default:"Present" }} - {{ proj.project_end_date|date:"F Y"|default:"Present" }}.
+                            </p>
+                        {% endwith %}
                     </div>
                 {% endfor %}
                 </div>
 
+{#                for section class about#}
+{#                <div class="row">#}
+{#                {%  for proj in projects.all  %}#}
+{#                    <div class="col-lg-6" data-aos="fade-up">#}
+{#                    {% with det_url='/emran/details' form_id='form-'|concat_to_string:section|concat_to_string:proj.id %}#}
+{#                            <h4 class="title"> <a href="javascript:void(0)" onclick="document.getElementById('{{ form_id }}').submit();"><i class="{{ bc_icon }}"></i> {{ proj.project_position }}</a> </h4>#}
+{#                            {% include './_section_form.html' with target_url=det_url page='details' section=section bc_icon=bc_icon bc_title=bc_title data=data selected_data_id=proj.id form_id=form_id  %}#}
+{#                            <p class="description">#}
+{#                                <strong>Project:</strong> {{ proj.project_title }}.<br>#}
+{#                                <strong>Funding:</strong> {{ proj.project_funding_organisation}}, {{ proj.project_collaboration_organisation}} · {{ proj.project_start_date|date:"F Y"|default:"Present" }} - {{ proj.project_end_date|date:"F Y"|default:"Present" }}.#}
+{#                            </p>#}
+{#                    {% endwith %}#}
+{#                    </div>#}
+{#                {% endfor %}#}
+{#                </div>#}
+
             </div>
         </section>
+        {% endwith %}
         <!-- End Projects Section -->
 
+
         <!-- ======= Membership Section ======= -->
-        <section id="membership" class="services subsection-bg-white">
+        {% with section='memberships' bc_icon='bx bx-group' bc_title='Memberships' data=memberships|serialize_object_data %}
+        <section id="{{ section }}" class="services subsection-bg-white">
             <div class="container">
 
                 <div class="section-title">
-                    <h2><i class="bx bx-group"></i> Memberships</h2>
+                    <h2>
+                        <i class="{{ bc_icon }}"></i> {{ bc_title }}
+                        {% include './_section_form.html' with target_url='/emran/details' page='details' section=section bc_icon=bc_icon bc_title=bc_title data=data button_icon='bx bx-link' %}
+                    </h2>
                     <p> Organisational and voluntary memberships as student and professional. </p>
                 </div>
 
@@ -820,129 +844,211 @@
                     <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
 <!--							<h4 class="title"><a href="#membership"><i class="bx bx-group"></i> IEEE Student Member</a></h4>-->
                         <div class="icon"><i class="bx bx-group"></i></div>
-                        <h4 class="title"><a href="#membership">{{ mem.membership_name}}</a></h4>
-                        <p class="description">
-                            {{ mem.membership_type}}, {{ mem.membership_organisation}}, {{ mem.membership_institution}}, {{ mem.membership_address}} · {{ mem.membership_start_date|date:"F Y" }} - {% if mem.membership_end_date %}{{ mem.membership_end_date|date:"F Y" }}{% else %}Present{% endif %}
-                        </p>
+                        {% with det_url='/emran/details'|concat_to_string:'#'|concat_to_string:mem.id form_id='form-'|concat_to_string:section|concat_to_string:mem.id %}
+                            <h4 class="title"> <a href="javascript:void(0)" onclick="document.getElementById('{{ form_id }}').submit();">{{ mem.membership_name }}</a> </h4>
+                            {% include './_section_form.html' with target_url=det_url page='details' section=section bc_icon=bc_icon bc_title=bc_title data=data selected_data_id=mem.id form_id=form_id%}
+                            <p class="description">
+                            {{ mem.membership_type}}, {{ mem.membership_organisation}}, {{ mem.membership_institution}}, {{ mem.membership_address}} · {{ mem.membership_start_date|date:"F Y"|default:"Present" }} - {{ mem.membership_end_date|date:"F Y"|default:"Present" }}
+                            </p>
+                        {% endwith %}
                     </div>
                 {% endfor %}
                 </div>
 
             </div>
         </section>
+        {% endwith %}
         <!-- End Membership Section -->
 
+
         <!-- ======= Chair and Speaker Section ======= -->
-        <section id="sessionlead" class="about subsection-bg-blue">
+        {% with section='sessionsevents' bc_icon='bx bx-chair' bc_title='Sessions and Events' data=sessions_or_events|serialize_object_data %}
+        <section id="{{ section }}" class="services subsection-bg-blue">
+{#        <section id="{{ section }}" class="about subsection-bg-blue">#}
             <div class="container">
                 <div class="section-title">
-                    <h2><i class="bx bx-chair"></i> Sessions and Events </h2>
-                    <p> Experience as a session chair or keynote speaker. </p>
+                    <h2>
+                        <i class="{{ bc_icon }}"></i> {{ bc_title }}
+                        {% include './_section_form.html' with target_url='/emran/details' page='details' section=section bc_icon=bc_icon bc_title=bc_title data=data button_icon='bx bx-link' %}
+                    </h2>
+                    <p> Experience as a session chair or keynote speaker at different events. </p>
                 </div>
 
                 <div class="row">
-                {% for sess_evnt in sessions_or_events.all  %}
-                    <div class="col-lg-6" data-aos="fade-up">
-                        <h4 class="title"><a href="#sessionlead"><i class="bx bx-microphone"></i> {{ sess_evnt.session_lead_name}} </a></h4>
-                        <p class="description">
-                            {{ sess_evnt.session_lead_type}}, {{ sess_evnt.session_title}}, Organized by {{ sess_evnt.session_organisation}}, {{ sess_evnt.session_institution}}, {{ sess_evnt.session_address}} on {{ sess_evnt.session_start_date}}
-                        </p>
+                {%  for sess_evnt in sessions_or_events.all  %}
+                    <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
+                        <div class="icon"><i class="{{ bc_icon }}"></i></div>
+                        {% with det_url='/emran/details'|concat_to_string:'#'|concat_to_string:sess_evnt.id form_id='form-'|concat_to_string:section|concat_to_string:sess_evnt.id %}
+                            <h4 class="title"> <a href="javascript:void(0)" onclick="document.getElementById('{{ form_id }}').submit();">{{ sess_evnt.session_lead_name }}</a> </h4>
+                            {% include './_section_form.html' with target_url=det_url page='details' section=section bc_icon=bc_icon bc_title=bc_title data=data selected_data_id=sess_evnt.id form_id=form_id%}
+                            <p class="description">
+                                {{ sess_evnt.session_lead_type}}, {{ sess_evnt.session_title}}, Organized by {{ sess_evnt.session_organisation}}, {{ sess_evnt.session_institution}}, {{ sess_evnt.session_address}} on {{ sess_evnt.session_start_date|default:"Present"}}
+                            </p>
+                        {% endwith %}
                     </div>
                 {% endfor %}
                 </div>
 
+{#                for section class about#}
+{#                <div class="row">#}
+{#                {%  for sess_evnt in sessions_or_events.all  %} #}
+{#                    <div class="col-lg-6" data-aos="fade-up">#}
+{#                    {% with det_url='/emran/details' form_id='form-'|concat_to_string:section|concat_to_string:sess_evnt.id %}#}
+{#                            <h4 class="title"> <a href="javascript:void(0)" onclick="document.getElementById('{{ form_id }}').submit();"><i class="{{ bc_icon }}"></i> {{ sess_evnt.session_lead_name }}</a> </h4>#}
+{#                            {% include './_section_form.html' with target_url=det_url page='details' section=section bc_icon=bc_icon bc_title=bc_title data=data selected_data_id=sess_evnt.id form_id=form_id  %}#}
+{#                            <p class="description">#}
+{#                                {{ sess_evnt.session_lead_type}}, {{ sess_evnt.session_title}}, Organized by {{ sess_evnt.session_organisation}}, {{ sess_evnt.session_institution}}, {{ sess_evnt.session_address}} on {{ sess_evnt.session_start_date}}#}
+{#                            </p>#}
+{#                    {% endwith %}#}
+{#                    </div>#}
+{#                {% endfor %}#}
+{#                </div>#}
+
             </div>
         </section>
+        {% endwith %}
         <!-- End Chair and Speaker Section -->
 
+
         <!-- ======= Language Section ======= -->
-        <section id="language" class="services subsection-bg-white">
+        {% with section='languages' bc_icon='bx bx-conversation' bc_title='Languages' data=languages|serialize_object_data %}
+        <section id="{{ section }}" class="services subsection-bg-white">
             <div class="container">
 
                 <div class="section-title">
-                    <h2><i class="bx bx-conversation"></i> Languages</h2>
+                    <h2>
+                        <i class="{{ bc_icon }}"></i> {{ bc_title }}
+                        {% include './_section_form.html' with target_url='/emran/details' page='details' section=section bc_icon=bc_icon bc_title=bc_title data=data button_icon='bx bx-link' %}
+                    </h2>
                     <p> Language proficiency in Listening(L), Reading(R), Writing(W) and Speaking(S). </p>
                 </div>
 
                 <div class="row">
-                {% for lang in languages.all  %}
+                {%  for lang in languages.all  %}
                     <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
-                        <div class="icon"><i class="bx bx-conversation"></i></div>
-                        <h4 class="title"><a href="#language">{{ lang.language_name }}</a></h4>
-                        <p class="description">
-                            {{ lang.language_description }} · {{ lang.language_test_details }}.
-                        </p>
+                        <div class="icon"><i class="{{ bc_icon }}"></i></div>
+                        {% with det_url='/emran/details'|concat_to_string:'#'|concat_to_string:lang.id form_id='form-'|concat_to_string:section|concat_to_string:lang.id %}
+                            <h4 class="title"> <a href="javascript:void(0)" onclick="document.getElementById('{{ form_id }}').submit();">{{ lang.language_name }}</a> </h4>
+                            {% include './_section_form.html' with target_url=det_url page='details' section=section bc_icon=bc_icon bc_title=bc_title data=data selected_data_id=lang.id form_id=form_id%}
+                            <p class="description">
+                                {{ lang.language_description }} · {{ lang.language_test_details }}.
+                            </p>
+                        {% endwith %}
                     </div>
                 {% endfor %}
                 </div>
 
             </div>
         </section>
+        {% endwith %}
         <!-- End Language Section -->
 
+
         <!-- ======= Github Repositories Section ======= -->
-        <section id="portfolio" class="services subsection-bg-blue">
+        {% with section='portfolios' bc_icon='bx bxl-github' bc_title='Portfolios' data=portfolios|serialize_object_data %}
+        <section id="{{ section }}" class="services subsection-bg-blue">
             <div class="container">
 
                 <div class="section-title">
-                    <h2><i class="bx bxl-github"></i> Portfolios</h2>
+                    <h2>
+                        <i class="{{ bc_icon }}"></i> {{ bc_title }}
+                        {% include './_section_form.html' with target_url='/emran/details' page='details' section=section bc_icon=bc_icon bc_title=bc_title data=data button_icon='bx bx-link' %}
+                    </h2>
                     <p> Portfolio Github repositories that are publicly available only with my significant contribution. </p>
                 </div>
 
                 <div class="row">
-                {% for portf in portfolios.all  %}
-                    <div class="col-lg-6" data-aos="fade-up">
-                        <div class="icon"><i class="bx bxl-github"></i></div>
-                        <h4 class="title"><a target="_blank" href="{{ portf.portflio_link }}"> {{ portf.portflio_title }} <i class="bx bx-link-external"></i></a></h4>
-                        <p class="description">
-                            {{ portf.portflio_description }}
-                        </p>
+                {%  for portf in portfolios.all  %}
+                    <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
+                        <div class="icon"><i class="{{ bc_icon }}"></i></div>
+                        {% with det_url='/emran/details'|concat_to_string:'#'|concat_to_string:portf.id form_id='form-'|concat_to_string:section|concat_to_string:portf.id %}
+                            <h4 class="title"> <a href="javascript:void(0)" onclick="document.getElementById('{{ form_id }}').submit();">{{ portf.portflio_title }}</a>  <a target="_blank" href="{{ portf.portflio_link }}"> <i class="bx bx-link-external"></i></a></h4>
+                            {% include './_section_form.html' with target_url=det_url page='details' section=section bc_icon=bc_icon bc_title=bc_title data=data selected_data_id=portf.id form_id=form_id%}
+                            <p class="description">
+                                {{ portf.portflio_description }}
+                            </p>
+                        {% endwith %}
                     </div>
                 {% endfor %}
                 </div>
 
             </div>
         </section>
+        {% endwith %}
         <!-- End Github Repositories Section -->
 
+
         <!-- ======= Volumteering Section ======= -->
-        <section id="volunteer" class="about subsection-bg-white">
+        {% with section='volunteerings' bc_icon='bx bxs-hand' bc_title='Volunteering' data=volunteering|serialize_object_data %}
+        <section id="{{ section }}" class="services subsection-bg-white">
+{#        <section id="{{ section }}" class="about subsection-bg-white">#}
             <div class="container">
 
                 <div class="section-title">
-                    <h2><i class="bx bxs-hand"></i> Volunteering <a href="volunteering-details.html"><i class="bx bx-link-external"></i></a></h2>
+                    <h2>
+                        <i class="{{ bc_icon }}"></i> {{ bc_title }}
+                        {% include './_section_form.html' with target_url='/emran/details' page='details' section=section bc_icon=bc_icon bc_title=bc_title data=data button_icon='bx bx-link' %}
+                    </h2>
                     <p> Volunteering works and activities done for different organisations. </p>
                 </div>
 
                 <div class="row">
-                {% for vol in volunteering.all %}
-                    <div class="col-lg-6" data-aos="fade-up">
-                        <h4 class="title"><a href="volunteering-details.html#{{ vol.id }}"><i class="bx bxs-hand"></i>
-                            {{ vol.volunteering_name }} </a></h4>
-                        <p class="description">
-                            <strong>Involvement:</strong> {{ vol.volunteering_involvement }} <br>
-                            <strong>Organisation:</strong> {{ vol.volunteering_organisation }} <br>
-                            <strong>Cause:</strong> {{ vol.volunteering_cause }} <br>
-                            <strong>Period:</strong> {{ vol.volunteering_start_date|date:"F Y" }} - {% if vol.volunteering_end_date %}{{ vol.volunteering_end_date|date:"F Y" }}{% else %}Present{% endif %}
-                        </p>
+                {%  for vol in volunteering.all  %}
+                    <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
+                        <div class="icon"><i class="{{ bc_icon }}"></i></div>
+                        {% with det_url='/emran/details'|concat_to_string:'#'|concat_to_string:vol.id form_id='form-'|concat_to_string:section|concat_to_string:vol.id %}
+                            <h4 class="title"> <a href="javascript:void(0)" onclick="document.getElementById('{{ form_id }}').submit();">{{ vol.volunteering_name }}</a> </h4>
+                            {% include './_section_form.html' with target_url=det_url page='details' section=section bc_icon=bc_icon bc_title=bc_title data=data selected_data_id=vol.id form_id=form_id%}
+                            <p class="description">
+                                <strong>Involvement:</strong> {{ vol.volunteering_involvement }} <br>
+                                <strong>Organisation:</strong> {{ vol.volunteering_organisation }} <br>
+                                <strong>Cause:</strong> {{ vol.volunteering_cause }} <br>
+                                <strong>Period:</strong> {{ vol.volunteering_start_date|date:"F Y"|default:"Present" }} - {{ vol.volunteering_end_date|date:"F Y"|default:"Present" }}
+                            </p>
+                        {% endwith %}
                     </div>
                 {% endfor %}
                 </div>
 
+{#                for section class about#}
+{#                <div class="row">#}
+{#                {%  for vol in volunteering.all  %}#}
+{#                    <div class="col-lg-6" data-aos="fade-up">#}
+{#                    {% with det_url='/emran/details' form_id='form-'|concat_to_string:section|concat_to_string:vol.id %}#}
+{#                            <h4 class="title"> <a href="javascript:void(0)" onclick="document.getElementById('{{ form_id }}').submit();"><i class="{{ bc_icon }}"></i> {{ vol.volunteering_name }}</a> </h4>#}
+{#                            {% include './_section_form.html' with target_url=det_url page='details' section=section bc_icon=bc_icon bc_title=bc_title data=data selected_data_id=vol.id form_id=form_id  %}#}
+{#                            <p class="description">#}
+{#                                <strong>Involvement:</strong> {{ vol.volunteering_involvement }} <br>#}
+{#                                <strong>Organisation:</strong> {{ vol.volunteering_organisation }} <br>#}
+{#                                <strong>Cause:</strong> {{ vol.volunteering_cause }} <br>#}
+{#                                <strong>Period:</strong> {{ vol.volunteering_start_date|date:"F Y" }} - {{ vol.volunteering_end_date|date:"F Y"|default:"Present" }} #}
+{#                            </p>#}
+{#                    {% endwith %}#}
+{#                    </div>#}
+{#                {% endfor %}#}
+{#                </div>#}
+
             </div>
         </section>
+        {% endwith %}
         <!-- End Volumteering Section -->
+
     </div>
 </section>
 <!-- End Experties and Achievements Section -->
 
 
 <!-- ======= Publications Section ======= -->
-<section id="publications" class="resume" align="justify">
+{% with section='publications' bc_icon='bx bi-journal-richtext' bc_title='Publications' data=publications|serialize_object_data %}
+{#{% with section='publications' bc_icon='bx bi-journal-richtext' bc_title='Publications' data=publications|safe %}#}
+<section id="{{ section }}" class="resume" align="justify">
     <div class="container">
 
         <div class="section-title">
-            <h2><i class="bx bi-journal-richtext"></i> Publications <a href="publication-details.html"><i class="bx bx-link-external"></i></a></h2>
+            <h2>
+                <i class="{{ bc_icon }}"></i> {{ bc_title }}
+                {% include './_section_form.html' with target_url='/emran/details' page='details' section=section bc_icon=bc_icon bc_title=bc_title data=data button_icon='bx bx-link' %}
+            </h2>
             <p> All the publications (reports and articles) in journal, conference, poster, symposium, blog, etc. </p>
         </div>
 
@@ -952,7 +1058,11 @@
         <div class="row">
             <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
             {% for cat, items in cat_wise_pub.group1.items %}
-                <h3 class="resume-title"><a href="publication-details.html#{{ cat }}">{{ cat }}(s)</a></h3>
+                {% with det_url='/emran/details'|concat_to_string:'#'|concat_to_string:cat form_id='form-'|concat_to_string:section|concat_to_string:cat %}
+                <h3 class="resume-title"> <a href="javascript:void(0)" onclick="document.getElementById('{{ form_id }}').submit();">{{ cat }}(s)</a> </h3>
+                {% include './_section_form.html' with target_url=det_url page='details' section=section bc_icon=bc_icon bc_title=bc_title data=data selected_data_id=vol.id form_id=form_id%}
+                {% endwith %}
+
                 {% for pub in items %}
                 <div class="resume-item">
                     <h4> {{ pub.pub_title }} </h4>
@@ -970,7 +1080,11 @@
 
             <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
             {% for cat, items in cat_wise_pub.group2.items %}
-                <h3 class="resume-title"><a href="publication-details.html#{{ cat }}">{{ cat }}(s)</a></h3>
+                {% with det_url='/emran/details'|concat_to_string:'#'|concat_to_string:cat form_id='form-'|concat_to_string:section|concat_to_string:cat %}
+                <h3 class="resume-title"> <a href="javascript:void(0)" onclick="document.getElementById('{{ form_id }}').submit();">{{ cat }}(s)</a> </h3>
+                {% include './_section_form.html' with target_url=det_url page='details' section=section bc_icon=bc_icon bc_title=bc_title data=data selected_data_id=vol.id form_id=form_id%}
+                {% endwith %}
+{#                <h3 class="resume-title"><a href="publication-details.html#{{ cat }}">{{ cat }}(s)</a></h3>#}
                 {% for pub in items %}
                 <div class="resume-item">
                     <h4> {{ pub.pub_title }} </h4>
@@ -988,12 +1102,13 @@
         </div>
     </div>
 </section>
+{% endwith %}
 <!-- End Publications Section -->
 
 
 
 <!-- ======= Contact Section ======= -->
-<section id="contact" class="contact section-bg" align="justify">
+<section id="contacts" class="contact section-bg" align="justify">
     <div class="container">
 
         <div class="section-title">

@@ -1,7 +1,8 @@
 from django import template
 from django.conf import settings
 import math
-
+import json
+from django.core.serializers import serialize, deserialize
 
 
 register = template.Library()
@@ -40,14 +41,24 @@ def get_certifications_courses_trainings_all_cert_type(query_set, visible_items=
 
 
 @register.simple_tag
-def get_certifications_courses_trainings_one_cert_types_and_corrected_image_url(crt_item, trim_loc='/myresources'):
-    cert_types = []
-    image_url = str(crt_item.cct_image)
+def get_corrected_image_url(image_url, trim_loc='/myresources'):
+    image_url = str(image_url)
     start_index = image_url.find(trim_loc)
     image_url = image_url[start_index:] if start_index != -1 else image_url
+    return {'image_url': image_url}
 
+
+@register.simple_tag
+def get_certifications_courses_trainings_one_cert_types_and_corrected_image_url(crt_item, trim_loc='/myresources'):
+    cert_types = []
+    # image_url = str(crt_item.cct_image)
+    # start_index = image_url.find(trim_loc)
+    # image_url = image_url[start_index:] if start_index != -1 else image_url
+    #
     for ct in crt_item.cct_type:
         cert_types.append(ct)
+    image_url = get_corrected_image_url(crt_item.cct_image)
+    image_url = image_url['image_url']
     # print('cert_type ----->', cert_types, type(cert_types), image_url)
     return {'cert_types': cert_types, 'image_url': image_url}
 
@@ -128,6 +139,32 @@ def get_category_wise_publications(publications, cols=2):
     to_return = {'pub_cats': sorted_cat, 'pub_cats_list': sorted_pub, 'cat_groups': cat_groups, 'group1': group1, 'group2': group2}
     return to_return
 
+@register.simple_tag
+def get_category_wise_publications_for_individual_categories(publications):
+    pub_cat_seq = ['Journal', 'Conference', 'Poster', 'Blog']
+    cat_groups = [['Journal'], ['Conference'], ['Poster'], ['Blog']]
+    pub_cats = []
+    pub_cats_list = {}
+    print('publications ----->', type(publications), publications)
+    if not isinstance(publications, list):
+        all_pubs = publications.all()
+    else:
+        all_pubs = publications
+
+    for pub in all_pubs:
+        if pub.pub_type not in pub_cats:
+            pub_cats.append(pub.pub_type)
+            pub_cats_list[pub.pub_type] = []
+        pub_cats_list[pub.pub_type].append(pub)
+
+    # sort publication based on cat seq
+    sorted_cat = sorted(pub_cats, key=lambda x: pub_cat_seq.index(x))
+    sorted_pub = {key: pub_cats_list[key] for key in pub_cat_seq if key in pub_cats_list}
+    print('sorted_cat ----->', sorted_cat, sorted_pub)
+
+    to_return = {'pub_cats': sorted_cat, 'pub_cats_list': sorted_pub}
+    return to_return
+
 
 @register.filter
 def get_item(dictionary, key):
@@ -175,6 +212,80 @@ def in_list(value, arg):
 @register.filter(name='concat_to_string')
 def concat_to_string(value, arg):
     return f"{value}{arg}"
+
+# @register.simple_tag
+@register.filter(name='serialize_object_data')
+def serialize_object_data(data, already_serialised=False):
+    # data = list(data.values())  # Convert queryset to a list of dictionaries
+    # serialized_data = json.dumps(data)  # Serialize data
+
+    if not already_serialised:
+        data = data.all()
+
+    # Serialize the queryset to JSON
+    serialized_data = serialize('json', data)
+
+    # # Convert the serialized data string to unicode before encoding
+    # serialized_data = serialized_data.encode('utf-8', 'ignore')
+    # # serialized_data = serialized_data.decode('utf-8', 'ignore')
+
+    print('YYY---> serialising data.....', type(data), len(data), data, '\n---', type(serialized_data), serialized_data)
+    return serialized_data
+
+# @register.simple_tag
+@register.filter(name='deserialize_object_data')
+def deserialize_object_data(serialized_data, already_deserialised=False):
+    # deserialized_data = None
+    # if data:
+    #     try:
+    #         deserialized_data = json.loads(data)
+    #     except json.JSONDecodeError:
+    #         deserialized_data = []  # Handle invalid JSON gracefully
+
+    if isinstance(serialized_data, list):
+        serialized_data = json.dumps(serialized_data, ensure_ascii=False)  # Convert list to a JSON string
+
+    # print('ZZZ 1111---> deserialising data.....', type(serialized_data), len(serialized_data), serialized_data)
+    # # Decode the byte-encoded data back to a string
+    # serialized_data = serialized_data.decode('utf-8', 'ignore')
+
+    # Now deserialize the decoded data
+    # deserialized_data = list(deserialize('json', serialized_data))
+    deserialized_data = deserialize('json', serialized_data)
+
+    print('ZZZ---> deserialising data.....', type(serialized_data), len(serialized_data), serialized_data, '\n---', type(deserialized_data), deserialized_data)
+    # for obj in deserialized_data:
+    #     instance = obj.object  # Access the actual model instance
+    #     print(instance)
+    deserialized_data = [obj.object for obj in deserialized_data]
+
+    return deserialized_data
+
+
+# @register.simple_tag
+@register.filter(name='get_arranged_description_for_skillsAndTools')
+def get_arranged_description_for_skillsAndTools(description, sub_desc_starter=':', sub_desc_separator=','):
+    arranged_desc = description
+
+    # arranged_desc = description.replace(". ", ". <br>")
+    # arranged_desc = arranged_desc.replace("<br> ", "<br>")
+
+    # arranged_desc = description.replace(". ", ". \n")
+
+    # arranged_desc = description.replace(". \n", ". \n<strong>")
+    # arranged_desc = arranged_desc.replace(":", ":</strong>")
+    return arranged_desc
+
+
+@register.filter
+def get_dict_value(dictionary, key):
+    return dictionary.get(key)
+
+
+@register.simple_tag
+def test_anything(data):
+    print('XXXX--->', type(data), data)
+    # print(data['Journal'])
 
 
 
