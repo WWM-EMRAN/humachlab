@@ -30,9 +30,12 @@
 
 <!-- content: main content of the page -->
 <main id="main">
-<!-- breadcrumb: breadcrumb/path section to show the navigation from a root/sub-root link -->
-{#{% block breadcrumb %} {% endblock %}#}
-{% include './_breadcrumb.html' %}
+
+{% if page != 'home' %}
+    <!-- breadcrumb: breadcrumb/path section to show the navigation from a root/sub-root link -->
+    {#{% block breadcrumb %} {% endblock %}#}
+    {% include './_breadcrumb.html' %}
+{% endif %}
 
 {% block content %}
 

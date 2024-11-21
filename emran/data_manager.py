@@ -5,7 +5,8 @@ def get_all_data_models(page):
     key_information = KeyInformation.objects
     skills_and_tools = SkillsAndTools.objects
     honors_and_awards = HonorsAndAwards.objects.order_by('id').reverse()
-    certifications_courses_trainings = CertificationsCoursesTrainings.objects#.order_by('id').reverse()
+    # certifications_courses_trainings = CertificationsCoursesTrainings.objects.order_by('id').reverse()
+    certifications_courses_trainings = CertificationsCoursesTrainings.objects.order_by('cct_start_date').reverse()
     projects = Projects.objects.order_by('id').reverse()
     memberships = Memberships.objects.order_by('id').reverse()
     sessions_or_events = SessionsOrEvents.objects.order_by('id').reverse()

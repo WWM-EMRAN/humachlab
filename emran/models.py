@@ -42,7 +42,7 @@ def get_CertificationsCoursesTrainings_upload_path(instance, filename):
     """Generate a dynamic path for storing images."""
     app_directory = os.path.dirname(os.path.abspath(__file__))
     original_filename = os.path.basename(filename)
-    print(app_directory, filename, original_filename)
+    # print(app_directory, filename, original_filename)
     # return os.path.join(app_directory, 'staticfiles', 'myresources', f'project_{instance.pk}', filename)
     return os.path.join(app_directory, 'staticfiles', 'myresources', 'courseandcertificate', original_filename)
 
@@ -78,7 +78,7 @@ def get_organisation_upload_path(instance, filename):
     """Generate a dynamic path for storing images."""
     app_directory = os.path.dirname(os.path.abspath(__file__))
     original_filename = os.path.basename(filename)
-    print(app_directory, filename, original_filename)
+    # print(app_directory, filename, original_filename)
     # return os.path.join(app_directory, 'staticfiles', 'myresources', f'project_{instance.pk}', filename)
     return os.path.join(app_directory, 'staticfiles', 'myresources', 'organisations', original_filename)
 
@@ -168,7 +168,7 @@ def get_Volunteering_upload_path(instance, filename):
     """Generate a dynamic path for storing images."""
     app_directory = os.path.dirname(os.path.abspath(__file__))
     original_filename = os.path.basename(filename)
-    print(app_directory, filename, original_filename)
+    # print(app_directory, filename, original_filename)
     # return os.path.join(app_directory, 'staticfiles', 'myresources', f'project_{instance.pk}', filename)
     return os.path.join(app_directory, 'staticfiles', 'myresources', 'volunteering', original_filename)
 

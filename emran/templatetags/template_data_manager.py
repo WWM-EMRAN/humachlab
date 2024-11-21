@@ -11,7 +11,7 @@ register = template.Library()
 @register.simple_tag
 def get_skills_and_tools_rows_counter(tot_items, cols=2):
     rows = math.ceil(tot_items / cols)
-    print('Data sent ----->', tot_items, cols, '\nReturn value ----->', rows)
+    # print('Data sent ----->', tot_items, cols, '\nReturn value ----->', rows)
     return rows
 
 
@@ -28,7 +28,7 @@ def get_skills_and_tools_query_subset(query_set, cols=2):
 
 @register.simple_tag
 def get_certifications_courses_trainings_all_cert_type(query_set, visible_items=6):
-    selected_cert = query_set.filter(cct_serial_no__gt=0).order_by('cct_serial_no')
+    selected_cert = query_set.filter(cct_serial_no__gt=0).order_by('cct_serial_no').reverse()
     query_set = query_set.all()
     cert_type = []
     selected_cert = selected_cert[:visible_items]
@@ -112,19 +112,24 @@ def divide_into_groups(d):
 def get_category_wise_publications(publications, cols=2):
     pub_cat_seq = ['Journal', 'Conference', 'Poster', 'Blog']
     cat_groups = [['Journal'], ['Conference', 'Poster'], ['Blog']]
-    pub_cats = []
-    pub_cats_list = {}
-    all_pubs = publications.all()
+    # pub_cats = []
+    # pub_cats_list = {}
+    # all_pubs = publications.all()
+    #
+    # for pub in all_pubs:
+    #     if pub.pub_type not in pub_cats:
+    #         pub_cats.append(pub.pub_type)
+    #         pub_cats_list[pub.pub_type] = []
+    #     pub_cats_list[pub.pub_type].append(pub)
+    #
+    # # sort publication based on cat seq
+    # sorted_cat = sorted(pub_cats, key=lambda x: pub_cat_seq.index(x))
+    # sorted_pub = {key: pub_cats_list[key] for key in pub_cat_seq if key in pub_cats_list}
 
-    for pub in all_pubs:
-        if pub.pub_type not in pub_cats:
-            pub_cats.append(pub.pub_type)
-            pub_cats_list[pub.pub_type] = []
-        pub_cats_list[pub.pub_type].append(pub)
-
-    # sort publication based on cat seq
-    sorted_cat = sorted(pub_cats, key=lambda x: pub_cat_seq.index(x))
-    sorted_pub = {key: pub_cats_list[key] for key in pub_cat_seq if key in pub_cats_list}
+    return_val = get_category_wise_publications_for_individual_categories(publications, pub_cat_seq = pub_cat_seq)
+    sorted_cat = return_val['pub_cats']
+    sorted_pub = return_val['pub_cats_list']
+    pub_cats_list = return_val['pub_cats_list2']
 
     # sort publication based on number of items
     num_items_per_cat = {cc:len(sorted_pub[cc]) for cc in sorted_cat}
@@ -140,12 +145,10 @@ def get_category_wise_publications(publications, cols=2):
     return to_return
 
 @register.simple_tag
-def get_category_wise_publications_for_individual_categories(publications):
-    pub_cat_seq = ['Journal', 'Conference', 'Poster', 'Blog']
-    cat_groups = [['Journal'], ['Conference'], ['Poster'], ['Blog']]
+def get_category_wise_publications_for_individual_categories(publications, pub_cat_seq = ['Journal', 'Conference', 'Poster', 'Blog']):
     pub_cats = []
     pub_cats_list = {}
-    print('publications ----->', type(publications), publications)
+    # print('publications ----->', type(publications), publications)
     if not isinstance(publications, list):
         all_pubs = publications.all()
     else:
@@ -160,9 +163,9 @@ def get_category_wise_publications_for_individual_categories(publications):
     # sort publication based on cat seq
     sorted_cat = sorted(pub_cats, key=lambda x: pub_cat_seq.index(x))
     sorted_pub = {key: pub_cats_list[key] for key in pub_cat_seq if key in pub_cats_list}
-    print('sorted_cat ----->', sorted_cat, sorted_pub)
+    # print('sorted_cat ----->', sorted_cat, sorted_pub)
 
-    to_return = {'pub_cats': sorted_cat, 'pub_cats_list': sorted_pub}
+    to_return = {'pub_cats': sorted_cat, 'pub_cats_list': sorted_pub, 'pub_cats_list2': pub_cats_list}
     return to_return
 
 
@@ -206,7 +209,7 @@ def assign(value):
 
 @register.filter(name='in_list')
 def in_list(value, arg):
-    print('XXX--->', value, arg)
+    # print('XXX--->', value, arg)
     return value in arg.split(',')
 
 @register.filter(name='concat_to_string')
@@ -229,7 +232,7 @@ def serialize_object_data(data, already_serialised=False):
     # serialized_data = serialized_data.encode('utf-8', 'ignore')
     # # serialized_data = serialized_data.decode('utf-8', 'ignore')
 
-    print('YYY---> serialising data.....', type(data), len(data), data, '\n---', type(serialized_data), serialized_data)
+    # print('YYY---> serialising data.....', type(data), len(data), data, '\n---', type(serialized_data), serialized_data)
     return serialized_data
 
 # @register.simple_tag
@@ -253,7 +256,7 @@ def deserialize_object_data(serialized_data, already_deserialised=False):
     # deserialized_data = list(deserialize('json', serialized_data))
     deserialized_data = deserialize('json', serialized_data)
 
-    print('ZZZ---> deserialising data.....', type(serialized_data), len(serialized_data), serialized_data, '\n---', type(deserialized_data), deserialized_data)
+    # print('ZZZ---> deserialising data.....', type(serialized_data), len(serialized_data), serialized_data, '\n---', type(deserialized_data), deserialized_data)
     # for obj in deserialized_data:
     #     instance = obj.object  # Access the actual model instance
     #     print(instance)
@@ -284,7 +287,8 @@ def get_dict_value(dictionary, key):
 
 @register.simple_tag
 def test_anything(data):
-    print('XXXX--->', type(data), data)
+    pass
+    # print('XXXX--->', type(data), data)
     # print(data['Journal'])
 
 
