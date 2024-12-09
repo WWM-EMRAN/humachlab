@@ -21,6 +21,7 @@
  ##### Content: Main Content #####
 {% block content %}
 
+    {% load template_data_manager %}
 {#    {{ section }} || {{ data.count }} || {{ data|length }} || {{ data }} || {{ selected_data_id }}#}
 
     <!-- Start Portfolio Details Section -->
@@ -28,7 +29,6 @@
 		<div class="container">
 
 			<div class="row gy-4">
-            {% load template_data_manager %}
             {% with data=data|deserialize_object_data %}
                 {% if section|in_list:'skills,awards,projects,memberships,sessionsevents,languages,portfolios,volunteerings' %}
                     {%  for dat in data  %}

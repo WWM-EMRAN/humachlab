@@ -15,23 +15,134 @@
             <input type="hidden" name="selected_data_id" value="{{ selected_data_id }}">
             <input type="hidden" name="bc_icon" value="{{ bc_icon }}">
             <input type="hidden" name="bc_title" value="{{ bc_title }}">
-{#            <input type="hidden" name="data" value="{{ data|deserialize_object_data|serialize_object_data:True|safe }}">#}
+    {#            <input type="hidden" name="data" value="{{ data|deserialize_object_data|serialize_object_data:True|safe }}">#}
             <input type="hidden" name="data" value="{{ data }}">
 
-{#            {% if button_text == None and button_icon == None %}#}
-{#                <button type="submit" style="all:unset; background: none; border: none; cursor: pointer; color: transparent;"></button>#}
+    {#            {% if button_text == None and button_icon == None %}#}
+    {#                <button type="submit" style="all:unset; background: none; border: none; cursor: pointer; color: transparent;"></button>#}
             {% if button_text == None and button_icon != None %}
                 <button type="submit" style="all: unset; cursor: pointer; color: #149ddd;"> <i class="{{ button_icon }}"></i></button>
             {% elif button_text != None and button_icon == None %}
                 <button type="submit" style="all: unset; cursor: pointer;"> </button>
             {% elif button_text != None and button_icon != None %}
                 <button type="submit" style="all: unset; cursor: pointer; color: #0F0F0f;"> <i class="{{ bc_icon }}"></i> {{ button_text }} <i class="{{ button_icon }}"></i> </button>
-{#            {% else %}#}
-{#                <button type="submit" style="background: none; border: none; cursor: pointer; color: transparent;"></button>#}
+    {#            {% else %}#}
+    {#                <button type="submit" style="background: none; border: none; cursor: pointer; color: transparent;"></button>#}
             {% endif %}
       </form>
+    {% elif section|in_list:'contacts' %}
+{#        <fieldset>#}
+        <form id="{{ form_id }}" action="{{ target_url }}" method="POST" role="FORM" class="php-email-form">
+{#        <form id="{{ form_id }}" method="POST" role="FORM" class="php-email-form">#}
+            {% csrf_token %}
+            <h4>Send me a message: </h4>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="name">Your Name</label>
+                    <input type="text" name="name" class="form-control" id="name" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="name">Your Email</label>
+                    <input type="email" class="form-control" name="email" id="email" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="name">Subject</label>
+                <input type="text" class="form-control" name="subject" id="subject" required>
+            </div>
+            <div class="form-group">
+                <label for="name">Message</label>
+                <textarea class="form-control" name="message" rows="10" id="message" required></textarea>
+            </div>
+            <div class="my-3">
+                {% if request.method == "POST" %}
+                    <div class="sent-message">Your message has been sent. Thank you!</div>
+                {% endif %}
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+            </div>
+            <div class="text-center">
+                <input type="hidden" name="page" value="{{ page }}">
+                <button type="submit">Send Message</button>
+            </div>
+        </form>
+{#        </fieldset>#}
+
+
+
+{#        <fieldset>#}
+{#        <form id="{{ form_id }}" action="{{ target_url }}" method="POST" role="FORM" class="php-email-form">#}
+{#            {% csrf_token %}#}
+{#            <h4>Send me a message: </h4>#}
+{#            <div class="row">#}
+{#                <div class="form-group col-md-6">#}
+{#                    <label for="name">Your Name</label>#}
+{#                    <input type="text" name="name" class="form-control" id="name" required>#}
+{#                </div>#}
+{#                <div class="form-group col-md-6">#}
+{#                    <label for="name">Your Email</label>#}
+{#                    <input type="email" class="form-control" name="email" id="email" required>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="form-group">#}
+{#                <label for="name">Subject</label>#}
+{#                <input type="text" class="form-control" name="subject" id="subject" required>#}
+{#            </div>#}
+{#            <div class="form-group">#}
+{#                <label for="name">Message</label>#}
+{#                <textarea class="form-control" name="message" rows="10" id="message" required></textarea>#}
+{#            </div>#}
+{#            <div class="my-3">#}
+{#                <div class="loading">Loading</div>#}
+{#                <div class="error-message"></div>#}
+{#                <div class="sent-message">Your message has been sent. Thank you!</div>#}
+{#            </div>#}
+{#            <div class="text-center">#}
+{#                <input type="hidden" name="page" value="{{ page }}">#}
+{#                <button type="submit">Send Message</button>#}
+{#            </div>#}
+{#        </form>#}
+{#        </fieldset>#}
+
+
+
+{#        <fieldset>#}
+{#        <form id="{{ form_id }}" action="{{ target_url }}" method="POST" role="FORM" class="php-email-form">#}
+{#        <form id="{{ form_id }}" method="POST" role="FORM" class="php-email-form">#}
+{#            {% csrf_token %}#}
+{#            <p>Send me a message.</p>#}
+{#            <div class="row">#}
+{#                <div class="form-group col-md-6">#}
+{#                    <label for="name">Your Name</label>#}
+{#                    <input type="text" name="name" class="form-control" id="name" required>#}
+{#                </div>#}
+{#                <div class="form-group col-md-6">#}
+{#                    <label for="name">Your Email</label>#}
+{#                    <input type="email" class="form-control" name="email" id="email" required>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="form-group">#}
+{#                <label for="name">Subject</label>#}
+{#                <input type="text" class="form-control" name="subject" id="subject" required>#}
+{#            </div>#}
+{#            <div class="form-group">#}
+{#                <label for="name">Message</label>#}
+{#                <textarea class="form-control" name="message" rows="10" id="message" required></textarea>#}
+{#            </div>#}
+{#            <div class="my-3">#}
+{#                <div class="loading">Loading</div>#}
+{#                <div class="error-message"></div>#}
+{#                <div class="sent-message">Your message has been sent. Thank you!</div>#}
+{#            </div>#}
+{#            <div class="text-center">#}
+{#                <input type="hidden" name="page" value="{{ page }}">#}
+{#                <button type="submit">Send Message</button>#}
+{#            </div>#}
+{#        </form>#}
+{#        </fieldset>#}
     {% else %}
-    something to show...
+        Something to show...
     {% endif %}
 
 

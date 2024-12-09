@@ -238,6 +238,7 @@ def serialize_object_data(data, already_serialised=False):
 # @register.simple_tag
 @register.filter(name='deserialize_object_data')
 def deserialize_object_data(serialized_data, already_deserialised=False):
+    print('deserialize_object_data===>', serialized_data)
     # deserialized_data = None
     # if data:
     #     try:
@@ -287,8 +288,7 @@ def get_dict_value(dictionary, key):
 
 @register.simple_tag
 def test_anything(data):
-    pass
-    # print('XXXX--->', type(data), data)
+    print('XXXX--->', type(data), data, '|')
     # print(data['Journal'])
 
 

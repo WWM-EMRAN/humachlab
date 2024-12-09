@@ -12,6 +12,9 @@ CREATE TABLE IF NOT EXISTS "emran_honorsandawards" ("id" integer NOT NULL PRIMAR
 
 
 CREATE TABLE IF NOT EXISTS "emran_languages" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "language_name" varchar(150) NOT NULL, "language_description" varchar(500) NOT NULL, "language_test_details" text NULL);
+INSERT INTO emran_languages VALUES(1,'Bengali','Mother tongue','Excellent LRWS skills');
+INSERT INTO emran_languages VALUES(2,'English','Medium of instruction, examination and communication at the universities where I studied and worked','IELTS (6.5) - LRWS (6.0,6.5,6.5,7.0) - 2019');
+INSERT INTO emran_languages VALUES(3,'Spanish','Beginner level self learner at Duolingo',NULL);
 
 
 CREATE TABLE IF NOT EXISTS "emran_memberships" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "membership_name" varchar(150) NOT NULL, "membership_type" varchar(150) NOT NULL, "membership_organisation" varchar(500) NOT NULL, "membership_institution" varchar(500) NOT NULL, "membership_address" varchar(500) NOT NULL, "membership_hasexpire" bool NOT NULL, "membership_start_date" date NOT NULL, "membership_end_date" date NULL);

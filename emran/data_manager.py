@@ -1,7 +1,9 @@
-from .models import KeyInformation, SkillsAndTools, HonorsAndAwards, CertificationsCoursesTrainings, Projects, Memberships, SessionsOrEvents, Languages, Portfolios, Volunteering, Publications, Contacts
+from .models import PersonalInformation, SiteInformation, KeyInformation, SkillsAndTools, HonorsAndAwards, CertificationsCoursesTrainings, Projects, Memberships, SessionsOrEvents, Languages, Portfolios, Volunteering, Publications, Contacts
 
 
 def get_all_data_models(page):
+    personal_information = PersonalInformation.objects
+    site_information = SiteInformation.objects
     key_information = KeyInformation.objects
     skills_and_tools = SkillsAndTools.objects
     honors_and_awards = HonorsAndAwards.objects.order_by('id').reverse()
@@ -18,6 +20,8 @@ def get_all_data_models(page):
 
     all_data_models = {
         'page': page,
+        'personal_information': personal_information,
+        'site_information': site_information,
         'key_information': key_information,
         'skills_and_tools': skills_and_tools,
         'honors_and_awards': honors_and_awards,

@@ -10,6 +10,55 @@ from multiselectfield import MultiSelectField
 # Create your models here.
 
 
+## Home - Personal information
+class PersonalInformation(models.Model):
+    ## For hero
+    pi_name = models.CharField(max_length=300)
+    pi_hr_fields = models.CharField(max_length=500, null=True, blank=True)
+    pi_hr_affiliations = models.TextField(max_length=1000, null=True, blank=True)
+    pi_hr_work_areas = models.CharField(max_length=600, null=True, blank=True)
+
+    ## For social media
+    pi_sm_linkedin = models.CharField(max_length=600, null=True, blank=True)
+    pi_sm_twitter = models.CharField(max_length=600, null=True, blank=True)
+    pi_sm_facebook = models.CharField(max_length=600, null=True, blank=True)
+    pi_sm_instagram = models.CharField(max_length=600, null=True, blank=True)
+    pi_sm_email = models.CharField(max_length=1000, null=True, blank=True)
+    pi_sm_phone = models.CharField(max_length=1000, null=True, blank=True)
+    pi_sm_skype = models.CharField(max_length=600, null=True, blank=True)
+    pi_sm_googlescholar = models.CharField(max_length=600, null=True, blank=True)
+    pi_sm_researchgate = models.CharField(max_length=600, null=True, blank=True)
+    pi_sm_github = models.CharField(max_length=600, null=True, blank=True)
+    pi_sm_stackoverflow = models.CharField(max_length=600, null=True, blank=True)
+    pi_sm_quora = models.CharField(max_length=600, null=True, blank=True)
+    pi_sm_youtube = models.CharField(max_length=600, null=True, blank=True)
+
+
+## Home - Personal information
+class SiteInformation(models.Model):
+    ## For website
+    si_name = models.CharField(max_length=500)
+    si_website = models.CharField(max_length=500)
+    si_about = models.TextField(max_length=2000)
+
+    ## For copyright
+    si_cr_name = models.CharField(max_length=600)
+    si_cr_copyright = models.CharField(max_length=200)
+    si_cr_version = models.CharField(max_length=100)
+    si_cr_year = models.IntegerField()
+    si_cr_description = models.TextField(max_length=5000)
+
+    ## Contact info
+    si_con_location = models.CharField(max_length=500)
+    si_con_map_link = models.CharField(max_length=1000)
+    si_phone = models.CharField(max_length=500)
+    si_email = models.CharField(max_length=500)
+    si_skype = models.CharField(max_length=500)
+
+
+
+
+
 ## KeyInformation model
 class KeyInformation(models.Model):
     ki_type = models.CharField(max_length=300)
@@ -200,13 +249,12 @@ class Publications(models.Model):
     pub_abstract = models.TextField(null=True, blank=True)
 
 
-## Publications model
+## Contact model
 class Contacts(models.Model):
-    con_loc = models.CharField(max_length=300)
-    con_email = models.CharField(max_length=300, null=True, blank=True)
-    con_skype = models.CharField(max_length=500, null=True, blank=True)
-    con_phone = models.CharField(max_length=100, null=True, blank=True)
-    con_map_link = models.CharField(max_length=500)
+    con_name = models.CharField(max_length=500)
+    con_email = models.CharField(max_length=500)
+    con_subject = models.CharField(max_length=500)
+    con_message = models.TextField(null=True, blank=True)
 
 
 
