@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <!-- >load static files directory/folder: image-jpg|png|ico, css, js -->
+    {% load static %}
+
+    <!-- Head BEGIN -->
+    <head>
+        <!-- html head: favicon, fonts, css and js list -->
+        {% include './_html_head.html' %}
+    </head>
+    <!-- Head END -->
+
+
+    <body>
+
+        {#<!-- ======= Mobile nav toggle button ======= -->#}
+        {#<i class="bi bi-list mobile-nav-toggle d-xl-none"></i>#}
+
+        <!-- ======= Header ======= -->
+        {% include './_nav_menu.html' %}
+{#        <header id="header">#}
+{#            <!-- html head: favicon, fonts, css and js list -->#}
+{#            {% include './_nav_menu.html' %}#}
+{#        </header>#}
+        <!-- End Header -->
+
+
+        <!-- hero: hero slider section for the landing (index) page only that contains the main theme and message of the site -->
+        {% block hero %} {% endblock %}
+
+        <!-- content: main content of the page -->
+        <main id="main">
+
+            {% include './_breadcrumb.html' %}
+{#            {% if page != 'home' %}#}
+{#                <!-- breadcrumb: breadcrumb/path section to show the navigation from a root/sub-root link -->#}
+                {#{% block breadcrumb %} {% endblock %}#}
+{#                {% include './_breadcrumb.html' %}#}
+{#            {% endif %}#}
+
+            {% block content %}
+
+            {% endblock %}
+        </main><!-- End #main -->
+
+
+
+        <!-- html head: favicon, fonts, css and js list -->
+        {% include './_footer.html' %}
+
+        <!-- html head: favicon, fonts, css and js list -->
+        {% include './_html_external_scripts_footer.html' %}
+
+
+    </body>
+
+</html>

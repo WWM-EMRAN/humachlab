@@ -3,65 +3,102 @@
 <!-- >load static files directory/folder: image-jpg|png|ico, css, js -->
 {% load static %}
 
-	<div class="d-flex flex-column">
-		<div class="profile">
-			<img src="{% static '/myresources/personal/emran-ali-pp.JPG' %}" alt="Emran Ali - Personal Website | emran ali pp" class="img-fluid rounded-circle">
-			<h1 class="text-light"><a href="">EMRAN ALI</a></h1>
-			<div class="social-links mt-3 text-center">
-				<a href="https://www.twitter.com/WWM_EMRAN" target="_blank" class="twitter"><i class="bx bxl-twitter"></i></a>
-				<a href="https://facebook.com/wwm.emran" target="_blank" class="facebook"><i class="bx bxl-facebook"></i></a>
-				<a href="https://instagram.com/wwm.emran" target="_blank" class="instagram"><i class="bx bxl-instagram"></i></a>
-				<a href="mailto:emran.ali@research.deakin.edu.au" class="email"><i class="bx bi-envelope"></i></a>
-				<a href="skype:wwm.emran?chat" class="skype"><i class="bx bxl-skype"></i></a>
-				<a href="http://www.linkedin.com/in/wwmemran" target="_blank" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-				<a href="https://scholar.google.com.au/citations?hl=en&user=ej8d6LkAAAAJ" target="_blank" class="google"><i class="bx bxl-google"></i></a>
-				<a href="https://www.researchgate.net/profile/Emran-Ali-2" target="_blank" class="researchgate"><i class="bx bi-r-square"></i></a>
-				<a href="https://github.com/WWM-EMRAN" target="_blank" class="github"><i class="bx bxl-github"></i></a>
-				<a href="https://stackoverflow.com/users/2314674/wwm-emran" target="_blank" class="stack-overflow"><i class="bx bxl-stack-overflow"></i></a>
-				<a href="https://quora.com/Wwm-Emran" target="_blank" class="quora"><i class="bx bxl-quora"></i></a>
-				<a href="https://www.youtube.com/c/WWMEMRAN" target="_blank" class="youtube"><i class="bx bxl-youtube"></i></a>
-			</div>
-		</div>
+    <header id="header" class="header dark-background d-flex flex-column">
 
-		<nav id="navbar" class="nav-menu navbar">
-			<ul>
+        <i class="header-toggle d-xl-none bi bi-list"></i>
+
+        <div class="profile-img">
+          <img src="{% static '/myresources/personal/emran-ali-pp.JPG' %}" alt="Emran Ali - Personal Website | emran ali pp" class="img-fluid rounded-circle">
+        </div>
+
+        <a href="/emran/" class="logo d-flex align-items-center justify-content-center">
+          <!-- Uncomment the line below if you also wish to use an image logo -->
+          <img src="{% static 'myresources/icons/Emran_Ali_Logo_Fav.png' %}" alt="Emran Ali - Personal Website | emran ali logo fav">
+          <h1 class="sitename">EMRAN ALI</h1>
+        </a>
+
+        <div class="social-links text-center">
+          <a href="https://www.twitter.com/WWM_EMRAN" target="_blank" class="twitter"><i class="bi bi-twitter-x"></i></a>
+          <a href="https://facebook.com/wwm.emran" target="_blank" class="facebook"><i class="bi bi-facebook"></i></a>
+          <a href="https://instagram.com/wwm.emran" target="_blank" class="instagram"><i class="bi bi-instagram"></i></a>
+          <a href="http://www.linkedin.com/in/wwmemran" target="_blank" class="linkedin"><i class="bi bi-linkedin"></i></a>
+          <a href="https://scholar.google.com.au/citations?hl=en&user=ej8d6LkAAAAJ" target="_blank" class="google"><i class="bi bi-google"></i></a>
+          <a href="https://www.researchgate.net/profile/Emran-Ali-2" target="_blank" class="researchgate"><i class="bx bi-r-square"></i></a>
+          <!-- <a href="https://www.researchgate.net/profile/Emran-Ali-2" target="_blank" class="researchgate"><i class="fab fa-researchgate"></i></a>  -->
+          <a href="mailto:emran.ali@research.deakin.edu.au" class="email"><i class="bi bi-envelope-at"></i></a>
+          <a href="skype:wwm.emran?chat" class="skype"><i class="bi bi-skype"></i></a>
+          <!-- <a href="tel:+61480248845" class="tel"><i class="bi bi-telephone"></i></a> -->
+          <!-- <a href="https://wa.me/+61480248845" target="_blank" class="whatsapp"><i class="bi bi-whatsapp"></i></a> -->
+          <a href="https://github.com/WWM-EMRAN" target="_blank" class="github"><i class="bi bi-github"></i></a>
+          <a href="https://stackoverflow.com/users/2314674/wwm-emran" target="_blank" class="stack-overflow"><i class="bi bi-stack-overflow"></i></a>
+          <a href="https://quora.com/Wwm-Emran" target="_blank" class="quora"><i class="bi bi-quora"></i></a>
+          <a href="https://www.youtube.com/c/WWMEMRAN" target="_blank" class="youtube"><i class="bi bi-youtube"></i></a>
+        </div>
+
+        <nav id="navmenu" class="navmenu">
+            <ul>
                 {% if page == 'home' %}
-				<li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a> </li>
-				<li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
-				<li><a href="#education" class="nav-link scrollto"><i class="bx bxs-graduation"></i><span>Education</span></a></li>
-				<li><a href="#profession" class="nav-link scrollto"><i class="bx bx-briefcase"></i> <span>Professional Experiences</span></a> </li>
-				<li>
-				  <a href="#" class="nav-link scrollto more-button" data-toggle="collapse">
-					<i class="bx bx-trophy"></i> <span>Expertise and Achievements</span>
-					&nbsp;&nbsp;<i class="bx bxs-down-arrow-alt arrow-icon"></i>
-				  </a>
-				  <ul class="sub-menu">
-					<li><a href="#skills" class="nav-link scrollto"><i class="bx bxs-wrench"></i> <span>Skills and Tools</span></a></li>
-					<li><a href="#awards" class="nav-link scrollto"><i class="bx bx-medal"></i> <span>Honors and Awards</span></a></li>
-					<li><a href="#certificates" class="nav-link scrollto"><i class="bx bx-book-bookmark"></i> <span>Certificates</span></a></li>
-					<li><a href="#projects" class="nav-link scrollto"><i class="bx bx-bulb"></i> <span>Projects</span></a></li>
-					<li><a href="#memberships" class="nav-link scrollto"><i class="bx bx-group"></i> <span>Memberships</span></a></li>
-					<li><a href="#sessionsevents" class="nav-link scrollto"><i class="bx bx-chair"></i> <span>Sessions and Events</span></a></li>
-					<li><a href="#languages" class="nav-link scrollto"><i class="bx bx-conversation"></i> <span>Languages</span></a></li>
-					<li><a href="#portfolios" class="nav-link scrollto"><i class="bx bxl-github"></i> <span>Portfolios</span></a></li>
-					<li><a href="#volunteerings" class="nav-link scrollto"><i class="bx bxs-hand"></i> <span>Volunteering</span></a></li>
-				  </ul>
-				</li>
-				<li><a href="#publications" class="nav-link scrollto"><i class="bx bi-journal-richtext"></i> <span>Publications</span></a></li>
-				<li><a href="#contacts" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
+                <!-- <li><a href="#hero" class="scrollto active"><i class="bi bi-house navicon"></i> <span>Home</span></a> </li> -->
+                <li><a href="#hero" class="active"><i class="bx bx-home navicon"></i> <span>Home</span></a> </li>
+                <li><a href="#about"><i class="bi bi-person navicon"></i> <span>About</span></a></li>
+                <li><a href="#educations"><i class="bi bi-mortarboard navicon"></i><span>Education</span></a></li>
+                <li><a href="#professionalExperiences"><i class="bi bi-briefcase navicon"></i> <span>Professional Experiences</span></a> </li>
+                <li class="dropdown">
+                    <a href="#"><i class="bi bi-trophy navicon"></i> <span>Expertise and Achievements</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+{#                    <a href="#"><i class="bi bi-trophy navicon"></i> Expertise and Achievements <i class="bi bi-chevron-down toggle-dropdown"></i></a>#}
+{#                <li class="dropdown"> <a href="#"><i class="bi bi-trophy navicon"></i> <span>Expertise and Achievements</span> <i class="bx bxs-up-arrow-alt toggle-dropdown"></i></a> #}
+{#                <li class="dropdown"> <a href="#"><i class="bi bi-trophy navicon"></i> <span>Expertise and Achievements</span> <i class="bi bi-arrow-right toggle-dropdown"></i> </a> #}
+{#                <li class="dropdown"> <a href="#"><i class="bi bi-trophy navicon"></i> <span>Expertise and Achievements</span> <i class="bi bi-arrow-down toggle-dropdown"></i> </a>#}
+                    <ul>
+                        <li><a href="#skillsTools"><i class="bi bi-tools navicon"></i> <span>Skills and Tools</span></a></li>
+                        <li><a href="#honorsAwards"><i class="bi bi-award navicon"></i> <span>Honors and Awards</span></a></li>
+                        <!-- <li><a href="#coursesTrainingsCertificates"><i class="bx bx-book-bookmark navicon"></i> <span>Certificates</span></a></li>  -->
+                        <li><a href="#coursesTrainingsCertificates"><i class="bx bi-journal-bookmark-fill navicon"></i> <span>Certificates</span></a></li>
+                        <li><a href="#projects"><i class="bi bi-lightbulb navicon"></i> <span>Projects</span></a></li>
+                        <li><a href="#memberships"><i class="bi bi-people navicon"></i> <span>Memberships</span></a></li>
+                        <li><a href="#sessionsEvents"><i class="bi bi-calendar-event navicon"></i> <span>Sessions and Events</span></a></li>
+                        <li><a href="#languages"><i class="bx bx-conversation navicon"></i> <span>Languages</span></a></li>
+                        <li><a href="#portfolios"><i class="bi-images navicon"></i> <span>Portfolios</span></a></li>
+{#                        <li><a href="#volunteerings"><i class="bx bxs-hand navicon"></i> <span>Volunteering</span></a></li>#}
+                        <li><a href="#volunteerings"><i class="bx bxs-donate-heart navicon"></i> <span>Volunteering</span></a></li>
+                    </ul>
+                </li>
+                <li><a href="#publications"><i class="bx bi-journal-richtext navicon"></i> <span>Publications</span></a></li>
+                <li><a href="#contacts"><i class="bi bi-envelope navicon"></i> <span>Contacts</span></a></li>
 
                 {% elif page == 'details' %}
-				<li><a href="/emran/" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a> </li>
-				<li><a href="javascript:history.back()" class="nav-link scrollto active"><i class="bx bx-share"></i> <span>Back</span></a></li>
+                <li><a href="/emran/" ><i class="bx bx-home navicon"></i> <span>Home</span></a> </li>
+                <li><a href="javascript:history.back()"><i class="bx bx-share navicon"></i> <span>About</span></a></li>
 
                 {% else %}
-				<li><a href="" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a> </li>
+                <li><a href="/emran/" ><i class="bx bx-home navicon"></i> <span>Home</span></a> </li>
 
                 {% endif %}
-			</ul>
-			<!-- bxs-badge bx-file-blank bx-home bx-user bx-award bx-book-content bx-server bx-envelope bxs-graduation bxs-user-x bxs-user-pin
-			 bxs-user-detail bxs-user-check bxs-user-badge bxs-user-account -->
-		</nav><!-- .nav-menu -->
-	</div>
+            </ul>
+        </nav>
+
+        <!-- <footer id="menu_footer" class="footer position-relative"> -->
+        <div id="menu_footer" class="footer">
+        <!-- <footer id="menu_footer" class="footer"> -->
+          <div class="container">
+            <!-- <div class="copyright">
+              &copy; Copyright <strong><span> <a href="copyright.html"> <img src="assets/img/Emran_Ali_Logo_Fav.png" alt="Emran Ali - Personal Website | emran ali logo fav" class="img-fluid rounded-circle"> wwm.emran </a> </span></strong>
+            </div>
+            <div class="credits">
+              Designed by iPortfolio <br>
+              Design available on <a target="_blank" href="https://bootstrapmade.com/">BootstrapMade</a>
+            </div> -->
+            <div class="copyright">
+              <p style="text-align: center;">
+                &copy; Copyright  <strong><span> <a href="copyright.html"> <img style="height: 20px;" src="{% static 'myresources/icons/Emran_Ali_Logo_Fav.png' %}" alt="Emran Ali - Personal Website | emran ali logo fav" class="img-fluid rounded-circle">  WWM Emran </a> </span></strong>
+              </p>
+            </div>
+            <div class="credits">
+              {{ emran_current_year }}
+            </div>
+          </div>
+        <!-- </footer> -->
+        </div>
+    </header>
 
 

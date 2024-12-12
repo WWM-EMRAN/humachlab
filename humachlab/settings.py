@@ -69,10 +69,14 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                #### Context processor for website
                 # 'website.context_processor.theme_processor_login',
-                'website.context_processor.theme_processor_time_minutes',
+                'website.context_processor.theme_processor',
                 'website.context_processor.theme_processor_random_color',
                 'website.context_processor.copyright_current_year',
+                #### Context processor for website
+                'emran.context_processor.copyright_current_year',
+                'emran.context_processor.theme_processor',
             ],
         },
     },

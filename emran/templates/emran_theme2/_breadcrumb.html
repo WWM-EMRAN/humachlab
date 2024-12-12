@@ -1,0 +1,26 @@
+
+
+<!-- >load static files directory/folder: image-jpg|png|ico, css, js -->
+{% load static %}
+
+    {% if page != 'home' and  page != 'index' %}
+        <!-- ======= Breadcrumbs ======= -->
+        <section id="breadcrumbs" class="breadcrumbs" style="color: #f0f0f0">
+            <div class="container">
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2>
+                        <i class="{{ bc_icon }}"></i> {{ bc_title }}
+                    </h2>
+                    <ol>
+                        <li><a href="/emran/">Home</a></li>
+                        <li>{{ bc_title }}</li>
+                    </ol>
+                </div>
+
+            </div>
+        </section><!-- End Breadcrumbs -->
+    {% endif %}
+
+
+

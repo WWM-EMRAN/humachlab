@@ -10,9 +10,10 @@ def theme_processor_login(request):
         # theme = 'theme2'
     else:
         theme = 'theme1'  # default theme
+    print(f'===> humachlab-theme_processor_login-{theme}')
     return {'theme': theme}
 
-def theme_processor_time_minutes(request):
+def theme_processor(request):
     # current_minute = datetime.datetime.now().minute
     # theme = 'theme1' if current_minute % 2 == 1 else 'theme2'
 
@@ -21,13 +22,11 @@ def theme_processor_time_minutes(request):
     selected_theme_indx = random.randint(0, len(theme_list)-1)
     selected_theme_indx = 0
     theme = theme_list[selected_theme_indx]
-    return {
-        'theme': theme
-    }
+    print(f'===> humachlab-theme_processor-{theme}')
+    return {'theme': theme}
 
 def theme_processor_random_color(request, custom_color=None):
     current_color = request.session.get('theme_color')
-    print('======>>> current_color', current_color)
     color_list = ["red", "green", "black", "white", "blue", "gray", "orange", "turquoise", "yellow", "purple", "cyan"]
     color_list = ["red", "green", "black", "blue", "gray", "orange", "turquoise", "yellow", "purple", "cyan"]
     # color_list = ["red", "green", "black", "blue", "gray", "orange", "turquoise", "purple"]
@@ -39,12 +38,13 @@ def theme_processor_random_color(request, custom_color=None):
     # if custom_color != None:
     #     theme_color = custom_color
     request.session['theme_color'] = theme_color
+    print(f'===> humachlab-theme_processor_random_color-{theme_color}')
     return {'theme_color': theme_color}
 
 
 def copyright_current_year(request):
-    return {
-        'current_year': datetime.datetime.now().year,
-    }
+    cr_year = datetime.datetime.now().year
+    print(f'===> humachlab-copyright_current_year-{cr_year}')
+    return {'current_year': cr_year}
 
 

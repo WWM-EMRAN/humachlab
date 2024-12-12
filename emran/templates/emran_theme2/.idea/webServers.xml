@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="97f2f83e-9e9b-4edf-99ae-d6e9b38a4d3e" name="http://localhost:1001" url="http://localhost:1001">
+        <fileTransfer mountedRoot="C:\Users\aliem\Dropbox\Personal\wwm-emran" accessType="MOUNT" port="0" />
+      </webServer>
+    </option>
+  </component>
+</project>

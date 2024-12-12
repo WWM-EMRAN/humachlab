@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Test</title>
+</head>
+<body>
+  <button id="testButton">Click Me</button>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const button = document.querySelector('#testButton');
+      if (button) {
+        button.addEventListener('click', () => {
+          console.log('Button works!');
+          alert('Button works!');
+        });
+      }
+    });
+  </script>
+</body>
+</html>

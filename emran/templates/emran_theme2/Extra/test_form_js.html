@@ -1,0 +1,103 @@
+<! DOCTYPE html>
+<Html>
+   <Head>
+		<script type="text/javascript">
+			// function addToCSVFile2(passForm) {
+			function addToCSVFile3() {
+			    alert("Here come to the function...");
+				set fso = CreateObject("Scripting.FileSystemObject");
+			    set s   = fso.CreateTextFile("./Data.txt", True);
+			    alert("Here come to the function...2");
+
+			    var firstName = document.getElementById('id_number');
+			    var lastName  = document.getElementById('first_name');
+			    let data = firstName+lastName
+			    alert("Here come to the function...3");
+			    alert(data);
+
+			    s.writeline("First Name :" + FirstName);
+			    s.writeline("Last Name :" + lastName);
+			    alert("Here come to the function...4");
+
+			    s.writeline("-----------------------------");
+			    alert("Here come to the function...5");
+			    s.Close();
+			}
+
+			function addToCSVFile2() {
+			    alert("Here come to the function...");
+				var csvData = new Array();  // To collect the names
+			    var csvFilePath = "Data.csv"; // File name
+			    alert("Here come to the function...2");
+
+			    // Collect General Information
+			    csvData[0] = document.getElementById('id_number').value;
+			    csvData[1] = document.getElementById('first_name').value;
+			    alert("Here come to the function...3");
+			    alert(csvData);
+
+			    const fso = require('fs')
+			    let data = csvData.join(',')
+			    alert("Here come to the function...4");
+			    alert(data);
+
+				// Write data in 'Output.txt' .
+				fs.writeFile(csvFilePath, data, (err) => {
+					// In case of a error throw error
+					if (err) throw err;
+				})
+			    alert("Data Added Successfully");
+			}
+
+			function addToCSVFile() {
+			    alert("Here come to the function...");
+				var csvData = new Array();  // To collect the names
+			    var csvFilePath = "Data.csv"; // File name
+			    alert("Here come to the function...2");
+
+			    // Collect General Information
+			    csvData[0] = document.getElementById('id_number').value;
+			    csvData[1] = document.getElementById('first_name').value;
+			    alert("Here come to the function...3");
+			    alert(csvData);
+
+			    var fso = new ActiveXObject('Scripting.FileSystemObject');
+			    alert("Here come to the function...3.5");
+			    var oStream = fso.OpenTextFile(csvFilePath, 8, true, 0);
+			    alert("Here come to the function...4");
+			    oStream.WriteLine(csvData.join(','));
+			    oStream.Close();
+			    alert("Here come to the function...5");
+			    clearData();
+			    alert("Data Added Successfully");
+			}
+
+			function clearData() {
+				document.getElementById('id_number').value = "";
+			    document.getElementById('first_name').value = "";
+			}
+		</script>
+
+      <style type="text/css">
+         fieldset {
+            border: #00cc00 2px solid;
+            padding: 10px;
+            color: green;
+         }
+      </style>
+   <body></body>
+		<form name="xyz_form">
+<!--		<form name="xyz_form" onsubmit="WriteToFile">-->
+		   <fieldset>
+		      <legend>Csharpcorner</legend>
+			   <center>
+<!--				 <form name="xyz_form">-->
+				   ID Number: <input type="number" id="id_number"> <br>
+				   First Name: <input type="text" id="first_name"> <br>
+				   <input type="submit" value="Submit" onClick="javascript:addToCSVFile3()">
+<!--				   <input type="submit" value="Submit">-->
+		      </center>
+		   </fieldset>
+		</form>
+	</body>
+</html>
