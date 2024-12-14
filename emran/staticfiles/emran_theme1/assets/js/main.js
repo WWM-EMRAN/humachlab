@@ -79,6 +79,7 @@
       preloader.style.display = "none";
       // mainContent.style.display = "block";
     }, transitionDuration);
+    // preloader.remove();
   });
 
   /**
