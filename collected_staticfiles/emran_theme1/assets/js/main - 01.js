@@ -18,7 +18,6 @@
     document.querySelector('#header').classList.toggle('header-show');
     headerToggleBtn.classList.toggle('bi-list');
     headerToggleBtn.classList.toggle('bi-x');
-    console.log('headerToggle...');
   }
   headerToggleBtn.addEventListener('click', headerToggle);
 
@@ -49,38 +48,13 @@
   /**
    * Preloader
    */
-  // const preloader = document.querySelector('#preloader');
-  // if (preloader) {
-  //   window.addEventListener('load', () => {
-  //     console.log('Window loaded, removing preloader');
-  //     preloader.remove();
-  //   });
-  // }
-
-
-  /**
-   * My custom logo preloader
-   */
-  // JavaScript to handle the preloader
-  // JavaScript to handle the preloader
-  window.addEventListener("load", () => {
-    const logo = document.getElementById("logo");
-    const preloader = document.getElementById("preloader");
-    // const mainContent = document.getElementById("main-content");
-
-    // Begin color transition
-    logo.style.filter = "grayscale(0%)";
-
-    // Wait for the color transition to complete, then hide preloader
-    const computedStyle = getComputedStyle(logo);
-    const transitionDuration = parseFloat(computedStyle.transitionDuration) * 1000; // Convert to ms
-
-    setTimeout(() => {
-      preloader.style.display = "none";
-      // mainContent.style.display = "block";
-    }, transitionDuration);
-    // preloader.remove();
-  });
+  const preloader = document.querySelector('#preloader');
+  if (preloader) {
+    window.addEventListener('load', () => {
+      console.log('Window loaded, removing preloader');
+      preloader.remove();
+    });
+  }
 
   /**
    * Scroll top button
@@ -91,7 +65,6 @@
     if (scrollTop) {
       window.scrollY > 100 ? scrollTop.classList.add('active') : scrollTop.classList.remove('active');
     }
-    console.log('toggleScrollTop...');
   }
   scrollTop.addEventListener('click', (e) => {
     e.preventDefault();
@@ -114,7 +87,6 @@
       once: true,
       mirror: false
     });
-    console.log('aosInit...');
   }
   window.addEventListener('load', aosInit);
 
@@ -211,7 +183,6 @@
         new Swiper(swiperElement, config);
       }
     });
-    console.log('initSwiper...');
   }
 
   window.addEventListener("load", initSwiper);

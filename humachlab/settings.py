@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-o2ien8+xw*in-#wiu9tx7f8n2ddl0g3xup*3w@pys__dyyp_-=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.humachlab.com', 'localhost', '127.0.0.1', '.vercel.app']
 
 
 website_main = 'website'

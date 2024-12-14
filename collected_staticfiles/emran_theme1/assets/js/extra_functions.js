@@ -17,12 +17,14 @@ function CopyToClipboard(containerid) {
         document.execCommand("copy");
         // alert("Text has been copied, now paste in the text-area")
     }
+    console.log('CopyToClipboard...');
 }
 
 function ClearSelection()
 {
     if (window.getSelection) {window.getSelection().removeAllRanges();}
     else if (document.selection) {document.selection.empty();}
+    console.log('ClearSelection...');
 }
 
 
