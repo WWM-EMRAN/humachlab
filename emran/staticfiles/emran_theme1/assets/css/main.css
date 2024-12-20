@@ -799,6 +799,9 @@ section,
   height: 100%;
   object-fit: cover;
   z-index: 1;
+  transition: opacity 1.5s ease-in-out; /* Smooth fade effect */
+  /*-webkit-object-fit: cover; !* For older versions of Chrome *!*/
+  /*-moz-object-fit: cover;   !* For older versions of Firefox *!*/
 }
 
 .hero:before {

@@ -84,6 +84,60 @@ function DownloadFile(elem, url)
 
 
 
+///////////////// For background change //////////////////
+// document.addEventListener("DOMContentLoaded", () => {
+//     // const heroImage = document.querySelector('img[data-aos="fade-in"]');
+//     const heroImage = document.querySelector('.hero-bg-image');
+//     const imageListContainer = document.querySelector('.image-list');
+//
+//     // Retrieve the image paths from the spans in the image-list div
+//     const images = Array.from(imageListContainer.querySelectorAll('span')).map(span => span.textContent.trim());
+//
+//     let currentIndex = 0;
+//
+//     // Function to change the image
+//     function changeImage() {
+//         currentIndex = (currentIndex + 1) % images.length;
+//         heroImage.src = images[currentIndex];
+//     }
+//
+//     // Change image every 5 seconds
+//     setInterval(changeImage, 5000);
+// });
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    // const heroImage = document.querySelector('img[data-aos="fade-in"]');
+    const heroImage = document.querySelector('.hero-bg-image');
+    const imageListContainer = document.querySelector('.image-list');
+
+    // Retrieve the image paths from the spans in the image-list div
+    const images = Array.from(imageListContainer.querySelectorAll('span')).map(span => span.textContent.trim());
+
+    let currentIndex = 0;
+
+    // Function to change the image with a smooth transition
+    function changeImage() {
+        heroImage.style.opacity = 0; // Fade out the current image
+
+        setTimeout(() => {
+            currentIndex = (currentIndex + 1) % images.length;
+            heroImage.src = images[currentIndex]; // Change the image source
+            heroImage.style.opacity = 1; // Fade in the new image
+        }, 750); // Wait for the fade-out transition duration
+    }
+
+    // Change image every 10 seconds
+    setInterval(changeImage, 10000);
+});
+
+
+
+
+
+
+
+
 
 
 

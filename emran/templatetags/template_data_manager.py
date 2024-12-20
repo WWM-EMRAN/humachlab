@@ -8,6 +8,26 @@ from django.core.serializers import serialize, deserialize
 register = template.Library()
 
 
+
+@register.simple_tag
+def get_list_from_string(data_str, separator=';'):
+    data_str = str(data_str)
+    data_list = data_str.split(separator)
+    return {'data_list': data_list}
+
+
+@register.simple_tag
+def get_corrected_string_to_html_string(data_str, correct_substr='\n'):
+    data_str = str(data_str)
+    data_list = []
+    if correct_substr=='\n':
+        data_str = data_str.replace('\n', '<br>')
+        data_str = data_str.replace('\r', '')
+        # data_list = data_str.split(correct_substr)
+    return {'data_str': data_str}
+    # return {'data_list': data_list}
+
+
 @register.simple_tag
 def get_skills_and_tools_rows_counter(tot_items, cols=2):
     rows = math.ceil(tot_items / cols)
@@ -27,7 +47,7 @@ def get_skills_and_tools_query_subset(query_set, cols=2):
 
 
 @register.simple_tag
-def get_certifications_courses_trainings_all_cert_type(query_set, visible_items=6):
+def get_certifications_courses_trainings_all_cert_type(query_set, visible_items=9):
     selected_cert = query_set.filter(cct_serial_no__gt=0).order_by('cct_serial_no').reverse()
     query_set = query_set.all()
     cert_type = []

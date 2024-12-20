@@ -2,37 +2,42 @@
 
 <!-- >load static files directory/folder: image-jpg|png|ico, css, js -->
 {% load static %}
+{% load template_data_manager %}
 
+    {% with section='hero' bc_icon='' bc_title='Hero' det_url='/emran/hero' site_info=site_information.all.0 personal_info=personal_information.all.0 %}
     <header id="header" class="header dark-background d-flex flex-column">
 
         <i class="header-toggle d-xl-none bi bi-list"></i>
 
         <div class="profile-img">
-          <img src="{% static '/myresources/personal/emran-ali-pp.JPG' %}" alt="Emran Ali - Personal Website | emran ali pp" class="img-fluid rounded-circle">
+          <img src="{% static '/myresources/personal/emran-ali-pp.jpg' %}" alt="Emran Ali - Personal Website | emran ali pp" class="img-fluid rounded-circle">
         </div>
 
         <a href="/emran/" class="logo d-flex align-items-center justify-content-center">
           <!-- Uncomment the line below if you also wish to use an image logo -->
           <img src="{% static 'myresources/icons/Emran_Ali_Logo_Fav.png' %}" alt="Emran Ali - Personal Website | emran ali logo fav">
-          <h1 class="sitename">EMRAN ALI</h1>
+          <h1 class="sitename">{{ personal_info.pi_name|upper }}</h1>
         </a>
 
         <div class="social-links text-center">
-          <a href="https://www.twitter.com/WWM_EMRAN" target="_blank" class="twitter"><i class="bi bi-twitter-x"></i></a>
-          <a href="https://facebook.com/wwm.emran" target="_blank" class="facebook"><i class="bi bi-facebook"></i></a>
-          <a href="https://instagram.com/wwm.emran" target="_blank" class="instagram"><i class="bi bi-instagram"></i></a>
-          <a href="http://www.linkedin.com/in/wwmemran" target="_blank" class="linkedin"><i class="bi bi-linkedin"></i></a>
-          <a href="https://scholar.google.com.au/citations?hl=en&user=ej8d6LkAAAAJ" target="_blank" class="google"><i class="bi bi-google"></i></a>
-          <a href="https://www.researchgate.net/profile/Emran-Ali-2" target="_blank" class="researchgate"><i class="bx bi-r-square"></i></a>
-          <!-- <a href="https://www.researchgate.net/profile/Emran-Ali-2" target="_blank" class="researchgate"><i class="fab fa-researchgate"></i></a>  -->
-          <a href="mailto:emran.ali@research.deakin.edu.au" class="email"><i class="bi bi-envelope-at"></i></a>
-          <a href="skype:wwm.emran?chat" class="skype"><i class="bi bi-skype"></i></a>
-          <!-- <a href="tel:+61480248845" class="tel"><i class="bi bi-telephone"></i></a> -->
-          <!-- <a href="https://wa.me/+61480248845" target="_blank" class="whatsapp"><i class="bi bi-whatsapp"></i></a> -->
-          <a href="https://github.com/WWM-EMRAN" target="_blank" class="github"><i class="bi bi-github"></i></a>
-          <a href="https://stackoverflow.com/users/2314674/wwm-emran" target="_blank" class="stack-overflow"><i class="bi bi-stack-overflow"></i></a>
-          <a href="https://quora.com/Wwm-Emran" target="_blank" class="quora"><i class="bi bi-quora"></i></a>
-          <a href="https://www.youtube.com/c/WWMEMRAN" target="_blank" class="youtube"><i class="bi bi-youtube"></i></a>
+          <a href="{{ personal_info.pi_sm_twitter }}" target="_blank" class="twitter"><i class="bi bi-twitter-x"></i></a>
+          <a href="{{ personal_info.pi_sm_facebook }}" target="_blank" class="facebook"><i class="bi bi-facebook"></i></a>
+          <a href="{{ personal_info.pi_sm_instagram }}" target="_blank" class="instagram"><i class="bi bi-instagram"></i></a>
+          <a href="{{ personal_info.pi_sm_linkedin }}" target="_blank" class="linkedin"><i class="bi bi-linkedin"></i></a>
+          <a href="{{ personal_info.pi_sm_googlescholar }}" target="_blank" class="google"><i class="bi bi-google"></i></a>
+          <a href="{{ personal_info.pi_sm_resarchgate }}" target="_blank" class="researchgate"><i class="bx bi-r-square"></i></a>
+          {% get_list_from_string personal_info.pi_sm_email as email_list %}
+          <a href="mailto:{{ email_list.data_list.0 }}" class="email"><i class="bi bi-envelope-at"></i></a>
+          {% get_list_from_string personal_info.pi_sm_skype as skype_list %}
+          <a href="skype:{{ skype_list.data_list.0 }}?chat" class="skype"><i class="bi bi-skype"></i></a>
+{#          {% get_list_from_string personal_info.pi_sm_phone as cell_list %}#}
+{#          <a href="tel:{{ cell_list.data_list.0 }}" class="tel"><i class="bi bi-telephone"></i></a>#}
+{#          {% get_list_from_string personal_info.pi_sm_whatsapp as whatsapp_list %}#}
+{#          <a href="https://wa.me/{{ whatsapp_list.data_list.0 }}" target="_blank" class="whatsapp"><i class="bi bi-whatsapp"></i></a>#}
+          <a href="{{ personal_info.pi_sm_github }}" target="_blank" class="github"><i class="bi bi-github"></i></a>
+          <a href="{{ personal_info.pi_sm_stackoverflow }}" target="_blank" class="stack-overflow"><i class="bi bi-stack-overflow"></i></a>
+          <a href="{{ personal_info.pi_sm_quora }}" target="_blank" class="quora"><i class="bi bi-quora"></i></a>
+          <a href="{{ personal_info.pi_sm_youtube }}" target="_blank" class="youtube"><i class="bi bi-youtube"></i></a>
         </div>
 
         <nav id="navmenu" class="navmenu">
@@ -90,15 +95,16 @@
             </div> -->
             <div class="copyright">
               <p style="text-align: center;">
-                &copy; Copyright  <strong><span> <a href="copyright.html"> <img style="height: 20px;" src="{% static 'myresources/icons/Emran_Ali_Logo_Fav.png' %}" alt="Emran Ali - Personal Website | emran ali logo fav" class="img-fluid rounded-circle">  WWM Emran </a> </span></strong>
+                &copy; Copyright · {{ emran_current_year }} <strong><span> <a href="copyright.html"> <img style="height: 20px;" src="{% static 'myresources/icons/Emran_Ali_Logo_Fav.png' %}" alt="Emran Ali - Personal Website | emran ali logo fav" class="img-fluid rounded-circle">  WWM Emran </a> </span></strong>
               </p>
             </div>
             <div class="credits">
-              {{ emran_current_year }}
+              <a href="diary.html"> Diary </a> | <a href="gallery.html"> Gallery </a>
             </div>
           </div>
         <!-- </footer> -->
         </div>
     </header>
+    {% endwith %}
 
 

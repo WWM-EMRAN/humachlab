@@ -25,6 +25,7 @@ class PersonalInformation(models.Model):
     pi_sm_instagram = models.CharField(max_length=600, null=True, blank=True)
     pi_sm_email = models.CharField(max_length=1000, null=True, blank=True)
     pi_sm_phone = models.CharField(max_length=1000, null=True, blank=True)
+    pi_sm_whatsapp = models.CharField(max_length=1000, null=True, blank=True)
     pi_sm_skype = models.CharField(max_length=600, null=True, blank=True)
     pi_sm_googlescholar = models.CharField(max_length=600, null=True, blank=True)
     pi_sm_researchgate = models.CharField(max_length=600, null=True, blank=True)
@@ -34,12 +35,26 @@ class PersonalInformation(models.Model):
     pi_sm_youtube = models.CharField(max_length=600, null=True, blank=True)
 
 
+
+## CertificatesCoursesTrainings model
+def get_SiteInformation_HeroBG_upload_path(instance, filename):
+    """Generate a dynamic path for storing images."""
+    app_directory = os.path.dirname(os.path.abspath(__file__))
+    original_filename = os.path.basename(filename)
+    # print(app_directory, filename, original_filename)
+    # return os.path.join(app_directory, 'staticfiles', 'myresources', f'project_{instance.pk}', filename)
+    return os.path.join(app_directory, 'staticfiles', 'myresources', 'myimg', original_filename)
+
+
 ## Home - Personal information
 class SiteInformation(models.Model):
     ## For website
     si_name = models.CharField(max_length=500)
     si_website = models.CharField(max_length=500)
     si_about = models.TextField(max_length=2000)
+    si_hero_image1 = models.ImageField(upload_to=get_SiteInformation_HeroBG_upload_path, max_length=500, null=True)
+    si_hero_image2 = models.ImageField(upload_to=get_SiteInformation_HeroBG_upload_path, max_length=500, blank=True, null=True)
+    si_hero_image3 = models.ImageField(upload_to=get_SiteInformation_HeroBG_upload_path, max_length=500, blank=True, null=True)
 
     ## For copyright
     si_cr_name = models.CharField(max_length=600)

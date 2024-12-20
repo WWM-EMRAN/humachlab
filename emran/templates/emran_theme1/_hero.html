@@ -2,19 +2,38 @@
 
 <!-- >load static files directory/folder: image-jpg|png|ico, css, js -->
 {% load static %}
+{% load template_data_manager %}
 
     <!-- Hero Section -->
+    {% with section='hero' bc_icon='' bc_title='Hero' det_url='/emran/hero' site_info=site_information.all.0 personal_info=personal_information.all.0 %}
     <!-- <section id="hero" class="hero section dark-background justify-content-center align-items-center"> -->
-    <section id="hero" class="hero section dark-background">
+    <section id="{{ section }}" class="hero section dark-background" >
 
       <img src="{% static 'myresources/myimg/emran-bg.jpg' %}" alt="Emran Ali - Personal Website | emran ali site bg background image" data-aos="fade-in" class="">
 
+{#      <img src="{% static 'myresources/myimg/emran-bg.jpg' %}" alt="Emran Ali - Personal Website | emran ali site bg background image" data-aos="fade-in" class="hero-bg-image">#}
+{#      <div class="image-list" style="display: none;">#}
+{#          {% get_corrected_image_url site_info.si_hero_image1 as image_url %}#}
+{#          <span>{% static image_url.image_url %}</span>#}
+{#          {% get_corrected_image_url site_info.si_hero_image2 as image_url %}#}
+{#          <span>{% static image_url.image_url %}</span>#}
+{#          {% get_corrected_image_url site_info.si_hero_image3 as image_url %}#}
+{#          <span>{% static image_url.image_url %}</span>#}
+{#      </div>#}
+
+
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <h2>Emran Ali</h2>
+        <h2>{{ personal_info.pi_name }}</h2>
         <p style="text-align: center;">
 {#          <span class="typed" data-typed-items="<i class='bx bxs-graduation'></i> Education , <i class='bx bx-bong'></i> Research , <i class='bx bi-tools'></i> Development "></span><span class="typed-cursor typed-cursor&#45;&#45;blink" aria-hidden="true"></span><span class="typed-cursor typed-cursor&#45;&#45;blink" aria-hidden="true"></span>#}
 {#          <span class="typed" data-typed-items="<i class='bi bi-mortarboard'></i> Education  , <i class='bx bxs-flask'></i> Research  , <i class='bi bi-terminal'></i> Development  "></span><span class="typed-cursor typed-cursor&#45;&#45;blink" aria-hidden="true"></span><span class="typed-cursor typed-cursor&#45;&#45;blink" aria-hidden="true"></span> #}
-          <span class="typed" data-typed-items="<i class='bi bi-mortarboard'></i> Education  , <i class='bx bxs-flask'></i> Research  , <i class='bi bi-laptop'></i> Development  "></span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span>
+{#          <span class="typed" data-typed-items="<i class='bi bi-mortarboard'></i> Education  , <i class='bx bxs-flask'></i> Research  , <i class='bi bi-laptop'></i> Development  "></span>#}
+{#          <span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span>#}
+{#          <span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span>#}
+
+
+          {% get_list_from_string personal_info.pi_hr_fields as field_list %}
+          <span class="typed" data-typed-items="<i class='bi bi-mortarboard'></i> {{ field_list.data_list.0 }}  , <i class='bx bxs-flask'></i> {{ field_list.data_list.1 }}  , <i class='bi bi-laptop'></i> {{ field_list.data_list.2 }}  "></span>
         </p>
         <!-- <p class="row fst-italic" style="font-size: medium"> -->
         <!-- <p class="row fst-italic" style="font-size: small; text-align: center;"> -->
@@ -31,14 +50,17 @@
         <!-- </p> -->
 
         <!-- <p style="font-size: small; text-align: center; font-style: italic;"> -->
-          Ph.D. Reseracher <br>
-          IT @ Deakin University, Australia <br>
-          CSM @ Coventry University, United Kingdom <br>
-          AI | ML | DL | Interpretability | Health Informatics
+{#          Ph.D. Reseracher <br>#}
+{#          IT @ Deakin University, Australia <br>#}
+{#          CSM @ Coventry University, United Kingdom <br>#}
+{#          AI | ML | DL | Interpretability | Health Informatics#}
+          {{ personal_info.pi_hr_affiliations|linebreaksbr }} <br>
+          {{ personal_info.pi_hr_work_areas }}
         <!-- </p> -->
       </div>
 
     </section><!-- /Hero Section -->
+    {% endwith %}
 
 
 
